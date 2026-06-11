@@ -19,6 +19,13 @@
   --bad-wash: oklch(0.5 0.14 25 / 0.09);
   --frame-bg: oklch(1 0 0);
   --shadow: 0 1px 2px oklch(0.25 0.02 60 / 0.06);
+  /* Code tokens — quiet, warm-compatible. */
+  --code-keyword: oklch(0.45 0.14 25); /* madder */
+  --code-string: oklch(0.45 0.09 150); /* moss green */
+  --code-number: oklch(0.5 0.1 75); /* brass */
+  --code-comment: oklch(0.52 0.02 60); /* dim ink */
+  --code-title: oklch(0.42 0.1 265); /* slate blue */
+  --code-builtin: oklch(0.45 0.1 320); /* plum */
   --radius: 10px;
   --radius-sm: 8px;
   --font-display: 'STIX Two Text', 'Iowan Old Style', Georgia, serif;
@@ -45,6 +52,12 @@
   --bad-wash: oklch(0.7 0.14 25 / 0.12);
   --frame-bg: oklch(0.97 0.005 85);
   --shadow: none;
+  --code-keyword: oklch(0.74 0.12 30);
+  --code-string: oklch(0.78 0.1 150);
+  --code-number: oklch(0.8 0.1 80);
+  --code-comment: oklch(0.66 0.02 70);
+  --code-title: oklch(0.78 0.08 265);
+  --code-builtin: oklch(0.78 0.09 320);
   color-scheme: dark;
 }
 
@@ -671,6 +684,50 @@ h3 {
 code {
   font-family: var(--font-mono);
   font-size: 0.88em;
+}
+
+/* Syntax highlighting (highlight.js classes), themed via --code-* tokens. */
+.hljs {
+  color: var(--ink);
+  background: transparent;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-operator {
+  color: var(--code-keyword);
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-addition {
+  color: var(--code-string);
+}
+.hljs-number,
+.hljs-symbol,
+.hljs-attr,
+.hljs-template-variable,
+.hljs-variable {
+  color: var(--code-number);
+}
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion {
+  color: var(--code-comment);
+  font-style: italic;
+}
+.hljs-title,
+.hljs-function .hljs-title,
+.hljs-title.function_,
+.hljs-section {
+  color: var(--code-title);
+}
+.hljs-built_in,
+.hljs-type,
+.hljs-class .hljs-title,
+.hljs-title.class_,
+.hljs-meta,
+.hljs-params .hljs-built_in {
+  color: var(--code-builtin);
 }
 
 /* ---------- Assignment ---------- */

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { marked } from 'marked';
+import hljs from 'highlight.js/lib/core';
+import python from 'highlight.js/lib/languages/python';
 import type { ContentBlock } from '../content/types';
 import {
   IconBookOpen,
@@ -107,7 +109,32 @@ function PdfEmbed({ url, title, note }: { url: string; title: string; note?: str
   );
 }
 
-/* Minimal client-side .ipynb renderer: markdown cells via marked, code cells as <pre>. */
+/* Minimal client-side .ipynb renderer: markdown cells via marked, code cells
+   highlighted with hljs (Python only — that's all the course notebook uses). */
+hljs.registerLanguage('python', python);
+
+function highlightPython(src: string): string {
+  // Jupyter magics (%%ai, %load_ext) aren't Python; let hljs skip gracefully.
+  try {
+    return hljs.highlight(src, { language: 'python' }).value;
+  } catch {
+    return src.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+}
+
+// Fenced code blocks inside markdown cells get the same treatment.
+marked.use({
+  renderer: {
+    code({ text, lang }: { text: string; lang?: string }) {
+      const body =
+        !lang || lang === 'python' || lang === 'py' || lang === 'ipython'
+          ? highlightPython(text)
+          : text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return `<pre class="nb-code"><code class="hljs">${body}</code></pre>`;
+    },
+  },
+});
+
 interface NbCell {
   cell_type: 'markdown' | 'code' | 'raw';
   source: string[] | string;
@@ -182,7 +209,7 @@ function NotebookViewer({ path, title, sourceUrl }: { path: string; title: strin
           if (cell.cell_type === 'code') {
             return (
               <pre key={i} className="nb-code">
-                <code>{src}</code>
+                <code className="hljs" dangerouslySetInnerHTML={{ __html: highlightPython(src) }} />
               </pre>
             );
           }
