@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { QuizQuestion } from '../content/types';
 import { setQuizScore } from '../store/progress';
+import { IconCheck, IconCircleCheck, IconX } from './Icons';
 
 function Question({
   q,
@@ -55,7 +56,10 @@ function Question({
         </button>
       ) : (
         <div className={`quiz-feedback ${isCorrect ? 'good' : 'bad'}`}>
-          <strong>{isCorrect ? 'Correct!' : 'Not quite.'}</strong> {q.explanation}
+          {isCorrect ? <IconCheck /> : <IconX />}
+          <span>
+            <strong>{isCorrect ? 'Correct!' : 'Not quite.'}</strong> {q.explanation}
+          </span>
         </div>
       )}
     </div>
@@ -82,7 +86,10 @@ export function Quiz({ lessonId, questions }: { lessonId: string; questions: Qui
   return (
     <section className="quiz" aria-label="Check your understanding">
       <h2>
-        <span className="quiz-icon">✓</span> Check your understanding
+        <span className="quiz-icon">
+          <IconCircleCheck />
+        </span>
+        Check your understanding
       </h2>
       <p className="quiz-sub">
         {questions.length} questions, written from this session’s lecture notes. Pick an answer, then check it for

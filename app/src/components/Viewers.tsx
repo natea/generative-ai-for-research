@@ -1,6 +1,23 @@
 import { useEffect, useState } from 'react';
 import { marked } from 'marked';
 import type { ContentBlock } from '../content/types';
+import {
+  IconBookOpen,
+  IconExternal,
+  IconFileText,
+  IconLink,
+  IconNotebook,
+  IconPlay,
+  IconPresentation,
+} from './Icons';
+
+function OpenLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a className="viewer-open" href={href} target="_blank" rel="noopener noreferrer">
+      {children} <IconExternal />
+    </a>
+  );
+}
 
 function VideoEmbed({ youtubeId, title, note, playlistId }: { youtubeId: string; title: string; note?: string; playlistId?: string }) {
   const src = playlistId
@@ -9,7 +26,10 @@ function VideoEmbed({ youtubeId, title, note, playlistId }: { youtubeId: string;
   return (
     <figure className="viewer viewer-video">
       <figcaption>
-        <span className="viewer-tag tag-video">Watch</span> {title}
+        <span className="viewer-tag">
+          <IconPlay /> Watch
+        </span>
+        {title}
         {note && <span className="viewer-note"> — {note}</span>}
       </figcaption>
       <div className="frame-16x9">
@@ -28,10 +48,11 @@ function SlidesEmbed({ googleId, title }: { googleId: string; title: string }) {
   return (
     <figure className="viewer viewer-slides">
       <figcaption>
-        <span className="viewer-tag tag-slides">Slides</span> {title}
-        <a className="viewer-open" href={`https://docs.google.com/presentation/d/${googleId}/edit`} target="_blank" rel="noopener noreferrer">
-          Open in Google Slides ↗
-        </a>
+        <span className="viewer-tag">
+          <IconPresentation /> Slides
+        </span>
+        {title}
+        <OpenLink href={`https://docs.google.com/presentation/d/${googleId}/edit`}>Open in Google Slides</OpenLink>
       </figcaption>
       <div className="frame-16x9">
         <iframe
@@ -48,10 +69,11 @@ function DocEmbed({ googleId, title }: { googleId: string; title: string }) {
   return (
     <figure className="viewer viewer-doc">
       <figcaption>
-        <span className="viewer-tag tag-notes">Notes</span> {title}
-        <a className="viewer-open" href={`https://docs.google.com/document/d/${googleId}/edit`} target="_blank" rel="noopener noreferrer">
-          Open in Google Docs ↗
-        </a>
+        <span className="viewer-tag">
+          <IconFileText /> Notes
+        </span>
+        {title}
+        <OpenLink href={`https://docs.google.com/document/d/${googleId}/edit`}>Open in Google Docs</OpenLink>
       </figcaption>
       <div className="frame-doc">
         <iframe src={`https://docs.google.com/document/d/${googleId}/preview`} title={title} />
@@ -64,18 +86,19 @@ function PdfEmbed({ url, title, note }: { url: string; title: string; note?: str
   return (
     <figure className="viewer viewer-pdf">
       <figcaption>
-        <span className="viewer-tag tag-read">Read</span> {title}
+        <span className="viewer-tag">
+          <IconBookOpen /> Read
+        </span>
+        {title}
         {note && <span className="viewer-note"> — {note}</span>}
-        <a className="viewer-open" href={url} target="_blank" rel="noopener noreferrer">
-          Open PDF ↗
-        </a>
+        <OpenLink href={url}>Open PDF</OpenLink>
       </figcaption>
       <div className="frame-doc">
         <object data={url} type="application/pdf" aria-label={title}>
           <div className="pdf-fallback">
             <p>This PDF can’t be displayed inline in your browser.</p>
             <a className="btn btn-secondary" href={url} target="_blank" rel="noopener noreferrer">
-              Open the PDF in a new tab ↗
+              Open the PDF in a new tab
             </a>
           </div>
         </object>
@@ -118,16 +141,17 @@ function NotebookViewer({ path, title, sourceUrl }: { path: string; title: strin
   return (
     <figure className="viewer viewer-notebook">
       <figcaption>
-        <span className="viewer-tag tag-notebook">Notebook</span> {title}
-        <a className="viewer-open" href={sourceUrl} target="_blank" rel="noopener noreferrer">
-          View on GitHub ↗
-        </a>
+        <span className="viewer-tag">
+          <IconNotebook /> Notebook
+        </span>
+        {title}
+        <OpenLink href={sourceUrl}>View on GitHub</OpenLink>
       </figcaption>
       {launch && (
         <div className="nb-launch">
           <span className="nb-launch-label">Read-only preview below — run it yourself:</span>
           <a className="btn btn-primary nb-launch-btn" href={launch.colab} target="_blank" rel="noopener noreferrer">
-            ▶ Open in Google Colab
+            <IconPlay /> Open in Google Colab
           </a>
           <a className="btn btn-ghost nb-launch-btn" href={launch.binder} target="_blank" rel="noopener noreferrer">
             Launch on Binder
@@ -172,10 +196,14 @@ function NotebookViewer({ path, title, sourceUrl }: { path: string; title: strin
 function LinkCard({ url, title, note }: { url: string; title: string; note?: string }) {
   return (
     <a className="link-card" href={url} target="_blank" rel="noopener noreferrer">
-      <span className="viewer-tag tag-link">Resource</span>
+      <span className="viewer-tag">
+        <IconLink /> Resource
+      </span>
       <span className="link-card-title">{title}</span>
       {note && <span className="viewer-note">{note}</span>}
-      <span className="link-card-arrow">↗</span>
+      <span className="link-card-arrow">
+        <IconExternal />
+      </span>
     </a>
   );
 }

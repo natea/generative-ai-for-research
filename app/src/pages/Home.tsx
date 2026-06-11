@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { courseMeta, lessons } from '../content/course';
 import { generatedById } from '../content/generated';
 import { useProgress } from '../store/progress';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { IconArrowRight, IconCheck } from '../components/Icons';
 
 export function Home() {
   const progress = useProgress();
@@ -10,6 +12,7 @@ export function Home() {
 
   return (
     <div className="home">
+      <ThemeToggle />
       <header className="hero">
         <p className="eyebrow">
           {courseMeta.code} · {courseMeta.term} · {courseMeta.institution}
@@ -19,7 +22,7 @@ export function Home() {
         <p className="hero-meta">
           By {courseMeta.instructor} · {lessons.length} lessons · Shared under {courseMeta.license} ·{' '}
           <a href={courseMeta.sourceSite} target="_blank" rel="noopener noreferrer">
-            Original course site ↗
+            Original course site
           </a>
         </p>
         <div className="hero-progress">
@@ -62,7 +65,11 @@ export function Home() {
                   <span className="lesson-card-body">
                     <span className="lesson-card-title">
                       {lesson.title}
-                      {p?.completed && <span className="done-flag">✓ Completed</span>}
+                      {p?.completed && (
+                        <span className="done-flag">
+                          <IconCheck /> Completed
+                        </span>
+                      )}
                     </span>
                     {gen && <span className="lesson-card-summary">{gen.summary}</span>}
                     <span className="lesson-card-meta">
@@ -72,7 +79,9 @@ export function Home() {
                       {p?.quizScore && ` · quiz score ${p.quizScore.correct}/${p.quizScore.total}`}
                     </span>
                   </span>
-                  <span className="lesson-card-go">→</span>
+                  <span className="lesson-card-go">
+                    <IconArrowRight />
+                  </span>
                 </Link>
               </li>
             );

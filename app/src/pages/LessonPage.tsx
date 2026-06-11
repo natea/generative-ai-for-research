@@ -4,6 +4,15 @@ import { lessons } from '../content/course';
 import { generatedById } from '../content/generated';
 import { Block } from '../components/Viewers';
 import { Quiz } from '../components/Quiz';
+import { ThemeToggle } from '../components/ThemeToggle';
+import {
+  IconArrowLeft,
+  IconArrowRight,
+  IconCheck,
+  IconCircleCheck,
+  IconExternal,
+  IconPencil,
+} from '../components/Icons';
 import { setLessonCompleted, useProgress } from '../store/progress';
 
 export function LessonPage() {
@@ -23,7 +32,9 @@ export function LessonPage() {
       <div className="lesson-layout">
         <main className="lesson-main">
           <p>Lesson not found.</p>
-          <Link to="/">← Back to course</Link>
+          <Link to="/">
+            <IconArrowLeft /> Back to course
+          </Link>
         </main>
       </div>
     );
@@ -38,8 +49,9 @@ export function LessonPage() {
   return (
     <div className="lesson-layout">
       <aside className="sidebar">
+        <ThemeToggle />
         <Link className="sidebar-home" to="/">
-          ← Course home
+          <IconArrowLeft /> Course home
         </Link>
         <div className="sidebar-progress">
           <div className="progress-track">
@@ -54,11 +66,17 @@ export function LessonPage() {
             {lessons.map((l) => (
               <li key={l.id}>
                 <Link className={`sidebar-item ${l.id === lesson.id ? 'active' : ''}`} to={`/lesson/${l.id}`}>
-                  <span className={`side-badge ${progress[l.id]?.completed ? 'done' : ''}`}>
+                  <span
+                    className={`side-badge ${progress[l.id]?.completed ? 'done' : ''} ${l.number === null ? 'supplement' : ''}`}
+                  >
                     {l.number ?? '+'}
                   </span>
                   <span className="side-title">{l.title}</span>
-                  {progress[l.id]?.completed && <span className="side-check">✓</span>}
+                  {progress[l.id]?.completed && (
+                    <span className="side-check">
+                      <IconCheck />
+                    </span>
+                  )}
                 </Link>
               </li>
             ))}
@@ -95,7 +113,10 @@ export function LessonPage() {
         {lesson.assignment && (
           <section className="assignment">
             <h2>
-              <span className="viewer-tag tag-assignment">Assignment</span> {lesson.assignment.title}
+              <span className="viewer-tag">
+                <IconPencil /> Assignment
+              </span>
+              {lesson.assignment.title}
             </h2>
             <p>Apply this lesson to your own research — the assignments were written to be domain-specific.</p>
             <div className="frame-doc">
@@ -110,7 +131,7 @@ export function LessonPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Open in Google Docs ↗
+              Open in Google Docs <IconExternal />
             </a>
           </section>
         )}
@@ -133,7 +154,13 @@ export function LessonPage() {
             className={`btn ${completed ? 'btn-secondary' : 'btn-primary'}`}
             onClick={() => setLessonCompleted(lesson.id, !completed)}
           >
-            {completed ? '✓ Completed — click to undo' : 'Mark lesson complete'}
+            {completed ? (
+              <>
+                <IconCircleCheck /> Completed — click to undo
+              </>
+            ) : (
+              'Mark lesson complete'
+            )}
           </button>
           {next && !completed && (
             <button
@@ -143,7 +170,7 @@ export function LessonPage() {
                 navigate(`/lesson/${next.id}`);
               }}
             >
-              Complete & continue →
+              Complete & continue <IconArrowRight />
             </button>
           )}
         </div>
@@ -151,7 +178,9 @@ export function LessonPage() {
         <nav className="pager" aria-label="Lesson navigation">
           {prev ? (
             <Link className="pager-link" to={`/lesson/${prev.id}`}>
-              ← {prev.number === null ? 'Supplement' : `Class ${prev.number}`}
+              <span className="pager-dir">
+                <IconArrowLeft /> {prev.number === null ? 'Supplement' : `Class ${prev.number}`}
+              </span>
               <span>{prev.title}</span>
             </Link>
           ) : (
@@ -159,12 +188,16 @@ export function LessonPage() {
           )}
           {next ? (
             <Link className="pager-link pager-next" to={`/lesson/${next.id}`}>
-              {next.number === null ? 'Supplement' : `Class ${next.number}`} →
+              <span className="pager-dir">
+                {next.number === null ? 'Supplement' : `Class ${next.number}`} <IconArrowRight />
+              </span>
               <span>{next.title}</span>
             </Link>
           ) : (
             <Link className="pager-link pager-next" to="/">
-              Course complete — back to overview →
+              <span className="pager-dir">
+                Course complete — back to overview <IconArrowRight />
+              </span>
             </Link>
           )}
         </nav>
