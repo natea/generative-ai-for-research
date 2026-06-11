@@ -100,7 +100,7 @@ export const lessons: Lesson[] = [
         kind: 'link',
         url: 'https://gwu.box.com/s/nfo5s2qfyaoe6ynr82ylebtship6rzdv',
         title: 'Case study notes on the tocify repository',
-        note: 'Required reading (GWU Box)',
+        note: 'Required reading — now requires a GWU Box login (no longer publicly shared)',
       },
       { kind: 'video', youtubeId: 'n0NlxUyA7FI', title: 'Getting started with GitHub Copilot' },
     ],
