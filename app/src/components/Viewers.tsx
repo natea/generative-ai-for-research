@@ -90,9 +90,22 @@ interface NbCell {
   source: string[] | string;
 }
 
+/* Build one-click launch URLs for a notebook hosted on GitHub
+   (github.com/<owner>/<repo>/blob/<branch>/<path>). */
+function notebookLaunchUrls(sourceUrl: string) {
+  const m = sourceUrl.match(/github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.+)$/);
+  if (!m) return null;
+  const [, owner, repo, branch, file] = m;
+  return {
+    colab: `https://colab.research.google.com/github/${owner}/${repo}/blob/${branch}/${file}`,
+    binder: `https://mybinder.org/v2/gh/${owner}/${repo}/${branch}?labpath=${encodeURIComponent(file)}`,
+  };
+}
+
 function NotebookViewer({ path, title, sourceUrl }: { path: string; title: string; sourceUrl: string }) {
   const [cells, setCells] = useState<NbCell[] | null>(null);
   const [error, setError] = useState(false);
+  const launch = notebookLaunchUrls(sourceUrl);
 
   useEffect(() => {
     fetch(path)
@@ -109,6 +122,26 @@ function NotebookViewer({ path, title, sourceUrl }: { path: string; title: strin
           View on GitHub ↗
         </a>
       </figcaption>
+      {launch && (
+        <div className="nb-launch">
+          <span className="nb-launch-label">Read-only preview below — run it yourself:</span>
+          <a className="btn btn-primary nb-launch-btn" href={launch.colab} target="_blank" rel="noopener noreferrer">
+            ▶ Open in Google Colab
+          </a>
+          <a className="btn btn-ghost nb-launch-btn" href={launch.binder} target="_blank" rel="noopener noreferrer">
+            Launch on Binder
+          </a>
+          <span className="viewer-note">
+            In Colab or Binder, run <code>%pip install jupyter_ai_magics</code> first and set a model-provider API
+            key — the <code>%%ai</code> magic cells will then work. The Jupyternaut chat-sidebar parts of the lesson
+            need JupyterLab with the{' '}
+            <a href="https://github.com/jupyterlab/jupyter-ai" target="_blank" rel="noopener noreferrer">
+              jupyter-ai
+            </a>{' '}
+            extension installed (e.g. locally).
+          </span>
+        </div>
+      )}
       <div className="notebook">
         {error && (
           <p className="pdf-fallback">

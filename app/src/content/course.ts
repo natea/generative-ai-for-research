@@ -118,6 +118,12 @@ export const lessons: Lesson[] = [
         sourceUrl: 'https://github.com/barbagroup/mae6291-genai/blob/main/jupyter_ai_basics.ipynb',
       },
       {
+        kind: 'link',
+        url: 'https://github.com/jupyterlab/jupyter-ai',
+        title: 'Jupyter AI — the official JupyterLab extension used in this lesson',
+        note: 'GitHub repository and docs',
+      },
+      {
         kind: 'video',
         youtubeId: 'l5DhqN3su0o',
         title: 'Real-time Collaboration Is Not Just for Humans Anymore',

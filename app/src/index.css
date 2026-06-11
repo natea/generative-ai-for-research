@@ -461,6 +461,33 @@ h2 {
 }
 
 /* Notebook */
+.nb-launch {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 0.75rem 1.25rem;
+}
+.nb-launch-label {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.nb-launch-btn {
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+}
+.nb-launch .viewer-note {
+  flex-basis: 100%;
+  font-size: 0.82rem;
+}
+.nb-launch + .notebook {
+  border-radius: 0 0 var(--radius) var(--radius);
+}
 .notebook {
   background: var(--bg-raised);
   border: 1px solid var(--border);
