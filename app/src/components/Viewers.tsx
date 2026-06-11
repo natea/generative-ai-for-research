@@ -108,8 +108,9 @@ function NotebookViewer({ path, title, sourceUrl }: { path: string; title: strin
   const launch = notebookLaunchUrls(sourceUrl);
 
   useEffect(() => {
-    fetch(path)
-      .then((r) => r.json())
+    // Resolve against Vite's base so it works from a subpath (GitHub Pages).
+    fetch(import.meta.env.BASE_URL + path.replace(/^\//, ''))
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((nb) => setCells(nb.cells ?? []))
       .catch(() => setError(true));
   }, [path]);
