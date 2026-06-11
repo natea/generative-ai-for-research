@@ -49,5 +49,6 @@ Branches: `main` = deployed; `design-overhaul` = "university press" redesign (PR
 
 ## Conventions
 - Verify UI changes in the real browser (playwright MCP) in **both themes** before committing; the vite preview server is typically on :4623 (`bunx vite preview --port 4623` from `app/`).
+- **Screenshots and other review artifacts go in `docs/design-critique/`, never the project root.** When taking verification screenshots (yours or a subagent's), save them there — or delete them once verified.
 - Browsers cache the preview bundle aggressively — bust with a `?v=N` query param when re-checking after a rebuild.
 - Keep course content faithful to the source material; the original site is the canonical record of the Spring 2026 semester.
