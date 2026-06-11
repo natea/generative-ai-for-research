@@ -1,0 +1,71 @@
+{
+  "id": "class-01",
+  "summary": "This lesson introduces a course on using generative AI as a research accelerator in engineering, contrasting it with traditional CS courses that focus on building AI systems. You'll explore bold productivity claims from AI leaders like Bill Dally, Dario Amodei, and Demis Hassabis, then weigh them against Messeri and Crockett's counterargument that AI can create powerful illusions of understanding. You'll also see a real-world demo of AI's power on a doctoral qualifying exam task and survey the core vocabulary and techniques of modern LLMs.",
+  "objectives": [
+    "Describe the course's three core pillars: research automation, AI-enhanced coding, and technical depth",
+    "Summarize the productivity claims made by AI leaders about generative AI accelerating scientific discovery",
+    "Distinguish the three illusions of understanding (explanatory depth, exploratory breadth, and objectivity) identified by Messeri and Crockett",
+    "Explain how AI adoption can produce 'monocultures of knowing' and 'monocultures of knowers' in science",
+    "Identify the main approaches for improving LLM performance, including prompting, finetuning, RAG, and agentic workflows"
+  ],
+  "keyTakeaways": [
+    "The course focuses on applying generative AI to enhance the research workflow, not on building AI systems, organized around research automation, AI-enhanced coding, and technical depth.",
+    "AI leaders such as Bill Dally, Dario Amodei, and Demis Hassabis predict generative AI could multiply scientist productivity by an order of magnitude through copilots, agents, and automated experiment loops.",
+    "Messeri and Crockett warn that AI tools invite three illusions of understanding — explanatory depth, exploratory breadth, and objectivity — that are not fixed by better models or fewer hallucinations.",
+    "Widespread AI use risks creating scientific monocultures, where prediction-optimized methods crowd out qualitative questions and supposedly neutral AI systems replace diverse human knowers.",
+    "A live demonstration showed Gemini's Deep Research mode producing a doctoral qualifying exam report in about 10 minutes that surpassed what a student produced in two weeks, raising questions about how academic processes should adapt.",
+    "Beyond upgrading the foundation model itself, LLM performance can be improved through prompting methods, finetuning, Retrieval-Augmented Generation, and agentic workflows."
+  ],
+  "quiz": [
+    {
+      "question": "How does this course differ from a traditional computer science course on AI?",
+      "options": [
+        {"text": "It focuses on building new AI systems from scratch", "correct": false},
+        {"text": "It focuses on applying AI systems to meaningfully enhance the research workflow", "correct": true},
+        {"text": "It avoids technical foundations entirely and covers only ethics", "correct": false},
+        {"text": "It trains students to become machine learning engineers", "correct": false}
+      ],
+      "explanation": "The notes state that unlike traditional CS courses focused on building AI systems, this course is about applying AI to enhance the research workflow and become a high-productivity researcher."
+    },
+    {
+      "question": "A scientist uses an AI model that makes excellent predictions and concludes they now deeply understand the underlying phenomenon. According to Messeri and Crockett, which illusion is this?",
+      "options": [
+        {"text": "Illusion of exploratory breadth", "correct": false},
+        {"text": "Illusion of objectivity", "correct": false},
+        {"text": "Illusion of explanatory depth", "correct": true},
+        {"text": "Illusion of emergent capability", "correct": false}
+      ],
+      "explanation": "The illusion of explanatory depth occurs when scientists mistake AI's predictive success or neat outputs for genuine explanatory understanding of phenomena or models."
+    },
+    {
+      "question": "What do Messeri and Crockett mean by a 'monoculture of knowing' in science?",
+      "options": [
+        {"text": "All scientists end up using the same brand of AI chatbot", "correct": false},
+        {"text": "AI hallucinations spread identical errors across many papers", "correct": false},
+        {"text": "Scientists stop collaborating across institutions and disciplines", "correct": false},
+        {"text": "Quantitative, prediction-optimized methods become dominant while qualitative or hard-to-quantify questions get marginalized", "correct": true}
+      ],
+      "explanation": "The notes describe monocultures of knowing as AI's efficiency encouraging over-reliance on quantitative, reductive, prediction-optimized approaches, crowding out alternative methods and questions."
+    },
+    {
+      "question": "In the course's technical-depth pillar, why is Retrieval-Augmented Generation (RAG) particularly emphasized?",
+      "options": [
+        {"text": "It grounds AI outputs in specific research domains, like lab notes and specialized datasets", "correct": true},
+        {"text": "It replaces the need for transformer architectures", "correct": false},
+        {"text": "It is the only technique that requires no technical understanding", "correct": false},
+        {"text": "It permanently updates the model's parameters with new knowledge", "correct": false}
+      ],
+      "explanation": "RAG is emphasized as a way to ground AI outputs in specific research domains; it retrieves documents and adds them as context to the prompt, helping overcome knowledge gaps and small context windows."
+    },
+    {
+      "question": "What is the central counterargument of Messeri and Crockett's Nature article — is it simply 'do not use AI'?",
+      "options": [
+        {"text": "Yes — they argue scientists should avoid AI until hallucinations are eliminated", "correct": false},
+        {"text": "No — they argue uncritical, autonomy-granting visions of AI as collaborators will narrow research questions, methods, and perspectives", "correct": true},
+        {"text": "Yes — they argue AI fundamentally cannot increase research productivity", "correct": false},
+        {"text": "No — they argue AI is fine as long as models keep improving", "correct": false}
+      ],
+      "explanation": "The notes are explicit that the counterargument is not 'do not use AI,' but that uncritical visions of AI as scientific collaborators risk making science less innovative and more vulnerable to error — and that better models alone won't fix the illusions."
+    }
+  ]
+}

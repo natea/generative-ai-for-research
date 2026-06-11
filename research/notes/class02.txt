@@ -1,0 +1,268 @@
+﻿MAE 6291 – Class 2
+Lorena A. Barba – January 20, 2026
+Self-Study Materials (Recap)
+Foundations of Generative AI
+Neural Networks
+If you don't know what a Neural Network is ... watch the friendly overview provided by the 3Blue1Brown video course on YouTube, starting with the classic case of recognizing handwritten digits from 28x28 black-and-white images. The first video explains how a neural network is just a (vector) function. The second video explains how the network parameters are calculated via gradient descent (a.k.a. "learning") to minimize a cost (or objective) function. The third and fourth videos talk about backpropagation, the core algorithm behind how neural networks learn.
+At this point (or at the same time as you're watching, pausing, and restarting the fourth video), I recommend you go over the section on Learning with gradient descent of the free online book by Michael Nielsen. Follow the math and write down the derivation on paper! It's just the chain rule of calculus, nothing more. But on vectors. (You can skip the code examples; that is optional.)
+Large Language Models
+After the gentle introduction above to what neural networks are, the fifth video in the 3Blue1Brown playlist gives the briefest introduction to LLMs (in 8 min). The next video (sixth in the playlist) is dedicated to the transformer architecture of LLMs. It introduces several key concepts related to large language models (LLMs) and Transformers:
+* Generative Pre-trained Transformer (GPT): Explained as a bot that generates new text, pre-trained on massive data, and uses the Transformer neural network as its core invention.
+* Prediction and Sampling for Text Generation: The process where a model predicts the next chunk of text as a probability distribution, then samples from it, appends it, and repeats to generate longer passages.
+* Transformer Data Flow Overview: A high-level preview of how data moves through a Transformer, starting with input tokenization and vector association.
+* Tokens: The small pieces into which input is broken, typically words, parts of words, or common character combinations.
+* Word Embeddings: Vectors (lists of numbers) associated with each token that encode its meaning. Words with similar meanings have vectors close to each other in a high-dimensional space.
+* Attention Block: An operation that allows vectors (representing tokens) to interact and update their values, incorporating context from other words in the input.
+* Multi-layer Perceptron (MLP) / Feed-forward Layer: Another operation where vectors are processed in parallel, akin to asking questions about each vector and updating them.
+* Matrix Multiplication and Weights: The core computation in deep learning models, where model parameters (weights, learned during training) interact with data through weighted sums, often packaged as matrix-vector products.
+* Unembedding: The process of mapping the final context-rich vector back to a list of values, one for each token in the vocabulary, before normalization into a probability distribution.
+* Softmax Function: A function that normalizes an arbitrary list of numbers into a valid probability distribution, ensuring values are between 0 and 1 and sum to 1.
+* Temperature in Softmax: A constant 'T' introduced into the softmax function that influences the shape of the probability distribution, making it more uniform (higher T) or more dominated by larger values (lower T).
+* Logits: The raw, unnormalized input values to the softmax function, representing the scores for each possible next token before they are converted into probabilities.
+Video number seven in the playlist is focused on the attention mechanism. Attention is a key mechanism inside transformers and large language models (LLMs), enabling them to process data effectively. Here's why it's crucial:
+* Contextual Understanding: The attention mechanism allows models to progressively adjust word embeddings, baking in richer contextual meaning. This means that a word's meaning can be refined based on the surrounding words in a phrase or sentence. For example, the word "mole" can have different meanings, and attention helps the model understand the correct meaning based on its context.
+* Information Flow: It allows information encoded in one embedding to be moved to another, potentially far away, enabling a more comprehensive understanding of the entire text. This is vital for tasks like predicting the next word in a sequence, where the final word's embedding needs to incorporate information from the entire preceding context .
+* Parallelizability and Scalability: One of the biggest advantages of the attention mechanism is its extreme parallelizability. This means a huge number of computations can be run in a short time using GPUs, which is crucial for scaling up models. This ability to scale has led to significant qualitative improvements in model performance over the last decade.
+You should watch this video at least twice!!
+The step-by-step process of a single head of attention within a transformer is:
+* Initial Embeddings: Each input word (token) is first associated with a high-dimensional vector called its embedding. These embeddings also encode the position of the word within the text.
+* Queries (Q): For each word, a "query" vector is computed by multiplying its embedding by a tunable query matrix (WQ). These queries are essentially asking what other words are relevant to it. The query vector lives in a smaller dimensional space than the embedding.
+* Keys (K): Simultaneously, for each word, a "key" vector is computed by multiplying its embedding by a tunable key matrix (WK). Keys are thought of as potentially "answering" the queries. Keys also live in the same smaller dimensional space as queries.
+* Dot Products: The relevance between each word and every other word is measured by computing the dot product between each possible query-key pair. A larger dot product indicates a closer alignment.
+* Softmax Normalization: These dot product scores, which can range from negative to positive infinity, are then normalized using a softmax function along each column. This converts the scores into values between 0 and 1, where each column sums to 1, effectively creating a probability distribution of relevance. This resulting grid of normalized values is called the attention pattern. A masking step is applied during training to prevent later words from influencing earlier words. This involves setting dot product scores for future tokens to negative infinity before softmax, which turns them into zeros after softmax.
+* Values (V): A "value" vector is computed for each word by multiplying its embedding by a tunable value matrix. This value matrix is typically factored into two smaller matrices: a "value down" matrix (mapping to a smaller space) and a "value up" matrix (mapping back to the embedding space). The value vector lives in the same high-dimensional space as the embeddings and is intended to capture what should be "added" to an embedding if this word is relevant to it.
+* Weighted Sum and Update: For each word (represented by a column in the attention pattern), its corresponding value vectors are multiplied by the normalized weights from that column. These rescaled value vectors are then summed together. This sum represents the change (Delta E) that should be added to the original embedding of the word to refine its meaning.
+* Refined Embeddings: The calculated change (Delta E) is added to the original embedding, producing a new, more contextually rich embedding for that word. This process is applied to all words in the sequence, resulting in a full sequence of refined embeddings that exit the attention block.
+This entire sequence of operations describes a single head of attention. In a full transformer, there are multiple attention heads running in parallel, each with its own distinct key, query, and value matrices, allowing the model to learn various ways context changes meaning.
+How Transformer LLMs Work
+The next step of your self-study journey should be the micro-course "How Transformer LLMs Work" on the DeepLearning.AI platform. It is a (free) video-based course that takes about an hour and a half to complete. You have to first create an account on the platform. But it's absolutely worth it! 🔥
+________________
+Reasoning Models
+A reasoning model is a type of large language model that has been engineered to apply multiple steps in the course of a complex task, achieving greater performance while taking more time to produce a result. 
+The concept of a “reasoning” model was introduced in September 2024 by OpenAI upon the release of its o1-preview and o1-mini products. The company announced that its new “reinforcement learning algorithm teaches the model how to think productively using its chain of thought in a highly data-efficient training process.”[1]  They released the full version of o1 to ChatGPT in December 2024, at which time they also added a new “Pro” subscription at the monthly price of $200. The Qwen model by Alibaba announced reasoning capability in November, while Google introduced Gemini 2.0 Flash Thinking and its Deep Research feature in December 2024. In January 2025, the Chinese company DeepSeek released its R1 model, matching the performance of OpenAI’s o1 at a much lower price, the media described it as a “Sputnik moment for AI,” and the agentic era of AI began. 
+
+
+  
+
+Illustration of the timeline leading to 2025: the year of Agentic AI. (Created with Gemini.)
+Chain of Thought
+Previously, “chain of thought” was a term used for a prompting technique, where the user breaks up a complex task into small chunks, then leads an LLM to construct a final answer step-by-step. OpenAI used it to describe o1’s reasoning capability: 
+Through reinforcement learning, o1 learns to hone its chain of thought and refine the strategies it uses. It learns to recognize and correct its mistakes. It learns to break down tricky steps into simpler ones. It learns to try a different approach when the current one isn’t working. This process dramatically improves the model’s ability to reason. 
+These models not only break down a complex problem into a step-by-step process before giving a final answer, they show their internal chains of intermediate steps in what’s known as the reasoning trace (though o1 initially hid them). They are trained to supervise and evaluate the quality of the intermediate steps, sample many solution paths, and choose the best candidate plan. Because of this, they need considerably more computation to generate their answers, leading to the distinction between “train-time compute” and “inference-time compute” and a new avenue for scaling AI.
+Through these new capabilities, LLMs became very good at solving multi-step puzzles, complex coding tasks, and advanced math problems.
+
+
+Deep Research
+In February 2025, OpenAI announced Deep Research,[2] an agentic research mode in ChatGPT that runs long, multi-step web investigations and returns a documented report with citations, aimed at work that normally takes a human several hours. It targets “intensive knowledge work” in domains like finance, science, policy, and engineering, and is also positioned for demanding consumer research (e.g., cars, appliances, furniture).
+Deep research is powered by a version of the OpenAI o3 model optimized for browsing and data analysis, trained end-to-end with reinforcement learning on difficult multi-step browsing and reasoning tasks. It autonomously plans a multi-step trajectory: searching, opening pages, backtracking, and pivoting as it encounters new information, and can also browse user-uploaded files, use a Python tool to generate and refine plots, and embed graphs/images with sentence-level citations.
+​Several of the major providers now offer “deep research”–style agents: Anthropic (Claude), Google (Gemini), Perplexity, and OpenAI, each with slightly different emphases on depth, control, and integration. (See Table 1.)
+
+
+Context: The Hidden Constraint
+When you interact with a large language model, everything the model "knows" about your conversation exists in a single place: the context window. This is the total amount of text—your prompt, the conversation history, any documents you've shared, and the model's own responses—that the model can "see" at once. Unlike a human collaborator who might remember your project from last month, an LLM has no persistent memory beyond what fits in this window. Each time you send a message, the entire relevant context must be reconstructed and passed to the model.
+Context windows are measured in tokens, the chunks into which text gets broken during tokenization (typically words, parts of words, or common character combinations—as you learned in the transformer materials). A rough approximation: 1 token ≈ ¾ of a word in English, so 100,000 tokens is roughly 75,000 words, or about the length of a short novel.
+
+
+  
+
+Illustration of the concept of context window. (Created with Gemini.)
+Table 1: Deep research agents across major providers
+
+
+Dimension
+	OpenAI 
+	Claude
+	Gemini
+	Perplexity
+	Initial rollout timing
+	Introduced for ChatGPT Pro as a new deep research mode (2025 timeframe, after o3‑class models) ​
+	Research workflows and long‑running research mode live by Apr–May 2025 ​
+	Initial Deep Research in late 2024; major upgrades in May and Dec 2025 ​
+	Deep Research mode released Oct 2025 ​
+	Core model / engine
+	o3‑family model optimized for browsing and tool use ​
+	Claude 4 / Sonnet‑class models optimized for research and extended tool use ​
+	Gemini 3 Pro (and 2.5/3 Pro lineage) with large context and advanced tool use ​
+	Perplexity’s Sonar/Sonar Pro stack with retrieval‑reasoning pipeline ​
+	Research process
+	Plans multi‑step trajectories, browses web and files, backtracks and pivots, uses Python for analysis, then writes a structured, cited report ​
+	Runs long research “sessions” (up to ~45 minutes) with iterative browsing and synthesis into reports ​
+	“Plan → search → read → iterate → output” loop; optimized for long‑running context gathering and synthesis over 100+ sources ​
+	Explicit retrieval–reasoning– refinement cycle: decomposes query, runs multiple sequential searches, synthesizes, verifies conflicts, then produces a final narrative with citations and uncertainty notes ​
+	Latency & duration
+	Typically 5–30 minutes per run, oriented to multi‑hour‑equivalent research tasks ​
+	Can run up to ~45 minutes before delivering a report ​
+	Runs for minutes (and in some cases hours) asynchronously; designed for background research ​
+	Usually 15–45 seconds for many tasks, noticeably slower than regular Perplexity mode but faster than hour‑scale agents ​
+	Output format
+	Analyst‑style reports with sections, inline citations, graphs/images generated via tools, plus a visible step timeline/sidebar ​
+	Long‑form research summaries and reports inside Claude chat, with citations back to web sources ​
+	Detailed reports, comparative tables, exportable Google Docs, and structured outputs suitable for apps via the Interactions API ​
+	Structured long‑form answers with timelines, cross‑source synthesis, uncertainty notes, and dense inline citations ​
+	Strengths / emphasis
+	Strong on deep reasoning, code + data analysis, and rigorous, multi‑source synthesis for technical and domain‑specific work ​
+	Long‑running, safety‑conscious research suitable for careful investigation and complex reasoning over time ​
+	Tight integration with Google ecosystem; good for due diligence, finance, and scientific workflows that benefit from huge context and Docs export ​
+	Very strong at web‑centric research, rapid evidence gathering, and transparent citation/verification for everyday and professional web questions ​
+	Access & integration
+	In ChatGPT (Pro first, then Plus/Team/Enterprise/Edu), with future hooks to “Operator” for action‑taking agents ​
+	In Claude’s web and app interfaces, exposed as research workflows and long research sessions; also accessible via API patterns ​
+	Available in Gemini app (Gemini Advanced), Google Search/Finance integrations, NotebookLM, and via Gemini API Interactions for developers ​
+	Available in Perplexity’s UI as a distinct Deep Research mode and in Pro/enterprise tiers; tightly coupled to Perplexity’s search stack 
+	
+
+Why Context Limits Matter for Research
+Consider a typical research task: you want an AI assistant to help you synthesize findings across 50 papers on a specific topic. Even with generous context windows, you'll quickly hit limits:
+Model
+	Context Window
+	Approximate Word Equivalent
+	GPT-4o (legacy)
+	128K tokens
+	~96,000 words
+	Claude 4.5 Sonnet
+	200K tokens
+	~150,000 words
+	Gemini 2.5 Pro
+	1M tokens
+	~750,000 words
+	Llama 4 Scout
+	10M tokens
+	~7.5 million words
+	These numbers sound large, but research contexts fill up fast. A single 20-page journal article might consume 8,000–12,000 tokens. Fifty papers could easily exceed 500,000 tokens—beyond the capacity of most models. And context isn't just for your documents: the model's reasoning, your instructions, any examples you provide, and the conversation history all compete for the same limited space.
+The Quality Gradient
+There's another subtlety: models don't treat all parts of the context equally. Empirical studies show that information placed at the very beginning and very end of a long context tends to be retrieved and used more reliably than information buried in the middle—a phenomenon sometimes called lost in the middle.[3] This means that even if your documents technically fit within the context window, the model may not effectively use everything you've provided.
+Furthermore, larger context windows come with trade-offs. Inference becomes slower and more expensive as context grows. A query against 1 million tokens costs significantly more (in both time and money) than the same query against 10,000 tokens. For research workflows, this creates practical decisions: Do you need the full text of every paper, or would abstracts and key sections suffice? Can you pre-filter documents before sending them to the model?
+
+
+Context Engineering as a Research Skill
+Context engineering is the practice of deliberately designing what information goes into a model's context, in what format, and in what order—to maximize the quality of the output while respecting the constraints. For researchers, this means:
+* Chunking and selection: Breaking large documents into meaningful segments and choosing which segments are most relevant to your current question
+* Information density: Summarizing or compressing less critical information while preserving full detail where it matters
+* Structural cues: Using clear formatting (headers, numbered lists, XML-like tags) to help the model parse and retrieve information
+* Position awareness: Placing your most important instructions and context where the model will attend to them most reliably
+This is not merely a technical skill—it's a form of intellectual labor analogous to deciding which sources to include in a literature review and how to organize them. The difference is that your "reader" is a statistical model with specific attention patterns rather than a human colleague.
+From Context Limits to Agents
+Understanding context constraints reveals why agentic AI has become so important. When a research task exceeds what can fit in a single context window—or requires actions like searching databases, running code, or iterating on results—a single prompt-response cycle is insufficient. Agents address this by breaking complex tasks into multiple steps, maintaining state across those steps, and using tools to extend their capabilities beyond pure text generation.
+In other words: agents are, in part, an architectural solution to the context problem. We'll explore how they work in a future section of the course. First, let’s discuss when and how AI models gained the ability to use tools.
+Tool Use: Extending What LLMs Can Do
+At their core, large language models do exactly one thing: they predict and generate text. An LLM cannot browse the web, run a calculation, query a database, or check today's date. It can only produce sequences of tokens based on patterns learned during training. This is a fundamental limitation—but one that has been elegantly addressed through a capability called tool use (also known as function calling).
+Problem: Text In, Text Out
+Consider asking an LLM to help with a straightforward research task: "What papers have been published on turbulent combustion modeling in the last six months?" A base LLM can only respond with what it learned during training—which ended at some cutoff date and never included your specific query against a live database. It might generate plausible-sounding paper titles, but these could be hallucinated. It cannot actually search Scopus, Web of Science, or arXiv.
+Similarly, if you ask an LLM to "calculate the Reynolds number for water flowing at 2 m/s through a 5 cm diameter pipe," it will attempt to do arithmetic through text prediction. For simple calculations, this often works. For anything involving many steps, floating-point precision, or symbolic manipulation, the results become unreliable. The model is guessing what the answer looks like, not computing it.
+Solution: Structured Requests for External Actions
+Tool use gives LLMs a way to request that external code perform actions on their behalf. Here's how it works:
+1. Tool definitions: When you set up a conversation with a tool-enabled model, you provide descriptions of available tools—their names, what they do, and what parameters they accept. These descriptions are included in the system prompt (part of the context).
+2. Structured output: Instead of generating a natural language response, the model can generate a structured request indicating which tool it wants to call and with what arguments. This is typically formatted as JSON:
+
+{ 
+ "tool": "search_arxiv",
+ "arguments": { 
+   "query": "turbulent combustion modeling",
+   "date_range": "last_6_months",
+   "max_results": 20 }
+ }
+
+3. External execution: The application code (not the LLM) receives this structured request, executes the actual function—in this case, querying the arXiv API—and obtains real results.
+4. Results back to context: The results are inserted back into the conversation context, and the model can then generate a response that incorporates this real, current information.
+The key insight is that the LLM never "gains the ability” to search databases or run code. It gains the ability to ask for these things in a structured way that external systems can parse and execute. The intelligence lies in knowing when to request a tool and how to formulate the request; the actual capability lives in the external code.
+A Brief History
+Tool use emerged as a formal capability in mid-2023 when OpenAI introduced "function calling" for GPT models. The idea itself wasn't new—researchers had been experimenting with letting language models invoke external functions—but this was the first widely available, standardized implementation. Anthropic, Google, and open-source model providers followed with their own implementations.
+By late 2024, tool use had become a standard capability across frontier models. The Model Context Protocol (MCP), introduced by Anthropic, began establishing conventions for how tools should be defined and how models should interact with them, moving toward interoperability across different systems. We’ll learn more about this later in the course.
+Tools Relevant to Research Workflows
+For engineering researchers, several categories of tools are particularly valuable:
+Tool Category
+	What It Enables
+	Examples
+	Web search
+	Access to current information beyond training data
+	Search engines, news APIs
+	Academic databases
+	Literature discovery with real, verifiable results
+	arXiv, Semantic Scholar, PubMed APIs
+	Code execution
+	Reliable computation, data analysis, visualization
+	Python interpreters, Jupyter environments
+	File operations
+	Reading and writing documents, parsing PDFs
+	Local file systems, cloud storage
+	Retrieval systems
+	Querying your own knowledge bases
+	Vector databases, RAG pipelines
+	Domain APIs
+	Accessing specialized data sources
+	Materials databases, simulation tools, lab equipment interfaces
+	When you use ChatGPT's "Browse" feature, Claude's web search, or Gemini's code execution, you're using tool-enabled models. The model decides when to invoke these capabilities, formulates the request, and incorporates the results—all within the flow of conversation.
+Limitations and Considerations
+Tool use is powerful but not magic. Several constraints matter for research applications:
+   * The model must know tools exist. Tools must be described in the context for the model to use them. A model won't spontaneously decide to query PubMed unless it has been told that a PubMed tool is available and what it does.
+   * Tool descriptions consume context. Each tool definition takes up tokens. A system with dozens of available tools may have significant context overhead before any conversation begins.
+   * The model can misuse tools. LLMs can call tools with incorrect arguments, call inappropriate tools for a task, or fail to call tools when they should. Tool use requires the same critical evaluation as any other model output.
+   * Execution happens outside the model. This means you need infrastructure to actually run the tools. For commercial products like ChatGPT, this infrastructure is provided. For custom applications, you need to build and maintain it.
+From Single Tool Calls to Agents
+A single tool call is useful: "search for recent papers on this topic" or "run this calculation." But many research tasks require sequences of tool calls with reasoning between them: search for papers, read their abstracts, identify the most relevant ones, extract methodological details, compare approaches, identify gaps.
+This is where agents enter the picture. An agent is, at its simplest, a system that can execute multiple tool calls in a loop, observing results and deciding what to do next. Tool use is the capability; agents are the architecture that makes that capability useful for complex, multi-step tasks. Agentic AI is a complex topic that deserves dedicated time, and we will discuss more about it later in this course. 
+Persistent Context: Beyond Single Conversations
+With simple chatbots, when you close a conversation and start a new one, the model has no memory of what you discussed before. It's as if you're meeting for the first time, every time. This creates a fundamental problem for research workflows, where you might spend weeks or months working on the same project and want AI assistance throughout.
+Imagine if every time you consulted with a colleague about your research, they had complete amnesia about all your previous discussions. You'd waste enormous time re-explaining your project goals, your methodology, your data sources, and all the context that makes your work specific to your domain. This is exactly what happens when you use AI in its default, conversational mode.
+Persistent context addresses this problem by creating knowledge environments where information survives beyond a single conversation. When you set up a project in Claude, a Custom GPT in ChatGPT, or a Gem in Gemini, you're creating a workspace where you can store documents, instructions, and accumulated knowledge that the AI will reference every time you interact within that space.
+The Difference Persistent Context Makes
+Consider a concrete research scenario. In a one-off chat, you might ask: "Help me identify gaps in the literature on turbulent combustion modeling." The AI will generate something based on its general training—but it knows nothing about your specific research focus, the papers you've already read, your lab's methodological approach, or the particular aspects of combustion modeling your dissertation addresses.
+In a project-based interaction, you can upload your literature review notes, your research proposal, key papers that define your approach, and perhaps a document outlining what your lab has already investigated. Now when you ask about literature gaps, the AI can identify gaps relative to what you've already covered, suggest directions that align with your methodological commitments, and avoid recommending paths your lab has already explored. The managed context changes the nature of what the AI can help you do.
+Building a Research Knowledge Base
+Creating an effective knowledge base requires strategic thinking about what information the AI needs to be genuinely helpful. For engineering researchers, valuable materials to include might be:
+Foundational documents that define your research context: your dissertation proposal, research group overview, key papers that frame your approach, and methodological commitments. These help the AI understand what kind of researcher you are and what you're trying to accomplish.
+Domain-specific materials that reflect your technical focus: core papers in your area, relevant datasets or their descriptions, notation conventions, and domain-specific terminology. These give the AI the technical vocabulary and conceptual framework it needs to engage meaningfully with your discipline.
+Accumulated research artifacts: literature review notes, experimental protocols, analysis scripts you've developed, and documentation of what you've tried and learned. These capture your evolving understanding and help the AI build on your work rather than starting from scratch.
+Operational context: your advisor's feedback on previous drafts, lab conventions for documentation, and any constraints or requirements that shape your work. These ensure the AI's suggestions align with your actual working environment.
+The Self-Improving Knowledge Base
+One sophisticated strategy is using the AI's outputs to improve the project itself. Suppose you ask your research project to conduct a deep literature search on a specific topic. It searches, reads, synthesizes, and generates a comprehensive report. Instead of just using that report once, you upload it back into your project's knowledge base.
+Now, the next time you ask about related topics, the AI has access to that synthesis as context. You've expanded the project's knowledge to include the results of its own research. Over months of work, a research project can evolve from a static collection of your initial documents into a dynamic knowledge repository that grows more sophisticated and more tailored to your specific research trajectory with each interaction. This creates a virtuous cycle: better context produces better outputs, and better outputs become better context.
+RAG: Retrieval Augmented Generation
+The persistent context mechanisms we've discussed—projects, Custom GPTs, Gems—rely on a technical approach called Retrieval Augmented Generation, commonly abbreviated as RAG. Understanding RAG, even at a conceptual level, helps you use these systems more effectively and troubleshoot when they don't work as expected.
+The Core Problem RAG Solves
+Remember our earlier discussion of context limits: even large context windows (128K–1M tokens) fill up quickly when you're working with substantial research materials. You cannot simply paste your entire literature collection into a prompt. But you also don't want to manually select which papers are relevant to each question you ask—that defeats the purpose of having an AI assistant.
+RAG solves this by adding a retrieval step before generation. Instead of including all your documents in every prompt, the system first searches your documents to find the passages most relevant to your current question, then includes only those passages as context for generating a response.
+How RAG Works
+The process involves several steps:
+1. Document Processing and Chunking
+When you upload a document to a RAG-enabled system, it's broken into smaller segments called chunks—typically paragraphs or sections of a few hundred words each. This chunking is necessary because retrieval works at the chunk level: when you ask a question, the system finds relevant chunks, not entire documents.
+2. Embedding Creation
+Each chunk is converted into an embedding—a mathematical representation (a vector of numbers) that captures its semantic meaning. The key property of embeddings is that semantically similar text produces similar vectors. A chunk about "Reynolds number in pipe flow" will have an embedding close to a chunk about "dimensionless parameters in fluid mechanics," even though they use different words.
+3. Storage in a Vector Database
+These embeddings are stored in a specialized database optimized for similarity search. When you have thousands of chunks, the database can quickly find those whose embeddings are closest to any given query.
+4. Query Processing
+When you ask a question, that question is also converted into an embedding using the same process. The system then searches the vector database to find chunks whose embeddings are most similar to your query's embedding.
+5. Context Injection and Generation
+The retrieved chunks—typically the top 5–20 most relevant passages—are injected into the context along with your question. The LLM then generates a response that can draw on both its general training and the specific information from your documents.
+Why RAG Reduces Hallucinations
+Grounding AI outputs in your own documents through RAG significantly reduces hallucinations because the AI is pulling information directly from verified sources rather than generating content purely from statistical patterns. If you ask about a specific methodology from a paper in your knowledge base, the AI can quote directly from that paper. It's not guessing what the methodology might look like based on similar papers it saw during training—it's reading from your actual source.
+This doesn't eliminate errors entirely. The AI might misinterpret passages or make connections that aren't quite right. The retrieval step might fail to find the most relevant chunks. But the rate of fabrication drops substantially because the model is constrained by actual content from your knowledge base.
+Practical Implications for Research Use
+Understanding RAG helps you design better knowledge bases:
+Chunk boundaries matter. If a key concept is split across chunks, retrieval might find one piece but not the other. Documents with clear section structure (headers, logical breaks) tend to chunk more effectively than dense, continuous prose.
+Semantic similarity drives retrieval. The system finds passages that are semantically similar to your question, not passages that contain the exact keywords. This is powerful—it can find relevant content even when you use different terminology—but it also means very specific technical queries might miss relevant passages if the vocabulary doesn't overlap enough.
+Not everything gets retrieved. If your knowledge base contains 500 pages of papers but only 10 pages are injected into any given prompt, 98% of your documents aren't being seen for that specific question. Important context can be missed if it doesn't match your query semantically. Sometimes asking the same question in different ways retrieves different (and complementary) passages.
+Quality of sources matters more than quantity. A smaller, carefully curated knowledge base often outperforms a larger one where relevant content is diluted among less relevant material. The retrieval step can only find what's there, and it can be misled by superficially similar but irrelevant content.
+From RAG to Agents
+RAG addresses the "too much information" problem—how to work with more documents than fit in context. But research tasks often involve more than just retrieving and synthesizing information. You might need to search external databases, run calculations, iterate through multiple steps of analysis, or take actions based on intermediate results.
+This is where agents enter the picture. An agent combines the capabilities we've discussed—LLM reasoning, tool use, and retrieval—into systems that can execute multi-step tasks autonomously. We'll explore agentic AI in depth later in this course.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+________________
+[1] https://openai.com/index/learning-to-reason-with-llms/ 
+[2] https://openai.com/index/introducing-deep-research/ 
+[3] Liu, N.F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni, F. and Liang, P., 2024. Lost in the middle: How language models use long contexts. Transactions of the Association for Computational Linguistics, 12, pp.157-173. https://aclanthology.org/2024.tacl-1.9/

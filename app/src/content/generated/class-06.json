@@ -1,0 +1,131 @@
+{
+  "id": "class-06",
+  "summary": "Bring generative AI directly into your Jupyter notebooks with Jupyter AI, the official JupyterLab extension that connects to model providers like OpenAI, Anthropic, and Google via API keys. You'll work with both the Jupyternaut chat interface, an agent that can explain, edit, and run notebook cells, and the %%ai magic commands that turn AI prompts into reproducible, executable code. By the end, you'll be able to template prompts with Python variables and even loop over AI calls to capture responses programmatically.",
+  "objectives": [
+    "Configure Jupyter AI with a third-party model provider using API keys set through JupyterLab's Jupyternaut settings",
+    "Use the Jupyternaut chat interface to explain code, debug errors, and insert AI-generated cells, adding context by attaching, @-mentioning, or dragging files and cells into the chat",
+    "Run AI prompts as executable notebook cells with the %%ai cell magic, including selecting models per cell and formatting output as code",
+    "Parameterize AI prompts by interpolating Python variables into %%ai cells with curly-brace formatted string literals",
+    "Automate batches of AI queries by calling get_ipython().run_cell_magic() in a loop and capturing each response with %%capture"
+  ],
+  "keyTakeaways": [
+    "Jupyter AI offers two complementary interaction modes: a chat interface for exploration and notebook manipulation, and %%ai magics for documented, reproducible AI workflows.",
+    "Chats are files: each conversation is saved with a .chat extension in your home directory, so you can resume, reread, or delete it later.",
+    "Jupyternaut is more than a chatbot; it is an agent that can explain code, generate snippets, edit or add notebook cells, and help debug errors from tracebacks.",
+    "The %%ai magic works anywhere the IPython kernel runs (JupyterLab, Colab, VS Code), and you can pass a model like openai/gpt-5.1 as an argument to compare providers on the same prompt.",
+    "Prompts can include Python variables using {} formatted string literals, enabling parameterized, systematic experimentation.",
+    "By default Jupyter AI sends the 4 previous human/AI exchanges as context with each prompt; you can clear this with %ai reset or adjust it via %config AiMagics.max_history."
+  ],
+  "quiz": [
+    {
+      "question": "You want your AI-assisted analysis to be fully documented and re-runnable by a collaborator, including the exact prompts you used. Which Jupyter AI interaction mode best fits this goal?",
+      "options": [
+        {
+          "text": "The Jupyternaut chat interface, since every chat is auto-embedded in the notebook",
+          "correct": false
+        },
+        {
+          "text": "The %%ai cell magic, since prompts live in executable notebook cells alongside your code",
+          "correct": true
+        },
+        {
+          "text": "The JupyterLab Settings menu, which records all AI interactions automatically",
+          "correct": false
+        },
+        {
+          "text": "Dragging cells into the chat panel, which versions each prompt",
+          "correct": false
+        }
+      ],
+      "explanation": "The notebook emphasizes that magics let you document AI interactions as executable code, making workflows reproducible, while chat is better suited to interactive exploration and debugging."
+    },
+    {
+      "question": "After configuring a default model with %config AiMagics.initial_language_model = \"openai/gpt-5-mini\", how can you send one specific prompt to a different model instead?",
+      "options": [
+        {
+          "text": "Restart the kernel and reinstall jupyter_ai with the other model",
+          "correct": false
+        },
+        {
+          "text": "Edit the .env file and rerun %load_ext jupyter_ai_magic_commands",
+          "correct": false
+        },
+        {
+          "text": "Pass the model as an argument to the cell magic, e.g. %%ai openai/gpt-5.1",
+          "correct": true
+        },
+        {
+          "text": "Use %ai reset to clear the default model before each prompt",
+          "correct": false
+        }
+      ],
+      "explanation": "The notebook shows you can specify another model as an option to the command (e.g. %%ai openai/gpt-5.1), which makes it easy to run the same prompt against different models and compare them. %ai reset clears conversation history, not the model."
+    },
+    {
+      "question": "You stored a long prompt in a Python variable called prompt_advection. What is the correct way to send its value to the model with the %%ai magic?",
+      "options": [
+        {
+          "text": "Write {prompt_advection} in the cell body; curly braces interpolate the variable like a formatted string literal",
+          "correct": true
+        },
+        {
+          "text": "Run %%ai prompt_advection, passing the variable name as the magic's argument",
+          "correct": false
+        },
+        {
+          "text": "Call %store prompt_advection first so the magic can find it",
+          "correct": false
+        },
+        {
+          "text": "Variables cannot be used in magics; you must paste the prompt text directly",
+          "correct": false
+        }
+      ],
+      "explanation": "The notebook demonstrates writing {prompt_advection} below %%ai: curly brackets use IPython's formatted string literals to substitute the variable's value into the prompt, enabling parameterized, reusable prompts."
+    },
+    {
+      "question": "You run several %%ai cells in a row and notice the model's answers seem influenced by your earlier questions. According to the notebook, why does this happen, and how can you start fresh?",
+      "options": [
+        {
+          "text": "The model provider caches prompts server-side; you must generate a new API key",
+          "correct": false
+        },
+        {
+          "text": "The .chat file is attached to every prompt; delete it from your home directory",
+          "correct": false
+        },
+        {
+          "text": "The %%capture magic accumulates outputs; clear them with ai_output.outputs.clear()",
+          "correct": false
+        },
+        {
+          "text": "Jupyter AI sends the 4 previous human/AI exchanges as context by default; run %ai reset to clear the history",
+          "correct": true
+        }
+      ],
+      "explanation": "The notebook notes that by default Jupyter AI includes the 4 previous interactions as context with each prompt; %ai reset clears this history, and %config AiMagics.max_history can change how many exchanges are included."
+    },
+    {
+      "question": "You want to ask the AI to explain each equation in a Python list and collect every response for later processing. What pattern does the notebook teach for this?",
+      "options": [
+        {
+          "text": "Write a loop of %%ai cells, since cell magics can be repeated directly inside a for statement",
+          "correct": false
+        },
+        {
+          "text": "Use the chat interface and copy each Jupyternaut reply into a list by hand",
+          "correct": false
+        },
+        {
+          "text": "Loop with get_ipython().run_cell_magic(), capturing each response via %%capture and reading .outputs[0].data['text/markdown']",
+          "correct": true
+        },
+        {
+          "text": "Pass the whole list to a single %%ai --format code cell, which returns one response per item",
+          "correct": false
+        }
+      ],
+      "explanation": "Because %%ai is a cell magic, the notebook calls it programmatically with get_ipython().run_cell_magic() inside a loop, wraps it in %%capture, and extracts each AI response from the captured output's .outputs[0].data['text/markdown'] attribute."
+    }
+  ]
+}

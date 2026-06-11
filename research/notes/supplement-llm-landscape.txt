@@ -1,0 +1,224 @@
+﻿MAE 6291 – Class Supplement: LLM Landscape
+Lorena A. Barba – March 7, 2026
+
+
+The Current LLM Landscape: Redux
+Just six weeks ago (Class 3), we reviewed the LLM Landscape as of that date. Here’s an overview of the major changes from late January 2026 through early March 2026, focusing on new models or significant upgrades to the families in our list plus other “must‑know” entrants. Dates are approximate public announcement dates.
+
+
+Frontier US labs: OpenAI, Anthropic, Google, xAI
+OpenAI (from GPT‑5.2 to 5.3/5.4)
+* GPT‑5.4 (frontier + “Thinking”)[1]
+Announced March 5, 2026 as a major upgrade, available in ChatGPT (Plus, Team, Pro), API, and Codex.​ Replaces GPT‑5.2 Thinking in the default picker; 5.2 Thinking is moved to “Legacy” and scheduled for retirement on June 5, 2026.​
+   * New GPT‑5.4 Thinking mode with an upfront “thinking plan” that you can adjust mid‑response, improved deep web research, and better long‑horizon context retention.​
+   * Stronger tool search and orchestration across large tool ecosystems, more token‑efficient reasoning versus GPT‑5.2, and better performance on complex front‑end and workflow‑heavy tasks.​
+   * Upgraded computer‑use style capabilities via an experimental “Playwright (Interactive)” Codex skill for visual debugging and app testing.​
+   * GPT‑5.3 Instant
+Introduced alongside 5.4 as a faster, more conversational default: more accurate answers, richer web‑search results, and fewer dead‑ends / over‑cautious responses.​ Defaults off for Enterprise/Edu; admins can enable under “Early Model Access.”​
+   * Smaller changes already partly captured implicitly in our previous list:
+      * Model release notes confirm that on February 4, 2026 OpenAI restored the “Extended thinking” level for GPT‑5.2 Thinking after a January reduction, but that’s now largely superseded by 5.4.​
+      * ChatGPT/Atlas UI releases in late February add inline diagrams/mini‑apps previews and split‑screen code review, but these are more product features than model‑family changes.
+Recap: GPT‑5.2 is no longer the clear frontier flagship; GPT‑5.4 (Thinking + main) is now the top OpenAI model, with GPT‑5.3 Instant as the fast conversational tier. For more release updates, follow Releasebot for OpenAI.[2]
+
+
+Anthropic Claude (Opus 4.5 context, Sonnet 4.6 release + policy changes)
+      * Claude Sonnet 4.6
+Announced in Anthropic’s newsroom on February 17.​[3] Positioned as a frontier‑class workhorse tier: “frontier performance across coding, agents, and professional work at scale,” essentially pushing Sonnet closer to Opus‑class for many enterprise use cases.​ This is framed as optimized for coding, agentic workflows, and large‑scale professional workloads, likely the default for many integrations.​
+      * Safety / governance developments: 
+On January 22, 2026, Anthropic published a new, more detailed Claude constitution,[4] updating how values and behavioral constraints are specified.​ Late February reporting notes Anthropic updated its Responsible Scaling Policy (v3.0), removing a prior explicit promise to pause training if capabilities outpaced safety controls, citing competitive pressure.​ Around the same time, President Trump ordered a federal phaseout of Anthropic AI in U.S. agencies within six months, with the Pentagon labeling Anthropic a supply‑chain risk after disagreements over surveillance and autonomous weapons red lines.​[5]
+“Claude will remain ad‑free” & product direction — On February 4, 2026, Anthropic published a piece committing to keeping Claude ad‑free and explaining how they will expand access and monetization without advertising.​[6]
+Recap: Within the Claude family, Sonnet 4.6 becomes an important mid‑tier/enterprise default; Opus 4.5 still appears as the top “frontier” Claude, but Sonnet 4.6 compresses the gap in coding/agent tasks.
+
+
+Google Gemini / Gemma (Gemini 3.1, Deep Think, Nano Banana 2)
+         * Gemini 3.1 Pro (Preview and upgrades)
+February 19, 2026: Developer release notes[7] list Gemini 3.1 Pro Preview, the latest in the Gemini 3 family.​ Google’s February AI recap[8] emphasizes its more than double the reasoning performance of 3 Pro to handle more complex tasks and problems across platforms (Gemini apps and Gemini API). The docs[9] mention better thinking, improved token efficiency, and a more grounded, factually consistent experience.
+         * Nano Banana 2 / Gemini 3.1 Flash Image
+February 26, 2026: “Nano Banana 2” (Gemini 3.1 Flash Image Preview) launches as a high‑efficiency, speed‑optimized image model for Gemini and Google Workspace customers.[10]
+         * Gemini 3 Deep Think upgrade
+Google highlights a major upgrade to Gemini 3 Deep Think, designed for messy, real‑world science and engineering problems with improved practical reasoning and actionability.​
+         * Gemini app drops & music tools
+February Gemini Drop posts[11] emphasize the introduction of Gemini 3.1 intelligence improvements in the Gemini app plus new creative tools like Lyria 3 (music generation) and ProducerAI joining Google Labs, but these are vertical models rather than general LLM baselines.
+Recap: Gemini 3 Pro is superseded by Gemini 3.1 Pro as the flagship “Pro” tier, with Deep Think upgraded and Nano Banana 2 / 3.1 Flash Image as the fast image modality.
+
+
+xAI Grok (from 4.1 to 4.20)
+            * Grok 4.20 (Beta)
+xAI’s Grok 4.20 Beta is announced mid‑February 2026 (not open to the public yet), with multiple analyses describing it as the most significant Grok release yet. The core innovations include:
+               * “4 Agents” multi‑agent collaboration system: four specialized agents think in parallel and discuss solutions, aimed at complex problem‑solving and reduced hallucination.
+               * Massive context window: at least 256K tokens, with some API variants supporting up to 2M tokens.​
+               * Native multimodal: unified text, image, and video processing.​
+               * Trained on the Colossus supercluster with ~200K GPUs; reports suggest around 3T parameters (not officially confirmed).​
+               * Maintains Grok’s differentiator of real‑time X Firehose access, turning social data into trading and news‑reaction signals.​
+Recap: Grok 4.1 is superseded by Grok 4.20 (Beta) as the de‑facto frontier Grok version, adding multi‑agent reasoning and much larger multimodal context.​
+
+
+Open‑weights / non‑US leaders: DeepSeek, Qwen
+DeepSeek (V3.1 → V3.2, V4 expectations)
+               * DeepSeek‑V3.2 & V3.2‑Speciale (context for current positioning)
+Official release late 2025, but still central to February 2026 open‑source rankings.[12] DeepSeek‑V3.2 integrates thinking directly into tool use, supporting tools in both thinking and non‑thinking modes, and is pitched as the “daily driver” at GPT‑5‑level reasoning for many tasks.[13]​ V3.2‑Speciale pushes extended reasoning further (gold‑level results on IMO, CMO, ICPC, IOI tasks) and uses a “Speciale” extended‑thinking recipe.
+               * February 2026 status & expectations
+February 2026 open‑source rankings list DeepSeek V3.2 variants as top‑tier open models, with DeepSeek‑V3.2 and V3.2‑Speciale appearing high in the quality index table.​ Commentary in early 2026 suggests DeepSeek V4 was expected for mid-February appears delayed; as of early March there is still no official release, only increasingly tight ‘any day now’ predictions.
+Recap: Our DeepSeek V3.1 entry is dated; the current open‑weights reference point is DeepSeek‑V3.2 (plus V3.2‑Speciale), with integrated tool‑aware thinking and improved math/coding.
+
+
+Qwen (Qwen 3 → Qwen3‑Coder‑Next and Qwen3.5)
+                  * Qwen3‑Coder‑Next (coding specialist)
+February 2026: Alibaba’s Qwen team releases Qwen3‑Coder‑Next, an open‑weights MoE coding model.​ Architecture: 80B total parameters with only 3B active per token, MoE design plus Gated DeltaNet and Gated Attention.​ Features: 256K context, open‑weights license, and coding performance comparable to Claude Sonnet 4.5‑class on many coding benchmarks, tuned for local coding agents. Note: This model does not support thinking mode.[14]
+                  * Qwen‑3.5 family (new general‑purpose series)
+Reports in early February 2026 describe Qwen‑3.5 as the next major family after Qwen‑3. The Qwen3.5 lineup includes Qwen3.5‑Flash, 27B, 35B‑A3B, and 122B‑A10B, with:
+                     * Native multimodal (early‑fusion) foundation, 256K–1M+ context windows.​
+                     * Support for ~201 languages, extending Qwen’s prior multilingual reach.​
+                     * Dual‑mode inference (Thinking vs non‑thinking) and built‑in tool calling/agent orchestration.​
+                     * Apache 2.0 licensing for open variants, maintaining their open‑weights focus.​
+Recap: Qwen3.5 becomes the new general‑purpose family, and Qwen3‑Coder‑Next is a notable specialist coding model, both preserving and extending Qwen’s multilingual and MoE strengths.
+
+
+Mistral, Meta Llama, Gemma: status/updates in this window
+                     * Mistral Large 3
+No major new Mistral‑family release was documented in February 2026; Mistral Large 3 and related open models (Mixtral, etc.) continue to appear in community benchmarks but without an official “Large 4” or similar launch in this period.
+                     * Meta Llama 4 series
+Articles in early 2026 focus on the impact of the Llama 4 “Scout/Maverick” family already listed and discuss a future “Llama 4.X / 4.5” or “Llama 4 Behemoth” intended for wider release later in 2026, but those are forward‑looking rather than currently launched. Meta’s last major official blog remains the late‑2024 “Future of AI: Built with Llama” piece recounting Llama 3.x progress; no new full Llama family release was announced in February 2026 itself.
+                     * Gemma 3
+In this six‑week window, Google’s public comms emphasize Gemini 3.1 and Nano Banana 2 more than new Gemma variants; Gemma 3 remains the current open family with SigLIP vision, with its positioning (edge‑friendly, text+image) unchanged in February announcements.
+
+
+New entrant: GLM‑5 (Zhipu / Z AI)
+                        * GLM‑5 (Reasoning) release
+February 2026 open‑source rankings and model cards show GLM‑5 (Reasoning) released as an open‑weights model with a 203K context window. It debuts at #1 in one February 2026 open‑source leaderboard,[15] displacing Kimi K2.5 (Reasoning).​ It’s described as best‑in‑class among open models on reasoning, coding, and agentic tasks, closing the gap with frontier proprietary models.[16]
+                        * Architecture & scaling 
+Business coverage notes GLM‑5 scales to ~744B parameters with 40B active parameters, trained on ~28.5T tokens, and incorporates DeepSeek Sparse Attention (DSA) for efficient long‑context reasoning. GLM‑5 uses a framework called Slime for large‑scale asynchronous RL, allowing continuous improvement from extended interactions and emphasizing “agentic engineering” rather than simple prompt‑reply coding.
+Recap: GLM‑5 becomes one of the most important open‑weights entrants since our snapshot, rivaling DeepSeek V3.2 and Qwen3.5 as a top reasoning‑centric open model.
+
+
+Other open / local standouts since late January
+From February 2026 open‑source rankings and model round‑ups, several additional models are now “worth knowing about” even if they weren’t in our original list:
+                           * Kimi K2.5 (Reasoning): Remains a top‑tier reasoning model but is now overtaken by GLM‑5 in some leaderboards.​
+                           * MiniMax‑M2.5 and MiniMax M‑series: Newer reasoning/value‑focused models that enter top ranking tables in February with strong scores.
+                           * MiMo‑V2‑Flash (Xiaomi): Emerges as a speed‑optimized open model with competitive quality, highlighted in February benchmarks.
+                           * Llama derivatives (Nemotron Ultra, etc.): NVIDIA’s Llama Nemotron Ultra appears in February rankings as a high‑end Llama‑based open model, though Meta itself has not fully released the rumored “Llama 4 Behemoth” beyond limited research access.
+These broaden the open‑weights “upper tier” beyond just DeepSeek/Qwen/Mistral/Llama.
+
+
+
+
+Condensed “delta” vs our January 27 snapshot
+
+
+Family in our list
+	New since Jan 27, 2026
+	Key change vs our snapshot
+	GPT‑5.2 (OpenAI)
+	GPT‑5.4 (Thinking + main) and GPT‑5.3 Instant released Mar 5
+	5.4 becomes new frontier; 5.3 Instant is new fast tier; 5.2 Thinking moved to Legacy and sunset in June.
+	Claude Opus 4.5
+	Claude Sonnet 4.6
+	New high‑end mid‑tier with frontier‑level coding/agents; Anthropic also updates constitution and scaling policy, plus faces U.S. federal phase‑out order.
+	Gemini 3 Pro
+	Gemini 3.1 Pro, upgraded Deep Think; Nano Banana 2 / 3.1 Flash Image
+	Flagship Pro updated; Deep Think improved; new fast image model for Gemini & Workspace.
+	Grok 4.1
+	Grok 4.20 (Beta)
+	Multi‑agent “4 Agents” architecture, 256K–2M context, unified multimodal; significantly more capable than 4.1.
+	Mistral Large 3
+	—
+	No major new flagship release in this six‑week window.
+	Llama 4 (Scout/Maverick)
+	Llama 4 Behemoth / 4.X rumors only
+	Meta’s next Llama variant is still in limited or anticipated status; your Llama 4 entry remains current for released open weights.
+	DeepSeek V3.1
+	DeepSeek‑V3.2 & V3.2‑Speciale (already released late 2025 but now clearly mainstream)
+	V3.2 replaces V3.1 as the standard, with integrated thinking+tools and upgraded reasoning; widely ranked in Feb 2026 open‑source lists.
+	Qwen 3
+	Qwen3‑Coder‑Next, Qwen3.5 family
+	New coding‑specialist MoE model and a new Qwen3.5 multimodal general family (Flash, 27B, 35B‑A3B, 122B‑A10B) with 256K+ context & 201 languages.
+	Gemma 3
+	—
+	No major new Gemma family; remains the small open multimodal line.
+	(New open models not in our list)
+	GLM‑5 (Reasoning)
+	Open‑weights frontier model with DSA sparse attention, 203K context, top of Feb 2026 open‑source leaderboards and strong agentic coding focus.
+	Implications for Science and Engineering Research
+For science and engineering researchers, the last six weeks reinforced and sharpened trends that directly affect how you design workflows, benchmarks, and infrastructure, rather than just giving you “one more slightly better chatbot.”
+
+
+1. Reasoning modes are now explicitly “scientific”
+                           * Google’s updated Gemini 3 Deep Think is explicitly framed as a mode for modern science and engineering problems with messy or incomplete data, highlighting performance on physics and chemistry Olympiad written sections and advanced theoretical physics benchmarks.
+                           * DeepMind’s accompanying work shows Deep Think helping resolve open problems in algorithms, optimization, information theory, and economics, including breaking long‑standing bottlenecks in Max‑Cut and Steiner tree variants.​
+                           * GLM‑5 positions itself as “agentic engineering” rather than just prompt‑based coding, with RL pipelines tuned over math, science, code, and tool‑integrated reasoning.
+What this means for you:
+                           * You should think of these modes less as “general chat” and more as domain‑specific collaborators for derivations, problem decompositions, and proof‑style reasoning.
+                           * Benchmarks and lab exercises can now include competition‑style problems (Olympiads, grad‑level physics/CS) as realistic rather than aspirational targets.
+
+
+2. Long‑context is maturing into “session‑scale” workflows
+                           * Models like GLM‑5 and top proprietary systems now treat 200K+ tokens as normal, with engineering blogs stressing that this shifts workloads from short prompts to document‑ or session‑scale reasoning.
+                           * GLM‑5 combines ultra‑long context with sparse MoE (DSA attention), which makes long context economically viable but introduces new routing and infrastructure challenges.
+What this means for you:
+                           * For scientific workflows (papers + code + logs, or multi‑step simulations), it is increasingly realistic to keep an entire project context “live” in a single conversation/thread.​
+                           * The bottleneck is moving from model capability to infrastructure and interaction design: how you chunk experiments, log state, and surface constraints so the model can stay coherent over long horizons.​
+
+
+3. Open‑weights are catching up for rigorous reasoning
+                           * GLM‑5 is now a top open‑weights model on reasoning, coding, and agentic tasks, trailing only frontier proprietary models on many academic benchmarks and explicitly targeting complex systems engineering workloads.
+                           * It uses a 744B‑param, sparse‑MoE architecture with long context and RL over math/science/tool use, and is available under a permissive license (Hugging Face, ModelScope, Z.ai).
+                           * Commentary highlights that GLM‑5 was trained on non‑NVIDIA hardware, signaling increasing independence of high‑end research tooling from US GPU supply chains.​
+What this means for you:
+                           * For reproducible, inspectable research (e.g., method papers, agent benchmarks, domain‑specific fine‑tuning), relying on open models is now a serious option even when you care about top‑tier reasoning, not just cost.
+                           * Methodologists should treat open vs closed as an experimental variable, not just a cost decision: replication studies, ablations, and new benchmarks can and should include GLM‑5/DeepSeek/Qwen lines alongside proprietary baselines.
+
+
+4. Agentic workflows and tool‑integrated reasoning are the new norm
+                           * GLM‑5’s training and evaluation explicitly focus on tool‑integrated reasoning (TIR), producing executable tool chains and recovering from failures in multi‑step workflows.
+                           * A broader February bulletin notes that “agent benchmarks” and methods like Reinforcement World Model Learning (RWML) are increasingly used to train and test LLM agents that simulate environment dynamics, improving performance in multi‑step tasks.​
+                           * Gemini Deep Think is deployed as a research‑level assistant, not just a Q&A tool, collaborating on 18 real research problems and helping vet STOC’26 CS theory papers.​
+What this means for you:
+                           * Expect top models to be evaluated not only on single‑shot problem solving but on long‑horizon, tool‑rich tasks (running code, calling solvers, interacting with simulators, lab equipment, etc.).
+                           * In your own work, the most interesting gains will likely come from agentic setups: LLM orchestrating existing numerical tools or lab automation, rather than trying to do everything inside the model.
+
+
+5. Evaluation and LLMOps are getting more scientific
+                           * February summaries emphasize Evaluation‑Driven Development: using LLM‑as‑judge metrics like Ai2’s LACERScore and carefully designed benchmarks to steer model development and deployment.
+                           * LACERScore, for instance, measures “abstract alignment” on a 1–10 scale and shows that simple co‑author heuristics can sometimes beat complex ML in predicting scientific impact, highlighting limitations in current LLM‑based evaluation.​
+                           * GLM‑5’s RL stack uses binary outcome rewards with verifiers/judges across math, science, and tool‑use, reinforcing the trend toward verifiable tasks and explicit reward signals rather than pure next‑token prediction.​
+What this means for you:
+                           * If you’re building scientific tools, you should lean into verifiable tasks (unit tests, numeric targets, formal constraints) so models can be evaluated and trained with clear success/failure signals.
+                           * There is growing room for research on evaluation itself: how to design robust LLM‑as‑judge setups, how to avoid evaluation overfitting, and how to build benchmarks that reflect real scientific discovery rather than toy tasks.
+6. Infrastructure is now a first‑class research design constraint
+                           * Serving GLM‑5 at scale illustrates that with ultra‑long context and sparse MoE, inference infra defines what’s actually possible: costs, latency, stability of long chains, and whether MoE efficiency materializes in practice.​
+                           * This aligns with broader 2026 LLMOps guidance: monitoring, context‑engineering, and infrastructure choices (KV cache, routing, scheduling) are becoming as important to performance as model choice.
+What this means for you:
+                           * When planning research that uses these models (e.g., large‑scale literature mining, simulation control, code‑synthesis campaigns), you need to budget for systems work: data pipelines, memory management, and monitoring, not just prompts.
+                           * There’s a growing research niche at the interface of scientific computing and LLM infrastructure: how to design long‑context, agentic systems that are robust under load and reproducible across labs.
+7. Big picture trends to watch (science & engineering lens)
+Putting this together, the key directional trends are:
+                           * From “chatbots” to research collaborators: Deep Think, GLM‑5, and similar systems are explicitly targeting open problems, Olympiad‑level tasks, and peer‑review workflows. Expect more AI‑assisted theorem proving, experiment design, and paper review.
+                           * From single‑shot answers to agentic pipelines: Models are optimized for planning, tool use, and multi‑step correction, which maps well to simulation‑and‑analysis loops and lab automation.
+                           * From short prompts to project‑scale context: Long‑context transforms how you can structure collaborations: entire projects, not just questions, can live in one evolving context.
+                           * From closed to mix‑and‑match ecosystems: High‑end open models like GLM‑5 reduce the gap with proprietary systems, allowing open, reproducible baselines for serious reasoning tasks.
+                           * From ad‑hoc use to principled evaluation and infra: Evaluation methods (LACERScore, RL with verifiers) and LLMOps practices are becoming more rigorous, making LLM‑based science a more legitimate methodological choice—but also a more complex one.
+
+
+
+
+
+
+
+
+________________
+[1] https://help.openai.com/en/articles/6825453-chatgpt-release-notes 
+[2] https://releasebot.io/updates/openai 
+[3] https://www.anthropic.com/news/claude-sonnet-4-6 
+[4] https://www.anthropic.com/constitution 
+[5] https://www.anthropic.com/news/where-stand-department-war 
+[6] https://www.anthropic.com/news/claude-is-a-space-to-think 
+[7] https://ai.google.dev/gemini-api/docs/changelog#02-19-2026 
+[8] https://blog.google/innovation-and-ai/products/google-ai-updates-february-2026/ 
+[9] https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview 
+[10] https://workspaceupdates.googleblog.com/2026/02/introducing-nano-banana-2-in-gemini-app.html 
+[11] https://blog.google/innovation-and-ai/products/gemini-app/gemini-drop-february-2026/ 
+[12] https://whatllm.org/blog/best-open-source-models-february-2026 
+[13] https://api-docs.deepseek.com/news/news251201 
+[14] https://a2aprotocol.ai/blog/2026-qwen3-coder-next-complete-guide 
+[15] https://whatllm.org/blog/best-open-source-models-february-2026 
+[16] https://www.iweaver.ai/blog/what-breakthroughs-does-glm-5-deliver/

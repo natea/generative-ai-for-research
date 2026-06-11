@@ -1,0 +1,71 @@
+{
+  "id": "class-11",
+  "summary": "This class revisits the tocify digest pipeline you built in Class 5 and rereads it through the lens of context engineering, showing that its interests file, prompt placeholders, keyword pre-filter, and batching were context engineering all along. It then turns the lens around: how to build a research codebase where good agentic design is present by construction, using three practices — pytest characterization tests, disciplined git commits, and deliberate repository structure — that AI has made cheap enough for any researcher to adopt. Hands-on exercises upgrade your own tocify fork with tests, Conventional Commits, a CLAUDE.md, and a DECISIONS.md.",
+  "objectives": [
+    "Analyze an existing automation like tocify using the vocabulary of context engineering, identifying static context, dynamic injection, pre-processing, and attention-budget scoping in its design",
+    "Explain why agentic coding changes the cost-benefit calculus of software engineering practices in research, since agents begin every session without the implicit context in a researcher's head",
+    "Map software engineering artifacts to memory categories: tests as executable semantic memory, git history as episodic memory, and repository structure as pre-processed context",
+    "Write characterization tests with pytest that freeze a function's current behavior as a tripwire before refactoring or letting an agent modify code",
+    "Apply Conventional Commits, a CLAUDE.md, and a DECISIONS.md to a repository so that context is externalized into artifacts agents read automatically"
+  ],
+  "keyTakeaways": [
+    "The tocify pipeline already embodied context engineering principles: interests.md is static context like a CLAUDE.md, prompt.txt uses dynamic injection points, keyword_prefilter() pre-processes context before it reaches the LLM, and batching in groups of 50 respects attention budgets.",
+    "AI coding agents start every session from ignorance, so you either pay a re-explanation tax in every conversation or externalize context once into artifacts the agent reads automatically — making context engineering a property of the codebase itself.",
+    "Tests, commit histories, and repository structure are not separate from context engineering; they are context engineering at the timescale of a codebase, a shift practitioners call compound engineering, AI-friendly codebase design, or the context flywheel.",
+    "Characterization tests capture a function's current behavior as a tripwire rather than proving theoretical correctness, which is exactly the guarantee you need before refactoring — regressions are the most common way research code produces silently wrong results.",
+    "Agents have collapsed the historical entry costs of these practices: they can draft tests, write Conventional Commits messages from a staged diff, and scaffold repository structure, while you contribute review and tacit knowledge.",
+    "Research code is not a candidate for vibe coding: because it carries the correctness of your scientific claims, it demands deliberate practices that treat tests, logs, and decision records as first-class outputs."
+  ],
+  "quiz": [
+    {
+      "question": "In the retrospective on tocify, the keyword_prefilter() function — which keeps only the top 200 keyword-matching papers before any LLM call — is identified as an example of which context engineering principle?",
+      "options": [
+        {"text": "Episodic memory, because it remembers which papers were scored in previous runs", "correct": false},
+        {"text": "Pre-processing context for consumption, so data is cleaned and scoped to what is relevant before it enters the model's context window", "correct": true},
+        {"text": "Dynamic injection, because it fills placeholders in prompt.txt at runtime", "correct": false},
+        {"text": "Instrumentation, because it logs how many papers pass the filter each week", "correct": false}
+      ],
+      "explanation": "The notes describe keyword_prefilter() as implementing 'pre-processing context for consumption': without it, every fetched paper would be sent to the API, wasting tokens and money on irrelevant articles. Instrumentation is actually the one principle tocify fails to implement."
+    },
+    {
+      "question": "You are about to ask an AI agent to refactor a vorticity function that you trust based on past runs. According to the notes, what is the primary guarantee a characterization test gives you in this situation?",
+      "options": [
+        {"text": "It proves the function is theoretically correct against the governing equations", "correct": false},
+        {"text": "It documents the function's API so the agent can call it correctly", "correct": false},
+        {"text": "It ensures the refactored version will run faster than the original", "correct": false},
+        {"text": "It freezes the function's current behavior so any silent change — like a flipped sign convention — fails the test immediately", "correct": true}
+      ],
+      "explanation": "The notes are explicit that a characterization test 'does not prove that compute_vorticity is correct; it proves that whatever the function produced on the day you wrote the test, it will continue to produce' — surfacing regressions before they contaminate results."
+    },
+    {
+      "question": "The notes map software engineering practices onto the memory categories from Class 10. Which pairing matches the mapping given in the lecture?",
+      "options": [
+        {"text": "A git log with descriptive commit messages is episodic memory: it tells the agent what was done, why, and in what order", "correct": true},
+        {"text": "A pytest suite is episodic memory: it records the history of bugs the project has encountered", "correct": false},
+        {"text": "A DECISIONS.md is dynamic context: it is injected only for the duration of a single task", "correct": false},
+        {"text": "A well-organized repository is semantic memory: it specifies expected behavior in a verifiable form", "correct": false}
+      ],
+      "explanation": "Per the notes, the git log is episodic memory, a pytest suite is executable semantic memory, a well-organized repository is pre-processed context, and DECISIONS.md is static context that prevents the agent from relitigating settled questions."
+    },
+    {
+      "question": "The lecture argues that the old calculus — where PIs could reasonably dismiss tests, clean commits, and repository structure as overhead — is no longer correct. What is the mechanical reason given for this change?",
+      "options": [
+        {"text": "Journals and funding agencies now require test suites and version control for published research code", "correct": false},
+        {"text": "Modern research codebases are too large for any single student to understand without documentation", "correct": false},
+        {"text": "Agents begin each session without the researcher's accumulated implicit context, so you either re-explain it every conversation or externalize it once into artifacts that pay dividends across all future sessions", "correct": true},
+        {"text": "AI-generated code contains more bugs than human-written code, so stricter review processes are needed", "correct": false}
+      ],
+      "explanation": "The notes frame this as a choice between paying a per-conversation re-explanation tax and treating context engineering as a property of the codebase itself; meanwhile, agents have collapsed the entry cost of the practices by drafting tests, commit messages, and scaffolding."
+    },
+    {
+      "question": "Why do the notes argue that 'vibe coding' — giving an agent high-level intent and iterating until the output feels right — is inappropriate for research code, even though it has legitimate uses?",
+      "options": [
+        {"text": "Vibe coding only works with the largest frontier models, which most research groups cannot afford", "correct": false},
+        {"text": "Research code carries the correctness of scientific claims, where a sign error that 'felt right' and passed visual inspection can invalidate a thesis chapter", "correct": true},
+        {"text": "Vibe coding is prohibited by university academic integrity policies", "correct": false},
+        {"text": "Research code changes too frequently for an iterative, feel-based workflow to keep up", "correct": false}
+      ],
+      "explanation": "The notes grant vibe coding a legitimate place for throwaway scripts and prototypes where correctness is negotiable, but research code demands deliberate practices — tests, decision records, explanatory commits — because its correctness underwrites scientific claims."
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+﻿Assignment 4
+
+
+Build and Evaluate a Research Skill
+Due: Class 11, April 14
+Estimated time: 5–8 hours
+
+
+Overview
+In Classes 8 and 9, you learned how to create agent-readable skills and how to evaluate them critically. In this assignment, you will do both: build a complete, functional SKILL.md that encodes a genuine piece of research expertise from your own work, then subject your creation to the same evaluation framework you practiced during the Class 9 in-class activity. The result should be a skill you can immediately deploy in your research workflow—not a disposable homework artifact.
+The original course plan included a standalone assignment on creating a CLAUDE.md file (the project-level context document introduced in Class 7). Because the skills topic turned out to warrant deeper treatment, that standalone assignment has been folded into this one as a lightweight preliminary step. You should still familiarize yourself with the CLAUDE.md conventions from the Class 7 notes; you will need a working CLAUDE.md to give your skill the project context it needs. If you have already created one while working through the Class 8 exercises, you can use and refine it here.
+Instructions
+Part 0: Set Up Your Project Context
+Before building a skill, you need the project context in which it will operate. Create a CLAUDE.md file for the research project where your skill will live. This does not need to be elaborate. At minimum, it should identify the project (what it is, what it does), describe the file structure (e.g., where the code, data, manuscripts, and figures live), name the tools and languages in use, and state any conventions a new collaborator would need to follow.
+If you are not sure which project to target, choose the one where you most often find yourself repeating the same instructions to a tool or the same sequence of manual steps. That repetition is the signal that a skill would be useful there.
+Deliverable: Your CLAUDE.md file, included in your submission folder. A brief paragraph (3–5 sentences) describing the project and why you chose it.
+Part 1: Choose and Scope Your Skill
+Identify the specific expertise you want to encode. State which tier it belongs to and why:
+Tier 1 (Standards): Lab-wide or community conventions—figure formatting requirements, coding style guides, report templates, naming conventions. Relatively straightforward to write; immediately useful across multiple projects.
+Tier 2 (Methodology): How your team performs high-value intellectual work—simulation setup procedures, data analysis protocols, experimental design checklists, manuscript structuring strategies. Harder to write because the expertise has never been articulated in operational detail; more valuable precisely for that reason.
+Tier 3 (Personal Workflow): Individual productivity tools—your data-cleaning sequence, your literature-screening protocol, your preferred way of organizing output directories. Easiest starting point if this is your first skill; still valuable because it makes your process reproducible and transferable.
+Any tier is a valid choice. The point is to be deliberate: the scope of the skill, the level of detail in the methodology, and the approach to testing all follow from which tier you are targeting.
+Deliverable: Two to three sentences identifying the expertise, stating its tier, and describing the intended user and use case. Who would invoke this skill, and under what circumstances?
+Part 2: Build the Skill
+Create a complete SKILL.md file following the conventions from Classes 8 and 9. Your file must include:
+YAML frontmatter with a name field and a description field. The description should include trigger phrases (the words a researcher would actually say when they want this skill activated), a statement of what the skill produces, and negative triggers (what the skill does not do). Use YAML's > block scalar syntax to keep the description on a single logical line.
+A Markdown body containing at least the following elements: a purpose statement (one to two sentences), the core protocol with reasoning rather than bare linear steps, a concrete output format specification (what does "done" look like?), at least two explicitly stated edge cases, and at least one constraint or boundary (what the skill should not do). If your skill benefits from reference materials—an example input/output pair, a lookup table, a journal's author guidelines—create a references/ subdirectory with those supplementary files.
+Aim for ~50–150 lines in the core SKILL.md. You can always add detail later as you discover gaps through use. Recall the principle from Class 9: a short skill that fires reliably outperforms a long skill with competing instructions.
+Note: You are welcome—and encouraged—to use Claude to help generate the first draft of your SKILL.md from a human-readable description of your expertise; as we demonstrated in Class 8: describe what you know in plain language, let the agent produce a properly formatted skill file, then iterate on the result by hand until the encoded protocol actually matches your expert judgment. The intellectual work of the assignment is in knowing what expertise to encode, recognizing where the agent's draft gets it wrong, and refining until the skill behaves correctly. Writing Markdown syntax from memory is not the point.
+Deliverable: The complete SKILL.md file and any reference files, included in your submission.
+Part 3: Test and Iterate
+Test your skill in at least three scenarios:
+(a) Happy path. A straightforward case where the skill should fire and produce correct output. Describe the prompt you used, what the agent produced (briefly), and whether it matched your expectations.
+(b) Edge case. A boundary condition or unusual input where the skill's behavior is not obvious. This might involve ambiguous data, a format the skill wasn't designed for, a situation where two of your rules could conflict, or a threshold value. Briefly describe what happened and whether the skill handled it appropriately.
+(c) Negative trigger. A request that sounds related to your skill's domain but should not activate it. For example, if your skill formats journal figures, a request to "extract data from the figure in this PDF" should not trigger it. Describe what you asked and whether the agent correctly refrained from loading your skill.
+After your initial round of testing, revise the SKILL.md to address at least one problem you discovered. Then retest at least one of your scenarios to confirm the revision helped. Document the before-and-after: what did the original version do wrong, what did you change, and what did the revised version do differently?
+The minimum is two complete cycles: initial version → test → revise → retest. More cycles are fine and will likely produce a better skill, but two is the floor.
+Deliverable: A narrative (roughly 400–600 words total across the three scenarios) documenting each test, your observations, the revision(s) you made, and the results after revision. Include the specific prompts you used; vague descriptions like "I asked it to do the task" are not sufficient.
+Part 4: Self-Evaluation
+Using the evaluation criteria from the Class 9 in-class activity, write a structured assessment of your own skill. Address each of the following, with specific references to your SKILL.md:
+Description quality. Is your description specific enough to trigger accurately? Does it name the outputs the skill produces? Does it include plausible trigger phrases in the natural language a researcher would use? Does it specify what the skill does not cover? If twenty skills were installed simultaneously, would an agent confidently select yours based on the description alone? Where does your description fall on the bad/mediocre/good spectrum we discussed in class, and why?
+Methodology body. Does your skill body provide reasoning and decision frameworks, or only linear steps? Is the output format specified concretely? Are edge cases addressed explicitly? Did you include an example or worked demonstration? Is the skill lean, or does it contain competing instructions that could confuse the agent? If you had to cut 30% of the body, which parts would you remove and why?
+Domain correctness. This is where your expertise matters most. Are the encoded protocols—thresholds, formulas, decision rules, recommendations—correct for the stated use case? Would you trust this skill to run unsupervised in an agent pipeline on your own research data? If not, what would need to change?
+Finally, identify at least one limitation or weakness you were unable to resolve within this assignment. Every skill has boundaries; the mark of a thoughtful designer is knowing where they are.
+Deliverable: A structured self-evaluation (roughly 400–600 words) addressing all three criteria and identifying at least one unresolved limitation.
+Part 5: Reflection
+Write a short reflection (300–400 words) addressing:
+1. On tacit knowledge. What did you discover you knew only when you tried to write it down for an agent? The process of encoding expertise often reveals knowledge that practitioners carry implicitly—thresholds they apply without thinking, judgment calls they make automatically, sequences they follow from habit rather than from a written protocol. Describe at least one specific piece of tacit knowledge that surfaced during the skill-building process and how you chose to encode it.
+2. On transferability. If a new graduate student joined your lab tomorrow and you wanted them to use this skill, what would need to change? Would the skill work as-is, or does it assume context that only you possess? What would the revision process look like to make the skill genuinely transferable?
+Submission
+Submit in a single folder containing:
+1. Project description and CLAUDE.md file (from Part 0)
+2. Tier classification and scope statement (from Part 1)
+3. Complete SKILL.md file and any reference files in a sub-folder (from Part 2)
+4. Testing narrative with specific prompts and revision documentation (from Part 3)
+5. Structured self-evaluation (from Part 4)
+6. Reflection (from Part 5)
+Save your files in a folder named  using your name(e.g., "Jane_Smith") and deposit it into the shared folder in Box named "Assignment 4 submissions." Submit by Class 11, April 14.
+Grading: Pass/Fail
+This assignment is graded pass/fail based on completion and genuine engagement. You pass if you submit all required components and demonstrate that you built, tested, and critically evaluated a real skill—as opposed to going through the motions.
+Pass Criteria
+To receive a Pass, your submission must include:
+* A CLAUDE.md file that identifies the project, its file structure, tools, and conventions
+* A skill that targets a genuine piece of research expertise, not a generic task (e.g., "summarize a PDF" or "write an email")
+* A stated tier classification with a brief justification
+* A SKILL.md with proper YAML frontmatter whose description includes trigger phrases, output types, and negative triggers
+* A methodology body that includes reasoning (not just linear steps), a concrete output format specification, and at least two explicitly stated edge cases
+* Testing documentation for at least three scenarios (happy path, edge case, negative trigger) with specific prompts and observable results
+* At least one documented revision cycle with before-and-after evidence showing what changed and why
+* A self-evaluation that addresses all three Class 9 criteria (description quality, methodology body, domain correctness) with specific references to the student's own skill, not generic restatements of the principles
+* Identification of at least one unresolved limitation
+* A reflection that engages with both prompts using specific examples from the student's experience building the skill
+Automatic Fail
+You will receive a Fail if:
+* Any required component is missing
+* The skill encodes a generic task unrelated to your research area
+* The SKILL.md is missing YAML frontmatter or has a description that would clearly fail to trigger (e.g., a single vague sentence with no trigger phrases)
+* No evidence of testing or iteration exists (i.e., the submitted skill is clearly a first draft with no revisions)
+* The self-evaluation is generic rather than specific to your own skill (e.g., it restates the Class 9 design principles without applying them to your work)
+* The reflection contains no reference to your actual experience building the skill
+Resubmission
+If you receive a Fail, you may resubmit once within one week for full credit.
+Tips for Success
+Start with the description field, not the methodology body. The most common failure mode in skill design is a beautiful methodology that never gets loaded because the description doesn't match real queries. Write the description first, test whether the skill triggers on the phrases you expect, and only then invest time in the body.
+Choose a scope you can finish. A Tier 3 personal workflow skill of 60 lines that works reliably is a better submission than an ambitious Tier 2 methodology skill of 200 lines that you didn't have time to test. You can always expand the skill later; what matters for this assignment is a complete build-test-evaluate cycle.
+Be concrete in the body. The difference between a useful skill and a vague one is specificity. "Use appropriate fonts" is vague. "Use 9-point Times New Roman for axis labels, 10-point bold for axis titles, 8-point for tick labels, and 7-point for annotations" is a skill the agent can actually follow.
+Be honest in the self-evaluation. Identifying a weakness in your own skill is not a penalty; it is evidence that you understand the design principles well enough to apply them critically. A self-evaluation that claims the skill is flawless is less convincing than one that says "the description handles the common case well, but it would false-trigger on requests to reformat existing figures rather than generate new ones, and I haven't yet figured out how to distinguish those in the trigger phrasing."
+Think of this as a seed, not a finished product. The skill you submit is version 1. If you maintain and refine it throughout your program, it becomes part of your research infrastructure: an encoded record of your best practices that AI agents can follow reliably and that your successors in the lab can inherit.

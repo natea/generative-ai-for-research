@@ -1,0 +1,373 @@
+﻿MAE 6291 – Class 4
+Lorena A. Barba – February 3, 2026
+
+
+
+
+AI-Enhanced Literature Review and Deep Research
+The landscape of academic research and scholarly communication has fundamentally shifted in the last couple of years. The traditional discovery model characterized by manual keyword-based searches and human-intensive synthesis has transitioned to an agentic AI-enabled research model powered by autonomous systems capable of multi-step reasoning, semantic synthesis, and predictive trajectory mapping.
+As of January 2026, artificial intelligence is no longer viewed as a peripheral tool for drafting or proofreading but as a core architectural component of the scientific process. Consider the following reported usage statistics:
+* Regular use of AI by researchers jumped from 37% in 2024 to 58% in 2025, according to Elsevier’s “Researcher of the Future” report, based on a survey of over 3,200 researchers across 113 countries.[1]
+* 84% of researchers are using AI tools for any aspect of their work, up from 57% last year, according to “ExplanAItions 2025: The evolution of AI in research,” a report by Wiley, Inc. (October 2025) of surveys involving 2,430 researchers from around the world.[2]
+* Average weekly message counts in ChatGPT on advanced science and math topics grew about 47%, from 5.7M to nearly 8.4M from January to December 2025, according to a report by OpenAI. [3]
+This transformation is driven by the maturation of reasoning-heavy models—such as OpenAI’s o1 and GPT-5 series, Anthropic’s Claude 4.5, and Google’s Gemini 3—which have enabled a move away from simple pattern matching toward deep, "slow-thinking" autonomous investigations.
+
+
+Semantic Discovery and AI Search Tools for Scholarly Research
+By early 2026, the traditional search engine has been vastly augmented in academic contexts by semantic discovery platforms. Unlike Boolean or keyword-based systems, these platforms use high-dimensional vector embeddings to understand the conceptual intent of a researcher’s query, allowing for the retrieval of relevant literature even when terminologies vary across disciplines. Several platforms in this space have specialized their offerings to cater to different stages of the literature review process, combining with traditional features like academic database searches and citation graphs. Examples of AI-enhanced literature tools include Elicit, ResearchRabbit, Consensus, and Paperguide—not all the tools advertised as “AI-powered” use generative AI technology, however. Here, we review some of the most notable platforms for AI-enhanced literature review, noting their main features, strengths and limitations.
+
+
+Elicit, https://elicit.com/
+Elicit is an AI-powered literature review assistant that helps researchers find, summarize, and extract key information from scholarly articles pulled from Semantic Scholar. It operates under a “freemium model” with the free tier lacking the export function, systematic reviews, web search, new agents features, among other limits.
+Watch: Elicit AI Can Now Do Your Entire Systematic Review (In Minutes) (paid tiers)
+What Elicit does: [4]
+* Acts as an AI research assistant that automates parts of evidence synthesis and text extraction, especially for empirical, intervention-style questions (e.g., “Does X affect Y?”)
+* Retrieves likely-relevant papers without perfect keyword matching, summarizes takeaways, and extracts structured elements (intervention, outcomes, sample size, population, etc.) into a matrix.
+* Works best for fields with many empirical studies, such as biomedicine and randomized controlled trials.
+* The platform’s 2025 updates introduced "Research Agents," which automate complex workflows such as exploring competitive landscapes and broad topic mapping.
+Interface and core features:
+* Simple Google-like interface where users pose full research questions and get a table of top papers, with a dynamic summary pane that updates as items are removed.
+* Offers starred references on a separate page, SCImago Journal Rank with quartile, citation counts, and DOI links to the original source.
+* Within a record, it provides a summary, “What did they test?”, “Possible critiques”, related citations, and a question box that highlights relevant abstract sections in response.
+* Additional task tools include “Brainstorm research questions”, “Suggest search terms” (with synonyms), and “Abstract summarization”. 
+* As of January 2026, its database spans over 138 million academic papers and 545,000 clinical trials.
+Strengths:
+* Streamlines early-stage literature review by auto-selecting about eight likely relevant papers and extracting user-specified variables.
+* Uses a process-based ML approach intended to generalize across tasks, and the team is actively adding features and responsive to feedback.
+* Elicit’s browser extension automatically retrieves full‑text PDFs during data extraction, using your existing institutional logins to add significantly more accessible papers without ever sending your credentials to Elicit.[5]
+Weaknesses:
+* Limited to Semantic Scholar, so coverage is much smaller than Google Scholar. Semantic Scholar does not search licensed journals or behind paywalls.[6]
+* For free users, Elicit is still not a traditional database interface: it primarily relies on natural‑language questions and semantic search rather than full advanced keyword syntax or controlled vocabulary, which can penalize poorly posed questions.
+* According to research, Elicit searches are currently not sensitive enough to replace traditional literature search.[7]
+* Very limited free tier.
+
+
+ResearchRabbit, https://www.researchrabbit.ai/ 
+ResearchRabbit is a citation-based literature mapping tool to discover, visualize, and organize scholarly articles starting from one or more “seed” papers. It uses machine‑learning-style recommendation algorithms on top of citation and co‑authorship data to suggest new papers and authors. After a large update in late 2025, it can also use semantic similarity on titles and abstracts (but not full text), in addition to citation mapping.[8]
+Watch: Welcome to the new ResearchRabbit
+The NEW Research Rabbit Makes Literature Reviews 5x Faster
+
+
+What ResearchRabbit does: [9]
+* Uses one or more seed papers (by title, DOI, PMID, or import from reference managers) to find related scholarly articles via citation networks and similarity of references.
+* Builds interactive visual maps (timeline or network graphs) showing how papers and authors are connected through citations, references, and thematic similarity.
+* Focuses on journal articles and other scholarly outputs; it generally does not surface books and non‑article sources.
+Interface and core features:
+* Works through collections: each project is a collection where you add seed papers and then explore suggested related works.
+* For a selected paper, it offers views such as “Similar work,” “All references,” “All citations,” and author-based views like “These authors” and “Suggested authors.”
+* In the list view, you can sort similar works by relevance, citation count, or alphabetically, and optionally show abstracts to screen relevance more quickly.
+Visual exploration and workflow:
+* Connection graphs use color to distinguish items: papers already saved in your collection, versus papers suggested/new items.
+* You can switch between timeline graphs (emphasising chronological development) and network graphs (emphasising clusters and relationships among papers and authors).
+* As you add more papers from the graph or lists into your collection, new related items and citation paths appear, letting you iteratively “grow” a literature map.
+Building and managing collections
+* Papers can be added by searching within ResearchRabbit, dragging from suggestion columns, or importing from reference managers via BibTeX/RIS; collections can be renamed and used to separate topics or sections of a project.
+* Collections can be exported to reference managers (RIS/BibTeX) and shared with collaborators in read-only or editable modes; you can also add notes on items for collaborative use.
+Strengths, limitations, and access: [10]
+* Strengths: speeds up citation chasing, makes structure of a field visible, supports author discovery and weekly update alerts as new related papers are found.
+* Limitations: uses Semantic Scholar and PubMed as its data sources; citation-based search can miss relevant work; the extensive feature set can overwhelm new users.[11]
+* Access and pricing: you sign up for an account online; there is a free tier suitable for typical research use, with a paid “RR+” plan adding higher limits (e.g., more input papers, projects, and advanced features).
+
+
+Consensus, https://consensus.app/ 
+Consensus targets the need for rapid evidence verification and consensus detection. It uses AI-powered academic search and literature review to provide direct Yes/No answers to research questions, supported by a "Consensus Meter" that aggregates the findings of cited studies.[12]
+Watch: Consensus AI Step-By-Step: The Fastest Way To Do Evidence-Based Research
+What Consensus does:
+* Searches over roughly 200 million academic papers and book chapters, then uses language models to synthesize answers to scientific questions in natural language.
+* Produces structured outputs: short answer summaries, lists of supporting papers, and tools like the Consensus Meter that show how many studies answer “yes,” “no,” or “possibly” to a yes/no question.
+* Offers deeper workflows (Deep Search, Pro Analysis, literature review mode) that effectively perform a mini automated literature review across dozens of papers per query.
+Interface and core features:
+* Minimal search interface where you enter a plain‑language research question or keywords and receive an answer section plus a panel of cited papers.
+* Hybrid retrieval stack (semantic + keyword search, multi‑stage ranking) aims to balance intent matching and exact term matching, then reranks by relevance and “research strength” (citations, recency, journal reputation).
+* Key features include Consensus Meter for yes/no questions, Pro Analysis for cross‑paper synthesis, Study Snapshots summarizing individual studies, Ask Paper chat with full texts, advanced filters, saved lists, and search history.
+Strengths:
+* Strong focus on evidence‑backed answers: summaries are tied directly to specific papers, with clear in‑text citations and links so you can trace every claim to its source.
+* Especially effective for well‑defined empirical questions and yes/no formulations, where Consensus Meter and Deep Search quickly surface what the literature tends to conclude across many studies.
+* Clean, relatively simple interface with natural‑language querying, filters (year, method, field, journal rank), and list management, making it approachable for non‑experts in database searching.
+Weaknesses:
+* Coverage: like many other AI research tools, Consensus draws data from  Semantic Scholar, plus it aggregates data from OpenAlex and its own crawl, but for paywalled content, it sees titles and abstracts only. [13]
+* Works best for clearly scoped, answerable questions; for broad, conceptual, or highly nuanced topics, summaries can feel shallow or oversimplified, and Deep Search remains constrained by the top set of retrieved papers.
+* The Consensus Meter is a visually appealing but methodologically weak feature that reduces complex, heterogeneous evidence into a simple tally of “yes/no/mixed/possibly” studies, encouraging problematic vote-counting rather than rigorous evidence synthesis that considers study quality, effect sizes, and bias.
+* Free access is limited (e.g., caps on Pro/Deep searches and advanced features), and some reviewers note that the feature set is still lean compared with mature reference managers or full‑fledged systematic review platforms.
+
+
+Paperguide, https://paperguide.ai/ 
+Paperguide is advertised as a comprehensive, all-in-one research assistant bridging discovery and writing. It combines semantic search with a "Chat with PDF" feature and citation-backed synthesis. It can be used in end-to-end academic workflows, from initial discovery to final manuscript preparation, offering structured data extraction and multilingual support for over 14 languages.
+
+
+What Paperguide does:
+* You ask research questions in natural language, and it searches a ~200+ million paper corpus returning research‑backed answers with inline citations and links to the underlying studies.
+* Supports full literature‑review workflows with AI Literature Review, Deep Research, and data‑extraction workbooks that compare key variables across many papers.
+* Extends into writing and drafting: an AI writer generates and polishes academic text grounded in your references, with automatic citation insertion in many styles.
+Interface and core features:
+* Web app with a unified workspace where you can search, store references, analyze PDFs, chat with papers, and write in an AI‑assisted editor.
+* Core tools include AI Search, AI Literature Review generator, Deep Research reports (multi‑paper synthesis), AI Writer, Reference Manager, and “Chat with PDF & papers” for answers over uploaded documents.
+* Reference management covers importing from multiple sources, organizing shared libraries, viewing AI‑generated paper summaries, and exporting citations in thousands of styles.
+Strengths:
+* Broad coverage (200M+ papers claimed), question‑based search, and structured summaries make it effective for quickly mapping a topic and extracting comparable data across studies.
+* Integrated pipeline from discovery → screening → extraction → drafting reduces tool‑switching and is praised in user reviews for ease of use and support for thesis‑level projects and systematic‑style reviews.
+* Freemium model with a usable free tier (limited AI generations, storage, and literature‑review quotas), plus reasonably priced Plus/Pro plans that lift limits and add features like more Deep Research reports and plagiarism checking.
+Weaknesses:
+* As a relatively new, all‑in‑one platform, some reviewers note uneven depth in research outputs, occasional AI response quality issues, and features that still feel less mature than dedicated reference managers or specialist SR tools.
+* Like other generative AI tools, it can miss niche or very recent work, and its summaries still require critical appraisal and triangulation with primary literature for high‑stakes or highly technical research.
+* Very limited free tier.[14]
+Semantic Scholar, https://www.semanticscholar.org/ 
+Semantic Scholar is a free, AI‑powered academic search engine developed at the Allen Institute for AI (UK), helping researchers discover and analyze scientific literature with semantic search, summaries, and recommendation features.[15]
+What Semantic Scholar does:
+* Uses natural language processing and machine learning to interpret the meaning of queries and paper content, aiming to return more relevant results than pure keyword or Boolean search.
+* Indexes a large corpus (over 175 million papers) across many disciplines, with particular strength in computer science, biomedicine, and related fields, and highlights influential work via citation metrics.
+* Provides AI‑generated TLDR summaries, citation contexts, and related‑paper suggestions to help users quickly assess relevance and trace how ideas connect through the citation graph.
+Interface and core features:
+* Google‑Scholar‑style search box supporting keyword, author, venue, and advanced filters (year, field of study, publication type), with results ranked using AI and citation signals.
+* Paper pages show abstract, figures, references, citations, “Paper Summary”/TLDR, key phrases, and links to PDFs or publishers, plus author profiles and topic tags.
+* Additional tools include Research Feeds (personalized recommendations based on your library), Libraries for saving and organizing papers, and Semantic Reader, an augmented PDF reader that overlays definitions, citation cards, TLDRs, and skimming highlights.
+Strengths:
+* Strong AI‑assisted discovery: semantic search, related‑paper suggestions, and research feeds help surface relevant and influential work efficiently, especially in well‑covered fields.
+* Rich per‑paper context (TLDR summaries, citation graphs, key figures, and citation‑context snippets) saves time in triaging papers and understanding their impact and relationships.
+* Completely free to use, with no paywall on core features, and offers APIs for programmatic access, making it attractive both to individual researchers and developers building tools on top of its corpus.
+Weaknesses:
+* Coverage is uneven: it is strongest in computer science and biomedicine, and some reviews note thinner coverage or missed items in other disciplines or very niche areas.
+* While it offers AI summaries and feeds, it does not provide end‑to‑end systematic review workflows, full citation‑manager functionality, or generative literature‑review reports, so users still need complementary tools for screening, extraction, and writing.
+
+
+Other Related Tools
+This space is quite large, and in the interest of space (and time), we have left some tools out of the more detailed review. You might want to check these out:
+* Connected Papers, https://www.connectedpapers.com/
+* Scispace, https://scispace.com 
+* scite_ https://scite.ai/ (no free tier)
+
+
+Deep Research for Discovery: Moving Beyond Specialized Tools
+The literature review tools we've examined—Elicit, ResearchRabbit, Consensus, Paperguide—occupy a specific niche: they are purpose-built for academic discovery with features like citation graphs, consensus meters, and structured extraction. But as we learned previously, the major AI providers have developed their own "deep research" capabilities that approach literature discovery from a different angle: as one application of general-purpose agentic research systems.
+When should you use a specialized literature tool versus a deep research agent? The answer depends on where you are in your research process and what kind of question you're asking.
+
+
+Complementary Strengths
+Specialized literature tools excel when you:
+* Need systematic, reproducible searches for a formal literature review
+* Want to trace citation networks and discover papers through relationship mapping
+* Require structured data extraction across many papers (sample sizes, methods, outcomes)
+* Are working within well-defined empirical domains where "yes/no" questions make sense
+Deep research agents (OpenAI Deep Research, Gemini Deep Research, Claude's research mode, Perplexity Deep Research) excel when you:
+* Are exploring a new area and need to understand the landscape before knowing what to search for
+* Have complex, multi-part questions that span literature, news, technical documentation, and web sources
+* Need synthesis across heterogeneous sources (academic papers, preprints, blog posts, documentation)
+* Want the AI to autonomously plan and execute a multi-step investigation
+Using Deep Research for Literature Discovery
+Recall from a previous lecture our comparison table of deep research agents across providers. Each has somewhat different strengths for literature-related tasks:
+Provider
+	Literature Discovery Strength
+	OpenAI Deep Research
+	Strong at synthesizing across web-accessible technical and scholarly sources; produces analyst-style reports with extensive inline citations; can leverage Python and related tools for quantitative analysis of retrieved data
+	Gemini Deep Research
+	Tight links with Google Search and Google Workspace; massive context window allows processing many full papers; exports directly to Google Docs for collaborative editing
+	Claude Research Mode
+	Extended, autonomous research sessions (often several to ~45 minutes) that decompose questions, search widely, and return citation-backed reports; excels at careful reasoning and nuanced synthesis for complex topics
+	Perplexity Deep Research
+	Fast multi-step reports with transparent source tracking; good for rapid evidence gathering and scoping; sometimes notes conflicts or limitations, but uncertainty is not always shown explicitly
+	Practical guidance for discovery-stage research: When you're starting a new research direction—say, you've been asked to investigate whether a particular technique from one field might apply to your domain—a deep research agent can serve as your first pass. You might prompt:
+"I'm investigating whether physics-informed neural networks have been successfully applied to turbulent combustion modeling. I need to understand: (1) what PINN architectures have been tried, (2) what benchmark problems have been studied, (3) what the main limitations and open challenges are, and (4) who the leading research groups are. Produce a comprehensive report with citations I can follow up on."
+The agent will autonomously search, read, backtrack, and synthesize—producing something like the report I showed in our first class when I gave Gemini the DQE prompt about kernel methods.
+Critical caveat: Deep research agents are not systematic. They do not guarantee comprehensive coverage, they cannot search behind paywalls your institution subscribes to, and they make choices about what to prioritize that may not align with your needs. Use them for discovery and orientation, not for the definitive literature review you'll put in your dissertation.[16]
+
+
+A Workflow Combining Both Approaches
+A practical workflow for the discovery stage might look like this:
+1. Orientation via deep research: Use a deep research agent to map the landscape, surface key terms and concepts, highlight major research groups, and point you to potentially seminal or highly cited papers (which you will then verify manually).
+2. Systematic expansion via specialized tools: Take the papers and terms surfaced by deep research and use ResearchRabbit to expand the citation network and visualize related work, Elicit to extract structured data (methods, samples, outcomes, limitations) from batches of papers, and/or Consensus to quickly see where empirical findings converge or conflict.
+3. Gap identification: Use your evolving knowledge base (notes, reference manager, and any RAG-style personal corpus) to check which subtopics, populations, or methods are underrepresented, then feed these gaps back into both the deep research agent and specialized tools to iteratively refine your coverage.
+This hybrid, iterative approach gives you both the exploratory breadth of agentic AI and the systematic rigor of purpose-built literature tools, while keeping you, not the model, in charge of inclusion criteria and quality judgments.
+Prioritization and Selection: From Discovery to Deep Engagement
+Discovery is only the first stage. A deep research agent might surface 150 papers; ResearchRabbit might suggest another 200 through citation mapping. But you cannot read 350 papers. The next stage—prioritization and selection—is where you decide which sources deserve your deep attention.
+This is cognitively demanding work. It requires reading abstracts, skimming methods sections, assessing relevance to your specific questions, and making judgment calls about quality and centrality. AI tools can assist here, but they cannot replace your judgment.
+NotebookLM for Source Prioritization
+Google NotebookLM (https://notebooklm.google.com/) occupies a unique position in this workflow. Unlike the discovery tools we've reviewed, NotebookLM is designed for deep engagement with sources you've already selected. You add documents—PDFs, Google Docs, web pages, YouTube videos—and NotebookLM creates a knowledge base grounded entirely in those sources. You can chat with the added sources, generating comprehensive responses with in-text citations, practically eliminating AI hallucinations by ensuring responses are grounded in the sources. For example, you can run specific prompts to identify disagreements or contradictions among sources, find missing questions or subtopics, and discover alternative viewpoints, ensuring the reliability and completeness of your research. The Studio Panel offers various formats to view, understand, and retain information: mind maps, reports, flashcards, quizzes, infographics, slide decks, data tables, audio overviews, and video overviews. 
+Watch: How to Use NotebookLM Better than 99% of People
+What NotebookLM does:
+* Creates a private "notebook" grounded in up to 50 sources (free tier; 300 in the Pro tier) you add explicitly (PDFs, Google Docs, web URLs, YouTube videos, audio files)
+* Generates summaries, study guides, FAQs, and even audio "podcasts" synthesizing your sources
+* Answers questions with inline citations pointing to specific passages in your uploaded documents
+* Never draws from external training data—all responses are grounded in your sources
+For prioritization, NotebookLM enables a powerful workflow:
+1. Bulk upload abstracts or executive summaries: Take the papers surfaced by your discovery stage and upload their abstracts (you can often export these from Zotero or other reference managers as a single document) and/or full-text if available.
+2. Ask categorization questions:
+   * "Which of these papers focus on methodology development versus application?"
+   * "Group these papers by the numerical methods they employ"
+   * "Which papers address turbulent combustion specifically versus general combustion modeling?"
+3. Ask prioritization questions:
+   * "Based on these abstracts, which papers appear most relevant to applying physics-informed neural networks to reacting flow simulations?"
+   * "Which papers seem to be foundational/highly cited works versus incremental contributions?"
+4. Generate a reading order: Ask NotebookLM to suggest which papers you should read first based on your specific research questions.
+Limitations of NotebookLM for this purpose:
+* It only sees what you upload—it cannot assess citation counts, journal prestige, or author reputation.
+* Its judgments about "relevance" or "importance" are based on textual similarity to your question, not domain expertise.
+* For papers you haven't uploaded, it knows nothing.
+This suggests NotebookLM works best as a screening and organization tool after you've already done discovery, not as a discovery tool itself. However, the recent integration with Gemini has expanded its capabilities: it now has a “discover sources” option built-in that can do a fast research, or a deep research. This option could be useful to help expand your literature discovery from specialized academic databases to complementary sources like press releases, technical documentation, commentaries or even blog posts.
+Claude/ChatGPT Projects or Gemini Gems for Deeper Prioritization
+Claude Projects (and similar persistent context features in other platforms) allow you to build a knowledge base that accumulates over time. For literature prioritization, you might:
+1. Create a literature review project with your research proposal and key methodological commitments uploaded.
+2. Incrementally add papers as you identify them, starting with the most promising.
+3. Ask comparative questions as your knowledge base grows:
+   * "How does this new paper relate to the three papers I uploaded last week?"
+   * "Does this paper's methodology address the gap I identified in my proposal?"
+   * "What does this paper add beyond what's already in my knowledge base?"
+The advantage over NotebookLM is that Claude can engage in multi-turn dialogue, helping you think through why a paper matters (or doesn't) for your specific project. The disadvantage is that Claude's context window, while large, is smaller than NotebookLM's effective capacity for many sources.
+The most recent announcement from the Google ecosystem (December 2025) is that NotebookLM is now directly integrated with Gemini, with your notebooks now appearing as an attachable source inside Gemini chats (via the plus button). Not only that, NotebookLM's integration allows you to build custom AI assistants (Gems) that are grounded in the information from your notebooks. To create a new Gem, you provide it with a name, description, and custom instructions on how you want it to behave.[17] Then, under the knowledge section, you can select NotebookLM and choose the desired notebook. 
+From Tools to Agents: A Preview
+Throughout this class, we've examined AI tools that assist with specific stages of literature review: Elicit for structured extraction, ResearchRabbit for citation mapping, NotebookLM for source synthesis. Each tool does one thing reasonably well, and you—the researcher— orchestrate the workflow by moving between them, deciding what to do next, and transferring outputs from one tool to inputs for another.
+But notice what the deep research agents do differently. When you give Gemini Deep Research or OpenAI Deep Research a complex question, you don't tell it: "First search for X, then read the top 5 results, then identify gaps, then search again with refined terms." You state your goal, and the system autonomously plans a multi-step investigation, executes searches, reads and synthesizes content, backtracks when it hits dead ends, and eventually produces a comprehensive report. This is the difference between a tool and an agent.
+What Makes Something an Agent?
+An AI agent is a system that extends the capabilities of LLMs and enables them to take actions through access to tools, knowledge and reasoning abilities. It should be able to:
+1. Perceive its environment (read search results, examine documents, observe outcomes)
+2. Reason about what to do next (plan steps, evaluate progress, decide when to change approach)
+3. Act on the environment (execute searches, call APIs, write outputs)
+4. Iterate based on results (if the first approach fails, try something different)
+The deep research systems we discussed earlier are agents specialized for research tasks. But the concept extends far beyond literature review. An agent might:
+* Debug code by reading error messages, hypothesizing causes, testing fixes, and iterating
+* Design an experiment by reviewing protocols, checking equipment availability, and proposing modifications
+* Manage a data analysis pipeline by examining outputs at each stage and adjusting parameters
+What makes agents powerful—and what makes them relevant to your work as engineering researchers—is that they can handle multi-step tasks with uncertain outcomes. You don't need to specify every step in advance; you specify the goal and constraints, and the agent figures out how to get there. The agent observes intermediate results, adjusts its approach when something isn't working, and persists until it achieves the goal or determines it cannot. In this sense, an agent is more than simply AI automation, where the steps are pre-defined: it exhibits a form of autonomous problem-solving that can adapt to what it encounters along the way.
+
+
+The ReAct Pattern: Reasoning and Acting
+The dominant paradigm for building agents is called ReAct (Reasoning + Acting).[18] In this pattern, the agent alternates between:
+* Thought: Reasoning about the current situation and what to do next
+* Action: Taking a concrete step (searching, reading, computing, writing)
+* Observation: Examining the result of the action
+Here's a simplified example of what this looks like internally when a research agent processes your query:
+User: Find recent papers on applying transformers to computational fluid dynamics
+
+
+Thought: I need to search for papers combining transformer architectures with CFD. 
+         I'll start with a broad search and then narrow based on what I find.
+
+
+Action: Search academic databases for "transformer neural network computational 
+        fluid dynamics"
+
+
+Observation: Found 47 results. Top results focus on weather prediction and 
+             turbulence modeling. Several papers from 2024-2025.
+
+
+Thought: Good coverage of weather/climate applications, but I should also check 
+         for industrial CFD applications. Let me search with different terms.
+
+
+Action: Search for "attention mechanism fluid simulation engineering"
+
+
+Observation: Found 23 additional results, some overlap. New papers on 
+             aerodynamics and heat transfer applications.
+
+
+Thought: I now have a reasonable corpus. I should identify the seminal papers 
+         by looking at citation patterns and extract the main methodological 
+         approaches before synthesizing.
+
+
+Action: Analyze citation relationships among top 20 papers...
+This cycle continues until the agent determines it has enough information to produce the requested output.
+Notice several things about this pattern. First, the reasoning traces—the "Thought" steps—are where the agent decides which action to take and why. These traces are generated by the LLM itself, essentially "thinking out loud" about the problem. The quality of an agent's performance depends heavily on the quality of these reasoning steps: a poorly reasoned thought leads to a poorly chosen action.
+Second, the observation-reflection loop is what gives agents their adaptive quality. After each action, the agent doesn't blindly proceed to the next step; it examines what happened and reflects on whether the result moves it closer to the goal. In the example above, the agent noticed that its first search returned weather-focused papers and reflected that industrial applications might require different search terms. This capacity to evaluate intermediate results and adjust course is what distinguishes an agent from a fixed script.
+Third, notice how the agent chains thoughts and actions together to build toward a complex outcome. No single search or analysis step would be sufficient to answer the user's question. Instead, the agent decomposes the problem into manageable steps, executes them sequentially, and accumulates knowledge across the chain. Each observation becomes context for the next thought, creating a trajectory through the problem space that would be difficult to specify in advance.
+When deep research agents like Gemini or OpenAI's system process your literature queries, something like this is happening under the hood, although the actual implementations are proprietary and likely more sophisticated than this simplified illustration. The key insight is that the agent is not simply retrieving information; it is reasoning about how to retrieve information, and that reasoning process is what enables it to handle queries that don't have obvious, single-step answers.
+
+
+Tools Enable Agents
+A crucial insight: agents become useful when they have tools they can invoke. Recall from Class 2 that tool use allows LLMs to take actions beyond text generation: searching databases, running code, reading files. Agents orchestrate these tools toward a goal.
+Here's how this works mechanically: when an agent decides it needs to take an action, the LLM generates a structured output—typically JSON—that specifies which tool to call and with what parameters. This structured output isn't shown to you; instead, it's parsed by the application code that hosts the agent, which then executes the actual tool (running a search query, calling an API, reading a file). The results are returned to the agent as an observation, which becomes part of the context for the next reasoning step.
+For example, when the research agent in our earlier example decided to search for papers, the LLM might have generated something like:
+{ "tool": "search_academic_database", 
+  "parameters": { 
+    "query": "transformer neural network computational fluid dynamics",
+     "databases": ["semantic_scholar", "arxiv"], 
+    "date_range": "2023-2026", 
+    "max_results": 50
+ }
+}
+The agent framework intercepts this, executes the actual search against real databases, and returns the results as text that the LLM can then reason about. The LLM never "sees" the database directly—it only knows how to ask for searches and how to interpret the results it receives.
+The deep research agents we've discussed today have tools for:
+* Web search and academic database search
+* Reading and parsing web pages and PDFs
+* (In some cases) Running Python code for analysis
+* Writing structured outputs
+This tool-mediated architecture is why agents can do things that seem beyond what an LLM "should" be able to do. The LLM provides the reasoning and planning; the tools provide the capabilities. We will experiment with building our own research agents later in this course and you'll learn to equip them with tools specific to your domain: querying your lab's databases, running simulations, accessing specialized APIs.
+
+
+Why This Matters for Your Literature Review Workflow
+The pipeline we established today—discovery → organization → prioritization → deep engagement—currently requires you to manually move between tools and make decisions at each transition. As agent frameworks mature, increasingly sophisticated parts of this workflow can be delegated to agents.
+Imagine an agent that:
+1. Takes your research question and conducts initial discovery (like deep research does now)
+2. Automatically imports promising papers to your reference manager
+3. Uploads abstracts to a knowledge base and performs initial categorization
+4. Identifies papers that need your attention versus those that can be summarized automatically
+5. Alerts you when new papers appear that relate to your established knowledge base
+Some of this is possible today with careful prompt engineering and workflow design. More will become possible as agent frameworks mature. But the fundamental skill—understanding what you're trying to accomplish and evaluating whether the AI is helping you get there—remains yours.
+
+
+Looking Ahead
+We'll return to agents in depth later in this course, where you'll learn to:
+* Build agents with persistent memory that remember your research context across sessions
+* Design multi-agent systems where specialized agents collaborate on complex tasks
+* Implement the ReAct pattern and other agent architectures using agent frameworks
+For now, the key takeaway is conceptual: the deep research tools that helped us today are not just sophisticated search engines—they are agents that autonomously plan and execute multi-step investigations. Understanding this distinction will help you use them more effectively and prepare you to build your own research agents tailored to your specific needs.
+Summary: The Discovery-to-Engagement Pipeline
+Stage
+	Tools
+	Output
+	Orientation
+	Deep research agents
+	Landscape understanding, key terms, major groups
+	Systematic discovery
+	Elicit, ResearchRabbit, Consensus
+	Expanded paper set, citation networks, structured data
+	Organization
+	Reference managers (Zotero)
+	Stored PDFs, metadata, collections
+	Prioritization
+	NotebookLM, Claude Projects
+	Categorized papers, reading order
+	Deep engagement
+	NotebookLM source chat, Claude analysis
+	Detailed understanding of key papers
+	Synthesis
+	RAG systems
+	Queryable knowledge base
+	Automation
+	Custom research agents
+	Autonomous workflow execution
+	
+
+The key insight is that no single tool does everything. The researchers who will be most effective are those who understand what each tool is good at and build workflows that leverage complementary strengths while remaining aware of limitations.
+In future lessons, we'll move from literature review to AI-assisted coding—but the pattern of combining specialized tools with general-purpose AI, and maintaining critical judgment throughout, will remain central.
+Practical Exercise: From Discovery to Prioritized Reading List
+For your research area, complete the following workflow. Document what you learn about the strengths and limitations of this workflow for your specific research context.
+1. Deep research discovery: Use one of the major deep research agents to investigate a specific question in your domain. Collect the report and extract the cited sources.
+2. Expand via specialized tools: Take 3-5 of the most promising papers from step 1 and use ResearchRabbit to map their citation networks. Identify 10-15 additional papers that appear in multiple networks.
+3. Compile abstracts and paper PDFs: Gather the abstracts of your ~20 candidate papers into a single document and the full-text of articles as PDF (if available). 
+4. Prioritize via NotebookLM: Upload the abstracts and papers and ask NotebookLM to help you categorize and prioritize based on your specific research questions.
+5. Create a reading plan: Based on the prioritization, identify:
+   * 3-5 papers to read thoroughly; 5-10 papers to skim for methods and key findings
+   * Papers to set aside for later or discard
+
+
+________________
+[1] See: Asadi, Yasin. “The Researcher of the Future: AI, Collaboration, and Impact in a Changing Research Landscape.” Research Communities by Springer Nature, November 19, 2025. https://communities.springernature.com/posts/the-researcher-of-the-future-ai-collaboration-and-impact-in-a-changing-research-landscape 
+[2] https://www.wiley.com/en-us/about-us/ai-resources/ai-study/ 
+[3] “AI as a Scientific Collaborator: From Biology to Black Holes, ChatGPT Is Accelerating Research.” January 2026. San Francisco: OpenAI, 2026. https://cdn.openai.com/pdf/f4b4a5da-b2de-418d-9fcd-6b293e9dc157/oai_ai-as-a-scientific-collaborator_jan-2026.pdf 
+[4] Kung, Janice. 2023. “Elicit (product Review)”. Journal of the Canadian Health Libraries Association Journal De l’Association Des Bibliothèques De La Santé Du Canada 44 (1). https://doi.org/10.29173/jchla29657 
+[5] https://support.elicit.com/en/articles/6123329 
+[6] Fricke, Suzanne. “Semantic Scholar.” Journal of the Medical Library Association 106, no. 1 (Jan. 2018). https://doi.org/10.5195/jmla.2018.280 
+[7] Lau, Oscar; Golder, Su. “Comparison of Elicit AI and Traditional Literature Searching in Systematic Reviews using Four Case Studies,” (preprint) medRxiv 2025.06.17.25329772; https://doi.org/10.1101/2025.06.17.25329772 
+[8] Tay, Aaron. “ResearchRabbit’s 2025 Revamp: Iterative Chaining without the Clutter.” Aaron Tay’s Musings about Librarianship (Substack), Nov. 2, 2025. https://aarontay.substack.com/p/researchrabbits-2025-revamp-iterative 
+[9] Cleeland, Lyle. “What Is ResearchRabbit? Step by Step Tutorial.” James Cook University, Learning Centre, https://www.jcu.edu.au/students/learningcentre/during-the-study-period/researching/Research-Rabbit-Overview.pdf (n.d.)
+[10] Ayush Chaturvedi, “Research Rabbit AI Review (2026): Pros, Cons, Pricing & Alternatives for Researchers,” Elephas Blog, July 16, 2024, accessed January 31, 2026, https://elephas.app/blog/research-rabbit-ai-review 
+[11] Cole V, Boutet M. ResearchRabbit. J Can Health Libr Assoc. 2023 Aug 1;44(2):43–7. doi: 10.29173/jchla29699. PMCID: PMC10403115.
+[12] Shabanov, Ilya. “Consensus AI: 2025 Review for Researchers.” The Effortless Academic. December 15, 2025. https://effortlessacademic.com/consensus-ai-review-for-literature-reviews/ 
+[13] Tay, Aaron. “A 2025 Deep Dive of Consensus: Promises and Pitfalls in AI-Powered Academic Search.” Aaron Tay’s Musings about Librarianship (Substack), November 15, 2025. https://aarontay.substack.com/p/a-2025-deep-dive-of-consensus-promises 
+[14] Skywork. “Paperguide AI: My In-Depth Review of the All-in-One Research Assistant (2025).” Skywork, October 10, 2025. https://skywork.ai/skypage/en/Paperguide-AI-My-In-Depth-Review-of-the-All-in-One-Research-Assistant-(2025)/1976138917198491648 
+[15] Fruehauf, Evan. “Harnessing Generative AI for Your Academic Research: A Look at Semantic Scholar and Associated Toolsets.” USF Libraries Digital Dialogs (blog), August 28, 2024. University of South Florida Libraries. https://lib.usf.edu/digital-dialogs/2024/08/28/harnessing-generative-ai-for-your-academic-research-a-look-at-semantic-scholar-and-associated-toolsets/ 
+[16] Yin, Xiangyu. “Deep Research for Scientific Literature Review.” February 9, 2025. Accessed Feb. 1, 2026. https://xiangyu-yin.com/content/post_deep_research.html 
+[17] https://gemini.google/overview/gems/ 
+[18] Yao, Shunyu, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik R. Narasimhan, and Yuan Cao. "React: Synergizing reasoning and acting in language models." In The eleventh international conference on learning representations. 2022. https://arxiv.org/abs/2210.03629

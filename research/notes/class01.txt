@@ -1,0 +1,128 @@
+﻿Class 1
+MAE 6291 – Class 1
+Lorena A. Barba – January 13, 2026
+What is the course about?
+* The applications of generative AI in the research enterprise, particularly in engineering
+* Becoming high-productivity researchers by learning to use generative AI as a research accelerator
+Unlike traditional computer science courses that focus on building AI systems, this course focuses on applying AI systems to meaningfully enhance the research workflow.
+
+
+The curriculum is structured around three core pillars:
+1. Research Automation: Students learn to automate literature reviews—including searching, synthesizing findings, and identifying gaps—and deploy agentic AI systems capable of executing multi-step research tasks and experimental design.
+2. AI-Enhanced Coding: The course moves beyond simple autocomplete functions, teaching students to integrate AI into computational notebooks and professional coding environments to streamline their development work.
+3. Technical Depth: While the focus is on application, the course provides a core understanding of AI foundations, including transformer architecture, tokenization, neural network basics, and Retrieval-Augmented Generation (RAG). RAG is particularly emphasized as a way to ground AI outputs in specific research domains, such as lab notes and specialized datasets.
+
+
+The overarching goal is to prepare researchers for a future where AI integration is as standard as computational simulation, providing a competitive advantage in productivity, creativity, and career impact.
+Motivating Question
+What does the future of research look like?
+Bill Daly (Chief Scientist, NVIDIA)
+AI for Science : Algorithms to Atoms
+Bill Dally states: “I think what what's exciting to me is the idea that without huge amounts of funding a scientist can have lots of assistance and you know by having agents that can carry out the tasks you might have postdocs do or or graduate students do it leverages scientists to get way more work done than they otherwise would. Now on top of that are wonderful things like being able to do simulations thousands of times faster and less expensive than using numerical methods and you know being able to solve you know long open problems like protein folding but ultimately I think it comes down to scientist productivity and I think it's exciting to think about making scientists you know 10, 20 times as productive as they are today."
+
+
+Scientists and AI leaders increasingly describe generative AI as a way to multiply scientists’ productivity, often by an order of magnitude, via copilots, automated experiment loops, and AI “scientists.”
+Dario Amodei (Anthropic, ex-OpenAI)
+* In his 2024 essay “Machines of Loving Grace,” Dario Amodei argues that powerful AI systems will be able to perform essentially all tasks biologists do, from designing experiments to directing lab robots, thereby “speeding up the whole research process.”
+* He explicitly estimates that such systems could “at least 10x the rate” of biological discoveries, compressing 50–100 years of progress into 5–10 years, which is directly parallel to Dally’s 10–20× scientist-productivity claim.
+Demis Hassabis (CEO, Google DeepMind / Isomorphic Labs)
+* Demis Hassabis frames AI’s biggest promise as massively accelerating scientific discovery, to the point of transforming how humanity solves problems like disease, energy, and climate.
+* DeepMind’s AlphaFold is described as having “revolutionized” biology by allowing researchers to model protein structures in hours instead of years, dramatically reducing the time needed for key parts of structural biology workflows.[1]
+“Automating the scientific method” and AI copilots
+* Multiple groups now describe generative-AI research platforms as “automating the scientific method itself,” with AI agents iterating hypothesis generation, experiment design, and analysis, explicitly marketed as a way to accelerate discovery for individual researchers and small labs.
+AI “scientists” and creative optimization
+* David Ha and collaborators at the Japanese company Sakana AI developed "The AI Scientist," an autonomous AI system for scientific discovery. This system is notable for generating the first-ever AI-conducted and written research paper to be accepted through peer review at a machine learning conference in March 2025.[2] 
+* The “AI Scientist” LLM-based agents propose new machine-learning algorithms and optimization procedures, with the aim of systematically discovering better methods than human-designed baselines, effectively amplifying a research group’s algorithmic output.
+Science-focused platforms echoing the same theme
+* AI-driven drug discovery companies and biology platforms frequently describe their tools as enabling scientists to move from manual trial-and-error to AI-guided design and prioritization, allowing the same team to explore far more hypotheses and candidates in a given time.
+* Similar language appears in AI-for-health and AI-for-experimentation startups that claim LLM-based “bot scientists” can continuously generate, rank, and adapt hypotheses and interventions, so that a single scientist can orchestrate many parallel experiment streams instead of a handful.
+
+
+Counterargument: The Illusion of Knowledge
+Messeri & Crockett published a perspective article in Nature, where they argue that widespread AI use in science risks creating “scientific monocultures” and powerful illusions of understanding, so that scientists may produce more results while actually understanding less.
+​The authors argue that AI tools invite three key illusions of understanding that are not fixed by better models or fewer hallucinations.​
+* Illusion of explanatory depth: scientists mistake AI’s predictive success or neat outputs for genuine explanatory understanding of phenomena or models.
+* Illusion of exploratory breadth: scientists think they are exploring the full hypothesis space, but in fact only explore questions that fit AI-friendly, quantitative, predictive methods.
+* Illusion of objectivity: scientists treat AI as neutral or universally representative, overlooking how models encode the standpoints, biases, and value choices of developers and training data.
+Monocultures of knowing
+AI’s efficiency and predictive power encourage over-reliance on quantitative, reductive, prediction-optimized approaches, crowding out alternative methods and questions.
+* Methods that translate rich phenomena into numerical proxies become dominant, while qualitative, contextual, or hard-to-quantify questions get marginalized.
+* As widely adopted AI tools hide design choices and “researcher degrees of freedom,” communities may converge on a single modeling style and mistake it for the only or best way to know a domain.
+Monocultures of knowers
+Visions of AI as objective Oracles, Surrogates, Quants, and Arbiters encourage replacing diverse human collaborators with supposedly neutral systems.
+* This threatens hard-won demographic and cognitive diversity in science, re‑homogenizing who effectively “counts” as a knower.
+* Treating AI as standpoint-free revives a “weak objectivity” that erases how particular social positions and values shape scientific questions and interpretations.
+Net effect on science
+Taken together, these dynamics mean AI can increase productivity while degrading the quality and breadth of scientific understanding.​
+* The main counter-argument is not “do not use AI,” but that uncritical, autonomy-granting visions of AI as scientific collaborators will narrow research questions, methods, and perspectives, making science less innovative and more vulnerable to error.​
+See also: “Doing more, but learning less: The risks of AI in research” in Yale News 
+Read
+* Messeri, L. and Crockett, M.J., 2024. Artificial intelligence and illusions of understanding in scientific research. Nature, 627(8002), pp.49-58. DOI:10.1038/s41586-024-07146-0 Link to PDF.
+
+
+Watch
+For fun and inspiration:
+The Thinking Game | Full documentary | Tribeca Film Festival official selection
+For a basic and cute overview of the main concepts in generative AI:
+Generative AI in a Nutshell - how to survive and thrive in the age of AI
+The video introduces several technical terms related to AI:
+Generative AI (2:25): AI that generates new, original content rather than just finding or classifying existing content.
+Large Language Models (LLMs) (2:33): A type of generative AI that can communicate using normal human language.
+ChatGPT (2:41): A product by the company OpenAI, which started as an advanced chatbot using a new architecture.
+Transformer architecture (2:47): A new architecture used by advanced chatbots like ChatGPT; it is the "T" in GPT.
+Artificial Neural Network (3:02): Basically a bunch of numbers or parameters connected to each other, similar to how the human brain is a bunch of neurons connected.
+Parameters (3:06): Numbers within an artificial neural network that determine its output.
+Training (4:06): The process by which the parameters of a language model are set by feeding it a massive amount of text data.
+Backpropagation (4:40): A process during training where the model's parameters are automatically tweaked when it guesses wrong, helping it improve.
+Reinforcement learning with human feedback (4:50): A human training process involving thousands of hours of humans testing, evaluating, and giving feedback to the model to reinforce good behavior.
+Pre-trained (P in GPT) (5:17): Refers to the fact that the model is mostly frozen after its initial training, though fine-tuning can occur later.
+Multimodal AI products (7:26): AI products that combine different models into one product, allowing users to work with text, images, audio, etc., without switching tools.
+Emergent capabilities (8:26): Unexpected capabilities that large language models gain as they become larger and are trained on more data, surprising even their developers.
+APIs (Application Programming Interfaces) (14:19): Allow code to communicate with and utilize AI models to build AI-powered products and features.
+Prompt Engineering / Prompt Design (14:57): The skill of crafting effective prompts to produce useful results from an AI model.
+Autonomous Agents with Tools (17:17): AI-powered software entities that run on their own, given a high-level mission and tools, rather than constantly waiting for user prompts.
+
+
+Why this course, here and now?
+Consider the MAE department’s guidance for Doctoral Qualifying Exams. Currently the requirement is something like this:
+Exam components
+* Proposal: A written proposal document (20-50 pages, double-spaced, 12-point font) must be submitted to the committee 10 days before the exam.
+* Presentation: A 45-60 minute presentation with 30-50 viewgraphs is expected during the exam.
+* Content: Both the proposal and presentation should cover:
+   * Background and motivations
+   * Problem statement
+   * Related work
+   * Approach and preliminary results
+   * An overall plan for completion, including milestones
+The last student from Prof. Barba’s group to go through the DQE received a prompt like this: 
+The scalability problem for kernel methods in machine learning
+Kernel methods, such as Gaussian processes, play a big role in machine learning, especially in classification problems. One aspect that has held these methods back is that kernel learning models can be slow, being impractical for large data sets. Gaussian processes scale as O(n3), for n training points, and O(n2) for each new test point. Thus, the scalability problem makes machine learning impractical for a number of problems.
+Use the papers listed at the bottom of the page as a beginning point and address the specific questions below. Your task is to:
+1. investigate the current research into solving this scalability problem,
+2. provide a description of kernel learning models and discuss the challenges they pose, and
+3. suggest possible paths to overcome those challenges.
+
+
+I entered the prompt given to the student into Gemini on Deep Research mode, and in about 10 minutes, it produced a full report; find it here:
+https://gemini.google.com/share/06616fef5c35 
+I then asked it to generate a LaTeX version and not only did it give the .tex source but it previewed the rendered document and let me download as PDF.
+Gemini produced a report of far higher quality than what the student did in two weeks, identifying the current open research questions and citing about 150 sources. It absolutely rocked it. (I did not tell it to include the sections mentioned in our DQE requirements, as I missed that part. I also missed including the two references given in the original task to the student.)
+I then gave Gemini a very simple additional prompt to create a slide deck from the report. Have a look at the slides it generated: they even include beautiful equations (and I can export to Google Slides if needed).
+
+
+Question: how should our DQE process be adapted to the power of AI tools to assist students in their tasks?
+________________
+Improvements on Large Language Models
+Improving the foundation model itself: This involves moving to newer, more advanced versions of base models, such as upgrading from GPT-4 to GPT-5.
+Engineering and leveraging the LLM: This dimension includes several techniques:
+Prompting methods: This involves designing more effective prompts, including basic prompt design principles, using prompt templates, zero-shot vs. few-shot prompting, and chaining complex prompts.
+Finetuning: While the speaker expresses reservations about finetuning due to its requirements for substantial labeled data, potential for overfitting, and time/cost intensity, it is acknowledged as a method to achieve high precision output in specific domains.
+Retrieval Augmented Generation (RAG): RAG involves embedding documents that an LLM can retrieve and add as context to its initial prompt, helping to overcome limitations like small context windows, knowledge gaps, and the inability to source information.
+Agentic AI workflows: This involves building systems where the LLM can perform tasks autonomously, often by chaining multiple steps and allowing for easier debugging and improvement.
+Multi-agent systems: The lecture briefly touches upon multi-agent workflows as a further extension of agentic systems.
+
+
+Optional Watch: Stanford CS230 | Autumn 2025 | Lecture 8: Agents, Prompts, and RAG
+________________
+[1] https://time.com/7277608/demis-hassabis-interview-time100-2025/ 
+[2] https://github.com/SakanaAI/AI-Scientist-v2?tab=readme-ov-file

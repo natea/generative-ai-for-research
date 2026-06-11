@@ -1,0 +1,81 @@
+{
+  "id": "class-10",
+  "summary": "This class names the discipline you have been practicing all semester: context engineering, the art of curating the information environment a language model works in. You will learn why context quality matters architecturally (the attention budget and context rot), how to practice context hygiene in daily work, how memory systems extend context across sessions, and when single-agent versus multi-agent design patterns are justified for research workflows.",
+  "objectives": [
+    "Explain why transformer attention creates a finite attention budget and how context rot degrades model performance as input length grows",
+    "Distinguish static, dynamic, and meta-context as separate design surfaces in an AI system",
+    "Apply context hygiene habits: converting documents to Markdown, starting fresh sessions at task boundaries, and auditing connected tools",
+    "Map memory types (conversation, semantic, episodic) onto tools like CLAUDE.md, skills, knowledge bases, and platform memory features",
+    "Choose an appropriate agent design pattern (single agent, orchestrator-worker, evaluator-optimizer, router) based on task structure"
+  ],
+  "keyTakeaways": [
+    "Context engineering is not about writing better prompts; it is about designing the entire information environment a model operates in, including tools, memory, retrieved documents, and instruction files.",
+    "Because attention is spread across n-squared pairwise relationships, more context is not better context: models exhibit context rot, degrading well before their context window is full.",
+    "Three habits burn your context budget: feeding raw PDFs instead of clean Markdown, running marathon conversations past task boundaries, and paying an unaudited plugin tax in tool schemas.",
+    "Memory is something you design, not something that happens to you: CLAUDE.md is always-on semantic memory, skills are on-demand semantic memory, and knowledge bases are retrieved semantic memory.",
+    "The progressive disclosure architecture of skills is context engineering in action: each level loads just in time so the full content is never in context simultaneously.",
+    "Default to a single well-configured agent; escalate to multi-agent patterns only when the task has genuinely independent sub-components, explicit quality criteria, or categorically different request types."
+  ],
+  "quiz": [
+    {
+      "question": "According to the notes, what is the core insight that distinguishes context engineering from prompt engineering?",
+      "options": [
+        {"text": "Context engineering replaces obsolete prompting techniques like few-shot and chain-of-thought", "correct": false},
+        {"text": "Context engineering is about designing the entire information environment the model operates in, of which prompts are only one design surface", "correct": true},
+        {"text": "Context engineering applies only to agents, while prompt engineering applies to chatbots", "correct": false},
+        {"text": "Context engineering focuses on writing longer, more detailed prompts to fill the context window", "correct": false}
+      ],
+      "explanation": "The notes state that prompt-engineering techniques remain valuable but address only one component of what a model sees; the discipline is holistic, spanning tools, memory, retrieved documents, conversation history, and instruction files."
+    },
+    {
+      "question": "A model has a 200,000-token context window, but its retrieval accuracy starts dropping at 60,000 tokens of mixed relevant and irrelevant material. Which explanation matches the 'attention budget' concept from the notes?",
+      "options": [
+        {"text": "The model hits a hard threshold where attention stops working entirely", "correct": false},
+        {"text": "The tokenizer compresses long inputs lossily, discarding details", "correct": false},
+        {"text": "Attention is a finite resource spread across quadratically growing pairwise relationships, so each token's share shrinks and precision degrades gradually", "correct": true},
+        {"text": "The model becomes less capable because its weights change during long sessions", "correct": false}
+      ],
+      "explanation": "The notes explain that for n tokens there are n-squared pairwise attention computations, and softmax normalization means each token's weight shrinks as more tokens compete, so degradation is gradual and can occur well before capacity is reached."
+    },
+    {
+      "question": "Which of the following is an example of meta-context, as defined in the class taxonomy?",
+      "options": [
+        {"text": "The conversation history that grows with each exchange", "correct": false},
+        {"text": "A CLAUDE.md file loaded at session start", "correct": false},
+        {"text": "A document retrieved from a Claude Project knowledge base", "correct": false},
+        {"text": "The MCP server schemas that tell the model which tools are available and what parameters they accept", "correct": true}
+      ],
+      "explanation": "Meta-context is structural information defining what the model can do rather than what it knows; tool definitions and MCP schemas consume tokens even when the tools go unused, which the notes call the plugin tax."
+    },
+    {
+      "question": "You have been debugging a simulation script for 25 turns and now want help drafting your paper's introduction. What does the class recommend, and why?",
+      "options": [
+        {"text": "Start a fresh session, because matching session boundaries to task boundaries avoids forcing the model to attend to irrelevant accumulated history", "correct": true},
+        {"text": "Continue the session so the model retains full awareness of your project", "correct": false},
+        {"text": "Wait for auto-compaction to fire, since it summarizes history at the optimal moment", "correct": false},
+        {"text": "Run /compact mid-debug, since compaction is a complete solution to conversation sprawl", "correct": false}
+      ],
+      "explanation": "The notes call this conversation sprawl: the entire history re-enters context on every turn, and compaction is a lossy mitigation that fires on token count rather than task boundaries, so the better habit is fresh sessions at natural task boundaries."
+    },
+    {
+      "question": "An agent notices it has handled a task type repeatedly and successfully, and extracts the pattern into a new SKILL.md file for future sessions. In the memory framework from the notes, what does this represent?",
+      "options": [
+        {"text": "Conversation memory being compacted into a summary", "correct": false},
+        {"text": "Episodic memory being turned into semantic memory by externalizing experience as a reusable artifact", "correct": true},
+        {"text": "Meta-context being converted into dynamic context", "correct": false},
+        {"text": "Retrieved semantic memory being promoted to always-on semantic memory", "correct": false}
+      ],
+      "explanation": "The notes describe self-authored skills as closing the loop between experience and knowledge: the agent generalizes from its own episodes and persists the pattern as semantic memory, though human review of the result is still advised."
+    },
+    {
+      "question": "Which research task would most clearly justify escalating from a single agent to an orchestrator-worker pattern, per the class's decision rule?",
+      "options": [
+        {"text": "An interactive exploration session brainstorming research directions", "correct": false},
+        {"text": "Drafting a methods section and checking it against journal guidelines", "correct": false},
+        {"text": "Processing 50 papers concurrently, since the work decomposes into genuinely independent sub-components that benefit from parallelism", "correct": true},
+        {"text": "Debugging a single solver script in one well-configured session", "correct": false}
+      ],
+      "explanation": "The notes say to default to a single agent and escalate to orchestrator-worker only for genuinely independent sub-components that benefit from parallel execution; the methods-section check is an evaluator-optimizer case, and the others are single-agent tasks."
+    }
+  ]
+}

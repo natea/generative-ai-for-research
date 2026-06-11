@@ -1,0 +1,95 @@
+﻿Assignment 1
+Building Your Research Knowledge Environment
+Due: Before Class 3
+Estimated time: 3–4 hours (beyond completing the self-study materials)
+________________
+
+
+Overview
+In this assignment, you will apply the concepts from Class 2—knowledge management, tool use, persistent context, and RAG—by building a personalized AI research assistant grounded in your own work. By the end, you'll have a functional tool that knows your research domain and can provide substantively different assistance than a generic chatbot.
+________________
+
+
+Part 1: Complete the Self-Study Path
+Before beginning the applied portions of this assignment, complete the self-study materials on neural networks and LLMs outlined in the Class 2 document:
+* Watch the 3Blue1Brown neural network series (videos 1–4 on neural networks, then 5–7 on LLMs and transformers)
+* Work through the gradient descent derivation from Nielsen's online book (write it out by hand)
+* Complete the DeepLearning.AI micro-course "How Transformer LLMs Work"
+Deliverable: A brief reflection (1 paragraph) on one concept from the self-study that you found surprising, confusing, or that changed how you think about what LLMs actually do.
+Part 2: Create a Research Project
+Choose one of the major AI platforms and create a persistent project space for your research:
+* Claude: Create a Project (requires Pro subscription or free trial)
+* ChatGPT: Create a Custom GPT or use the Projects feature (Plus subscription)
+* Gemini: Create a Gem (Pro subscription)
+Name your project something specific to your research area (e.g., "Turbulent Combustion Literature Assistant" or "Soft Robotics Gripper Design").
+Curate Your Knowledge Base
+Upload 5–10 documents that define your research context. These should include:
+1. One foundational document that frames your research (your dissertation proposal, a research statement, or a document you write specifically for this purpose explaining your research focus)
+2. Three to five key papers that are central to your work—papers you'd want any collaborator to have read
+3. One or two working documents from your own research (literature review notes, a methods description, preliminary results, or similar)
+Important considerations:
+* Respect copyright—use papers you have legitimate access to
+* Consider information density: a focused 10-page methods section may be more valuable than an entire 50-page thesis
+* Think about what context would help the AI understand your specific approach, not just the general field
+Write a System Prompt
+Craft instructions for your project that establish:
+* The role the AI should play (e.g., "You are a research collaborator helping me investigate...")
+* Your research context and goals
+* Any constraints or preferences (e.g., "Always cite specific papers from the knowledge base when making claims")
+* The level of technical depth appropriate for your work
+Part 3: Test and Compare
+The Comparison Test
+Ask the same substantive question twice:
+1. First, ask it in a new, generic chat outside your project (a fresh conversation with no uploaded documents)
+2. Then, ask the same question inside your research project
+Choose a question where your specific context should matter—something like:
+* "What are the main open questions in your subfield?"
+* "What methodological approaches should I consider for your specific problem?"
+* "How does a given concept relate to another concept in the context of your research area?"
+Deliverable: Document both responses (you can summarize if they're long). Write 2–3 paragraphs analyzing:
+* How did the responses differ?
+* What specific knowledge from your uploaded documents appeared in the project-based response?
+* Where did the project-based response still fall short? What additional context might help?
+The Tool Use Observation
+During your testing, pay attention to whether the AI uses any tools (web search, code execution, file reading). Note at least one instance where tool use occurred (or where it should have occurred but didn't).
+Deliverable: One paragraph describing what you observed about tool use and how it affected the response quality.
+Part 4: Iterate and Improve
+Based on your comparison test, improve your research project in at least one of these ways:
+* Add context: Upload additional documents that address gaps you identified
+* Refine instructions: Modify your system prompt to get better responses
+* Generate and reingest: Ask the project to produce something useful (a literature summary, a comparison of methods, an outline), then upload that output back into the knowledge base
+Deliverable: Describe what change you made and why. Then ask a follow-up question and note whether the response improved.
+Part 5: Reflection
+Write a short reflection (300–500 words) addressing:
+1. On context windows: You learned that models have finite context and that not all uploaded documents are "seen" for every query. Did you observe evidence of this limitation? How might you work around it?
+2. On RAG and retrieval: Based on how your project responded, what do you infer about how it's retrieving information from your documents? Did semantic similarity work as expected, or did you notice cases where relevant content wasn't retrieved?
+3. On research applications: How do you envision using a tool like this in your actual research workflow? What would need to improve for it to be genuinely useful rather than just a novelty?
+4. On the "illusion of understanding": The Messeri & Crockett paper we read for Class 1 warns about scientists believing they understand more than they do when using AI. Did building this project give you any insight into that risk? How might the grounding provided by RAG help—or not help—mitigate it?
+Submission
+Submit a single document (Google doc preferred) containing:
+1. Self-study reflection (1 paragraph)
+2. Screenshot or description of your project setup (name, list of uploaded documents, system prompt)
+3. Comparison test results and analysis (2–3 paragraphs)
+4. Tool use observation (1 paragraph)
+5. Iteration description and results (1–2 paragraphs)
+6. Final reflection (300–500 words)
+We have a shared Box folder for this course: please create a Google doc in there!
+
+
+Grading: Pass/Fail
+This assignment is graded pass/fail based on completion and genuine engagement. You pass if you submit all required components and demonstrate that you actually did the work (as opposed to going through the motions).
+Pass Criteria
+To receive a Pass, your submission must include:
+* Self-study reflection that references a specific concept from the materials (not a generic statement that could apply to any course)
+* Project setup with at least 5 documents uploaded and a system prompt that reflects your actual research area
+* Comparison test that asks a substantive research question (not "what is machine learning?") and includes both responses with analysis that identifies specific differences
+* Tool use observation that demonstrates you paid attention to what the AI actually did
+* Iteration that shows you changed something based on what you learned and tested whether it helped
+* Reflection that engages meaningfully with at least two of the four prompts (evidence: you reference your specific experience, not just abstract concepts)
+Automatic Fail
+You will receive a Fail if:
+* Any required component is missing
+* The project is clearly generic (e.g., documents unrelated to your research, system prompt copied from a template without customization)
+* The reflection contains no reference to your actual experience with the assignment
+Resubmission
+If you receive a Fail, you may resubmit once within one week for full credit.

@@ -1,0 +1,71 @@
+{
+  "id": "class-03",
+  "summary": "Survey the LLM landscape as of January 2026, from the frontier triad (GPT-5.2, Gemini 3 Pro, Claude Opus 4.5) to open models like Llama 4, Mistral Large 3, and DeepSeek V3.1. Then go deeper on the three architectural innovations powering the agentic era: reasoning models that deliberate before answering, library-scale context windows, and sparse Mixture-of-Experts efficiency. Along the way, untangle the contested meaning of 'open source AI' and what these shifts mean for your research workflow.",
+  "objectives": [
+    "Identify the major frontier and open models of early 2026 and their distinguishing capabilities",
+    "Distinguish OSI-compliant open source AI from 'open weights' releases and explain the open-washing controversy",
+    "Explain how reasoning models use trained chain-of-thought and inference-time compute to solve hard problems",
+    "Describe how massive context windows change when retrieval infrastructure like RAG is actually needed",
+    "Summarize how sparse Mixture-of-Experts architectures deliver frontier intelligence at lower cost"
+  ],
+  "keyTakeaways": [
+    "The AI industry has moved from the Chatbot Era into the Agentic Era, where models are differentiated by reasoning capability, contextual depth, and autonomous execution rather than fluency alone.",
+    "'Open weights' models like Llama 4 are free to download but carry restrictive licenses (such as the 700-million-user cap) that fall short of the OSI's Open Source AI Definition, a practice critics call open washing.",
+    "Reasoning models are trained with reinforcement learning to produce chains of thought, letting them plan, backtrack, and verify their work instead of answering reflexively token by token.",
+    "Inference-time compute is a new scaling axis: an already-trained model can spend variable computation per query, trading speed and cost for deeper deliberation on hard problems.",
+    "Context windows have grown to library scale (up to 10 million tokens in Llama 4 Scout), so mid-sized document collections can be loaded directly into context instead of requiring RAG, though raw size matters less than how precisely a model attends to it.",
+    "Sparse Mixture-of-Experts models activate only a fraction of their total parameters per token, which is how models like Mistral Large 3 and DeepSeek V3.1 offer frontier-class performance at a fraction of the cost."
+  ],
+  "quiz": [
+    {
+      "question": "Meta calls Llama 4 'open source,' but the OSI and much of the technical community disagree. What is the core reason Llama's license fails the Open Source Definition?",
+      "options": [
+        {"text": "The model weights are not actually downloadable without an API key", "correct": false},
+        {"text": "Meta charges a fee for any commercial use of the model", "correct": false},
+        {"text": "The license discriminates against specific groups, such as platforms with more than 700 million monthly active users", "correct": true},
+        {"text": "The model can only be run on Meta's own cloud infrastructure", "correct": false}
+      ],
+      "explanation": "The Llama Community License's 700-million-user clause violates the OSD's no-discrimination criteria, which is why such releases are more precisely called 'open weights' rather than open source."
+    },
+    {
+      "question": "Under the OSI's Open Source AI Definition (OSAID v1.0), what must a developer provide in place of the actual training data?",
+      "options": [
+        {"text": "A complete, detailed description of the data's source, processing, and how to find it", "correct": true},
+        {"text": "A downloadable copy of at least 50% of the training corpus", "correct": false},
+        {"text": "A third-party audit certifying the data was legally obtained", "correct": false},
+        {"text": "Nothing—OSAID only requires the code and the trained weights", "correct": false}
+      ],
+      "explanation": "Because sharing training data is often legally impossible due to copyright, OSAID requires 'data information' detailed enough that a skilled person could understand or potentially recreate the model—a compromise critics call a loophole."
+    },
+    {
+      "question": "A reasoning model correctly answers the trick question 'A farmer has 17 sheep. All but 9 run away. How many are left?' while a standard LLM answers 8. What capability explains the difference?",
+      "options": [
+        {"text": "The reasoning model has a larger context window, so it can see the whole question", "correct": false},
+        {"text": "The reasoning model was trained on more arithmetic examples", "correct": false},
+        {"text": "The reasoning model fact-checks its answer against a web search before responding", "correct": false},
+        {"text": "The reasoning model generates an internal deliberation that catches the linguistic trap instead of pattern-matching to a subtraction template", "correct": true}
+      ],
+      "explanation": "Standard LLMs operate in System 1 mode, where 'X sheep, Y run away' triggers a subtraction pattern; reasoning models produce a reasoning trace that re-reads the problem, verifies, and self-corrects before answering."
+    },
+    {
+      "question": "What does 'inference-time compute' add to the traditional 'scale up training' approach to improving AI capabilities?",
+      "options": [
+        {"text": "It lets developers retrain the model on new data after every user query", "correct": false},
+        {"text": "It lets an already-trained model spend variable amounts of computation per query, deliberating longer on harder problems", "correct": true},
+        {"text": "It compresses the model's parameters so inference runs faster on small devices", "correct": false},
+        {"text": "It distributes training across more GPUs to produce bigger models", "correct": false}
+      ],
+      "explanation": "The notes compare training-time compute to education and inference-time compute to time spent on a specific task: previously intractable problems become solvable by letting an existing model think longer, not by training a bigger one."
+    },
+    {
+      "question": "Mistral Large 3 has 675 billion total parameters but activates only about 41 billion per token. According to the notes, why does this Mixture-of-Experts design matter for researchers?",
+      "options": [
+        {"text": "It guarantees the model never makes factual errors, since each expert verifies the others", "correct": false},
+        {"text": "It increases the context window proportionally to the total parameter count", "correct": false},
+        {"text": "It delivers the knowledge capacity of a massive model at the inference cost of a much smaller one, even making local deployment feasible", "correct": true},
+        {"text": "It removes the need for reinforcement learning during training", "correct": false}
+      ],
+      "explanation": "Like a hospital routing patients to specialists, an MoE model engages only the relevant experts per token, which underlies DeepSeek's roughly 5-10% pricing and lets sparse open models run on high-end workstations instead of data centers."
+    }
+  ]
+}

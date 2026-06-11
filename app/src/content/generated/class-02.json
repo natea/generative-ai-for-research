@@ -1,0 +1,81 @@
+{
+  "id": "class-02",
+  "summary": "This lesson builds your mental model of how generative AI actually works, from neural networks and gradient descent up through the transformer architecture and the attention mechanism that gives LLMs contextual understanding. You'll then connect those foundations to the capabilities that matter for research: reasoning models and chain-of-thought, the context window as a hidden constraint, tool use, persistent project knowledge bases, and Retrieval Augmented Generation (RAG).",
+  "objectives": [
+    "Explain how a transformer generates text through tokenization, embeddings, attention, and softmax-based next-token prediction",
+    "Describe how a single head of attention refines word embeddings using queries, keys, and values",
+    "Distinguish reasoning models and their chain-of-thought traces from standard LLM responses",
+    "Recognize how context window limits shape research workflows and why context engineering matters",
+    "Describe how tool use and RAG extend what LLMs can do beyond pure text generation"
+  ],
+  "keyTakeaways": [
+    "A transformer generates text by repeatedly predicting a probability distribution over the next token, sampling from it, appending the result, and repeating.",
+    "The attention mechanism lets token embeddings exchange information so each word's meaning is refined by its context, and its extreme parallelizability on GPUs is what made scaling up models possible.",
+    "Reasoning models, trained with reinforcement learning to hone their chain of thought, trade more inference-time compute for better performance on multi-step problems like math and coding.",
+    "An LLM's knowledge of your conversation is limited to its context window, and information buried in the middle of a long context is used less reliably than content at the beginning or end.",
+    "Tool use never gives the model new abilities directly; it lets the model emit structured requests that external code parses, executes, and returns results for.",
+    "RAG works around context limits by retrieving only the document chunks semantically closest to your query, which grounds answers in your sources and substantially reduces hallucinations."
+  ],
+  "quiz": [
+    {
+      "question": "At the highest level, how does a GPT-style model generate a long passage of text?",
+      "options": [
+        {"text": "It retrieves the most similar passage from its training data and rewrites it", "correct": false},
+        {"text": "It predicts a probability distribution over the next token, samples from it, appends the result, and repeats", "correct": true},
+        {"text": "It plans the full passage internally, then translates that plan into words in one pass", "correct": false},
+        {"text": "It generates several complete drafts and asks a separate model to pick the best one", "correct": false}
+      ],
+      "explanation": "The notes describe text generation as prediction and sampling: the model predicts the next chunk of text as a probability distribution, samples from it, appends it, and repeats to build longer passages."
+    },
+    {
+      "question": "In a single head of attention, what role do the query and key vectors play?",
+      "options": [
+        {"text": "Queries ask which other words are relevant, and keys potentially answer; their dot products measure relevance between word pairs", "correct": true},
+        {"text": "Queries store the word's original meaning, while keys store its position in the sentence", "correct": false},
+        {"text": "Queries are computed during training, while keys are computed at inference time", "correct": false},
+        {"text": "Queries map embeddings to the vocabulary, while keys normalize scores into probabilities", "correct": false}
+      ],
+      "explanation": "Per the notes, each word's query asks what other words are relevant to it, keys are thought of as answering those queries, and the dot product between each query-key pair measures their alignment, forming the attention pattern after softmax."
+    },
+    {
+      "question": "What makes a reasoning model like OpenAI's o1 different from a standard LLM?",
+      "options": [
+        {"text": "It has a much larger context window, so it can read entire books at once", "correct": false},
+        {"text": "It is trained only on math and coding data, making it a specialist model", "correct": false},
+        {"text": "It skips the sampling step and outputs the single most probable answer directly", "correct": false},
+        {"text": "It applies multiple intermediate steps via a learned chain of thought, using more inference-time compute to achieve better results", "correct": true}
+      ],
+      "explanation": "The notes define reasoning models as LLMs engineered to apply multiple steps to complex tasks, trained with reinforcement learning to hone their chain of thought, which requires considerably more inference-time computation."
+    },
+    {
+      "question": "Your 50 research papers technically fit within a model's context window, but it keeps missing details from papers placed in the middle of your prompt. Which phenomenon best explains this?",
+      "options": [
+        {"text": "Temperature: a high softmax temperature flattens the model's attention over the middle of the context", "correct": false},
+        {"text": "Lost in the middle: information at the start and end of a long context is retrieved more reliably than information buried in the middle", "correct": true},
+        {"text": "Chunking: the model splits long prompts into chunks and discards the middle ones", "correct": false},
+        {"text": "Masking: the attention mask zeroes out tokens in the center of the context window", "correct": false}
+      ],
+      "explanation": "The notes cite empirical studies showing that content at the very beginning and end of a long context is used more reliably than content buried in the middle, a phenomenon called 'lost in the middle.'"
+    },
+    {
+      "question": "When an LLM 'uses a tool' like an arXiv search, what is actually happening?",
+      "options": [
+        {"text": "The model emits a structured request (like JSON), and external application code executes the action and returns results to the context", "correct": true},
+        {"text": "The model temporarily gains direct network access to query the database itself", "correct": false},
+        {"text": "The provider retrains the model on the database contents so it can answer from memory", "correct": false},
+        {"text": "A second, specialized LLM performs the search and merges its answer with the first model's", "correct": false}
+      ],
+      "explanation": "The notes emphasize that the LLM never gains the ability to search or run code itself; it learns to ask for actions in a structured format that external systems parse and execute, with results inserted back into the context."
+    },
+    {
+      "question": "How does RAG let you work with a document collection far larger than the model's context window?",
+      "options": [
+        {"text": "It compresses every document into a summary short enough to fit in each prompt", "correct": false},
+        {"text": "It fine-tunes the model on your documents so they no longer need to appear in context", "correct": false},
+        {"text": "It embeds document chunks in a vector database and injects only the chunks most semantically similar to your query", "correct": true},
+        {"text": "It streams the documents through the model one at a time across multiple conversations", "correct": false}
+      ],
+      "explanation": "As the notes explain, RAG chunks your documents, converts chunks to embeddings stored in a vector database, and at query time retrieves only the most similar passages (typically the top 5-20) to inject into the context before generation."
+    }
+  ]
+}

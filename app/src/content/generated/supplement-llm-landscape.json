@@ -1,0 +1,60 @@
+{
+  "id": "supplement-llm-landscape",
+  "summary": "A six-week update to the course's January LLM landscape snapshot, covering the frontier releases from late January through early March 2026: GPT-5.4, Claude Sonnet 4.6, Gemini 3.1 Pro, Grok 4.20, and the open-weights surge led by GLM-5, DeepSeek V3.2, and Qwen3.5. Beyond the model-by-model delta, it draws out what these changes mean for science and engineering researchers: reasoning modes built for scientific problems, session-scale long context, agentic tool-integrated workflows, and infrastructure as a first-class research constraint.",
+  "objectives": [
+    "Identify the major model releases and upgrades from each frontier lab (OpenAI, Anthropic, Google, xAI) between late January and early March 2026",
+    "Compare the leading open-weights models (GLM-5, DeepSeek V3.2, Qwen3.5) with proprietary frontier models on reasoning, coding, and agentic tasks",
+    "Explain how long-context windows and tool-integrated reasoning are reshaping research workflows from single prompts to project-scale, agentic pipelines",
+    "Recognize why evaluation methods and inference infrastructure are becoming as important as model choice when designing LLM-based research"
+  ],
+  "keyTakeaways": [
+    "GPT-5.4 replaced GPT-5.2 as OpenAI's frontier model, with GPT-5.3 Instant as the fast conversational tier and 5.2 Thinking moved to Legacy with a June 2026 retirement date.",
+    "Claude Sonnet 4.6 compresses the gap with Opus 4.5 on coding and agent tasks, while Anthropic also published a new constitution, revised its Responsible Scaling Policy, and faced a U.S. federal phase-out order.",
+    "Open-weights models are catching up on rigorous reasoning: GLM-5 (744B parameters, 40B active, trained on non-NVIDIA hardware) debuted at #1 on a February open-source leaderboard, displacing Kimi K2.5.",
+    "Long context of 200K+ tokens is now normal, shifting workloads from short prompts to session-scale reasoning where an entire project can live in one evolving conversation.",
+    "Models are increasingly trained and evaluated as agents on tool-integrated, multi-step tasks rather than single-shot answers, with verifiable rewards and LLM-as-judge metrics like LACERScore driving development.",
+    "The bottleneck is moving from model capability to infrastructure and interaction design: KV caching, routing, context engineering, and monitoring now shape what research is actually possible."
+  ],
+  "quiz": [
+    {
+      "question": "After the March 5, 2026 OpenAI release, what happened to GPT-5.2 Thinking?",
+      "options": [
+        {"text": "It was rebranded as GPT-5.3 Instant for Enterprise customers", "correct": false},
+        {"text": "It was moved to Legacy and scheduled for retirement in June 2026", "correct": true},
+        {"text": "It was open-sourced for the research community", "correct": false},
+        {"text": "It remained the default model in the picker alongside GPT-5.4", "correct": false}
+      ],
+      "explanation": "GPT-5.4 replaced GPT-5.2 Thinking in the default picker; 5.2 Thinking was moved to Legacy and scheduled for retirement on June 5, 2026. GPT-5.3 Instant is a separate new fast conversational tier."
+    },
+    {
+      "question": "Why does the supplement say researchers should now treat open vs closed models as an experimental variable rather than just a cost decision?",
+      "options": [
+        {"text": "Open models like GLM-5 now trail only frontier proprietary models on many academic benchmarks, making them serious options for top-tier reasoning", "correct": true},
+        {"text": "Proprietary models can no longer be accessed by academic labs after the federal phase-out order", "correct": false},
+        {"text": "Open models are always cheaper to run, which matters most for replication studies", "correct": false},
+        {"text": "Closed models no longer support the long context windows needed for research", "correct": false}
+      ],
+      "explanation": "The notes argue that open-weights models like GLM-5 are catching up on rigorous reasoning, so reproducible research, replication studies, and ablations can and should include open lines (GLM-5, DeepSeek, Qwen) alongside proprietary baselines."
+    },
+    {
+      "question": "Which of these is a distinctive feature of xAI's Grok 4.20 (Beta) described in the notes?",
+      "options": [
+        {"text": "A SigLIP vision encoder optimized for edge devices", "correct": false},
+        {"text": "An upfront 'thinking plan' that users can adjust mid-response", "correct": false},
+        {"text": "DeepSeek Sparse Attention for efficient long-context reasoning", "correct": false},
+        {"text": "A '4 Agents' system where four specialized agents think in parallel and discuss solutions", "correct": true}
+      ],
+      "explanation": "Grok 4.20's core innovation is its '4 Agents' multi-agent collaboration system aimed at complex problem-solving and reduced hallucination. The adjustable thinking plan belongs to GPT-5.4, and DeepSeek Sparse Attention is used by GLM-5."
+    },
+    {
+      "question": "According to the supplement, as model capability grows, where is the bottleneck for long-context, agentic scientific workflows moving?",
+      "options": [
+        {"text": "To the size of training datasets, since models have exhausted available scientific text", "correct": false},
+        {"text": "To multilingual coverage, since most models support too few languages for global research", "correct": false},
+        {"text": "To infrastructure and interaction design, such as chunking experiments, managing memory, and monitoring long-horizon sessions", "correct": true},
+        {"text": "To raw parameter counts, since only trillion-parameter models can handle research tasks", "correct": false}
+      ],
+      "explanation": "The notes state that with 200K+ token contexts becoming normal, the bottleneck is moving from model capability to infrastructure and interaction design, and that researchers must budget for systems work like data pipelines, memory management, and monitoring."
+    }
+  ]
+}

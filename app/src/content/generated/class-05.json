@@ -1,0 +1,71 @@
+{
+  "id": "class-05",
+  "summary": "A hands-on session showing that you can build custom automations to accelerate your research workflows without being an experienced software developer. Using the GitHub Student Developer Pack and Copilot, you fork the 'tocify' repository — an automated weekly journal digest powered by RSS feeds, OpenAI's API, and GitHub Actions — and learn to customize it safely with GitHub Secrets. The class closes by using Claude Code to translate the entire workflow into an interactive Jupyter notebook you can run in Google Colab.",
+  "objectives": [
+    "Activate GitHub Copilot through the GitHub Student Developer Pack and use it to explain an unfamiliar repository",
+    "Fork and customize the tocify repository to generate a personalized weekly literature digest",
+    "Configure GitHub Secrets to store API keys securely instead of hard-coding them in a repository",
+    "Enable and manually trigger a GitHub Actions workflow in a forked repository",
+    "Use an AI coding assistant to translate a GitHub Actions workflow into an interactive Jupyter notebook"
+  ],
+  "keyTakeaways": [
+    "You can build custom automations for research tasks without being an experienced software developer, avoiding subscription fees for specialized AI products.",
+    "GitHub Copilot acts as an AI pair-programmer that suggests code in real time and can chat with you to explain an entire repository in natural language.",
+    "The tocify system fetches papers from journal RSS feeds, uses OpenAI to score them against your research interests, and commits a ranked Markdown digest back to the repository weekly.",
+    "GitHub Secrets store sensitive values like API keys as encrypted environment variables that are injected only at runtime and redacted from logs, so credentials never appear in your code.",
+    "Forked repositories have workflows disabled by default for security, so you must enable them in the Actions tab and can trigger the digest manually with the 'Run workflow' button.",
+    "Getting useful digest results is iterative: refine your feeds, interests, and prompts until the recommendations match your field."
+  ],
+  "quiz": [
+    {
+      "question": "A researcher forks tocify and wants the workflow to call OpenAI without exposing their API key. According to the notes, what is the right approach?",
+      "options": [
+        {"text": "Add OPENAI_API_KEY as a GitHub Secret, which is encrypted and only injected at runtime", "correct": true},
+        {"text": "Paste the key into prompts.txt, since that file is only read by the workflow", "correct": false},
+        {"text": "Commit the key in a .env file, because .gitignore will hide it from other users", "correct": false},
+        {"text": "Hard-code the key in digest.py and delete it after the first successful run", "correct": false}
+      ],
+      "explanation": "GitHub Secrets are encrypted environment variables that GitHub decrypts and injects only when a workflow runs, with values hidden in the UI and redacted from logs. The notes stress never committing secrets to code."
+    },
+    {
+      "question": "After forking tocify, adding the secret, and editing the feeds, interests, and prompts files, the weekly digest still never runs. What is the most likely cause described in the notes?",
+      "options": [
+        {"text": "The fork is missing the digest.md file that triggers the schedule", "correct": false},
+        {"text": "GitHub Pro has not yet been activated on the account", "correct": false},
+        {"text": "Workflows are disabled by default on forked repositories for security reasons and must be enabled in the Actions tab", "correct": true},
+        {"text": "A spending limit on the OpenAI account blocks GitHub Actions from starting", "correct": false}
+      ],
+      "explanation": "The notes explain that forked repositories do not have workflows enabled by default for security reasons; you must enable them, then you can trigger 'Weekly ToC Digest' manually with the 'Run workflow' button."
+    },
+    {
+      "question": "Which sequence best describes what the tocify automation does on each weekly run?",
+      "options": [
+        {"text": "Searches Google Scholar, downloads PDFs, and emails summaries to subscribers", "correct": false},
+        {"text": "Fetches new papers from journal RSS feeds, uses OpenAI to evaluate matches to your interests, generates a ranked annotated Markdown digest, and commits it back to the repository", "correct": true},
+        {"text": "Scans your private repositories for citations and opens issues for papers you should read", "correct": false},
+        {"text": "Crawls journal websites with Copilot and posts recommendations to LinkedIn", "correct": false}
+      ],
+      "explanation": "Per the notes, tocify fetches papers from RSS feeds, uses OpenAI to evaluate which ones match your research interests, generates a ranked annotated digest in Markdown, and commits the result back to the repository weekly."
+    },
+    {
+      "question": "In the class workflow, what role does GitHub Copilot's chat interface play when you first open the tocify repository?",
+      "options": [
+        {"text": "It automatically forks the repository and configures the secrets for you", "correct": false},
+        {"text": "It runs the weekly digest workflow directly from the chat window", "correct": false},
+        {"text": "It converts digest.py into a Jupyter notebook with one click", "correct": false},
+        {"text": "It analyzes the repository and gives you a thorough briefing of what each component does, revealing the steps needed to use the automation", "correct": true}
+      ],
+      "explanation": "The notes show asking Copilot for 'a thorough explanation of what is in this repository'; its briefing reveals the setup steps, like editing feeds.txt, interests.md, and prompts.txt and adding the API key secret. The notebook conversion is done later with Claude Code, not Copilot."
+    },
+    {
+      "question": "What advantage does the Jupyter notebook version (digest_interactive.ipynb) offer over the original GitHub Actions workflow?",
+      "options": [
+        {"text": "It removes the need for an OpenAI API key by running models locally", "correct": false},
+        {"text": "It lets you run the workflow interactively, with progress bars, rich color-coded score displays, and a score distribution to help calibrate thresholds", "correct": true},
+        {"text": "It commits results back to GitHub more frequently than once per week", "correct": false},
+        {"text": "It skips the prefiltering step so that every fetched paper is scored by OpenAI", "correct": false}
+      ],
+      "explanation": "The notebook runs the digest interactively in 15 organized sections, showing progress as it fetches RSS feeds, displaying results with color-coded scores, and including a text-based score histogram for calibrating thresholds. It still prompts for your OpenAI API key and includes keyword prefiltering to reduce API costs."
+    }
+  ]
+}

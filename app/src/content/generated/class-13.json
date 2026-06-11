@@ -1,0 +1,71 @@
+{
+  "id": "class-13",
+  "summary": "This closing class walks through a complete, hands-on case study of the LLM-wiki pattern: collecting raw sources, writing a schema, and letting Claude Code build a persistent, interlinked Markdown knowledge base in Obsidian. Along the way it contrasts the pattern with RAG, examines Advait Sarkar's research on how AI affects creativity, critical thinking, memory, and metacognition, and translates his three design principles into concrete habits a working researcher can practice today.",
+  "objectives": [
+    "Explain the limitations of RAG-based document workflows and how the LLM-wiki pattern addresses them",
+    "Describe the three layers of an LLM-wiki (raw sources, wiki, schema) and the role each plays",
+    "Summarize the empirical evidence on how AI assistance affects creativity, critical thinking, memory, and metacognition",
+    "Translate Sarkar's three design principles into personal research disciplines for working with AI tools",
+    "Apply concrete practices, such as a prompt journal and AI-free reading, to guard against the illusions of understanding"
+  ],
+  "keyTakeaways": [
+    "RAG-based workflows have no memory, restart from scratch with every query, and lack the persistent interlinked structure needed to connect ideas across documents.",
+    "The LLM-wiki pattern works through three layers: an immutable folder of raw sources, an agent-maintained directory of interlinked Markdown wiki pages, and a CLAUDE.md schema that acts as the rulebook for synthesis.",
+    "Research evidence shows AI assistance can narrow group idea diversity (mechanised convergence), reduce self-reported critical thinking effort, and weaken memory retention compared to unassisted work.",
+    "Sarkar's three design principles for AI tools, preserve material engagement, offer productive resistance, and scaffold metacognition, can be translated from a designer's checklist into a researcher's daily practice.",
+    "The wiki is a navigation layer over your sources, not a replacement for reading them; if you answer questions about papers you never opened, you have collapsed back into the assistant pattern.",
+    "Sarkar's three principles, practiced as habits, are precisely the guards against Messeri and Crockett's three illusions of understanding: explanatory depth, objectivity, and exploratory breadth."
+  ],
+  "quiz": [
+    {
+      "question": "According to the notes, what core limitation of RAG-based workflows motivated Karpathy's LLM-wiki idea?",
+      "options": [
+        { "text": "RAG cannot handle documents longer than the model's context window", "correct": false },
+        { "text": "RAG retrieves chunks per query but never saves or accumulates knowledge, so every question starts from scratch", "correct": true },
+        { "text": "RAG requires expensive vector databases that most researchers cannot afford", "correct": false },
+        { "text": "RAG only works with PDF files and cannot ingest video transcripts or web pages", "correct": false }
+      ],
+      "explanation": "The notes identify RAG's lack of memory as the key problem: the AI searches for relevant chunks to answer each query but does not save, build upon, or interlink that knowledge, preventing compounding over time."
+    },
+    {
+      "question": "In the three-layer structure of an LLM-wiki, what is the defining rule for the raw sources folder?",
+      "options": [
+        { "text": "The agent rewrites the raw sources to fix errors and inconsistencies as it finds them", "correct": false },
+        { "text": "The raw sources are deleted once their content has been synthesized into wiki pages", "correct": false },
+        { "text": "The raw sources hold the schema instructions that tell the agent how to organize pages", "correct": false },
+        { "text": "The agent reads the raw sources but never modifies them; they serve as the immutable ground truth", "correct": true }
+      ],
+      "explanation": "The notes describe the raw sources as an immutable folder the agent reads but never modifies, your ground truth, while the wiki is the directory the agent owns and the schema (CLAUDE.md) is the rulebook."
+    },
+    {
+      "question": "What did Meincke et al. (2025) find about teams brainstorming with ChatGPT, illustrating 'mechanised convergence'?",
+      "options": [
+        { "text": "Groups using AI collectively produced a narrower range of ideas, even though AI may boost individual creativity", "correct": true },
+        { "text": "Teams using ChatGPT produced more ideas but took significantly longer to reach consensus", "correct": false },
+        { "text": "AI-assisted teams produced more diverse ideas but reported lower confidence in them", "correct": false },
+        { "text": "ChatGPT improved idea quality only when teams disclosed they were using AI", "correct": false }
+      ],
+      "explanation": "The Nature Human Behaviour study found ChatGPT-assisted brainstorming reduced idea diversity in 37 of 45 statistical comparisons; nine separate participants even independently named a toy 'Build-a-Breeze Castle.'"
+    },
+    {
+      "question": "How do the notes translate Sarkar's principle of 'productive resistance' into a researcher's own practice?",
+      "options": [
+        { "text": "Configure the model with a lower temperature so its outputs are more conservative", "correct": false },
+        { "text": "Wait for AI companies to ship interfaces that include built-in provocations", "correct": false },
+        { "text": "Supply the pushback yourself: ask the model to find its weakest claim, argue the opposing position, or flag statements resting on a single source", "correct": true },
+        { "text": "Avoid multi-turn threads so the model cannot become agreeable over time", "correct": false }
+      ],
+      "explanation": "Because chatbots are trained to be helpful and agreeable, the notes say the researcher must supply the resistance, treating every output as a draft to argue with rather than an answer to accept."
+    },
+    {
+      "question": "How do Sarkar's three principles map onto the Messeri and Crockett illusions of understanding discussed in Class 1?",
+      "options": [
+        { "text": "All three principles target the illusion of objectivity, since that is the most dangerous one for researchers", "correct": false },
+        { "text": "Material engagement guards against the illusion of explanatory depth, productive resistance against the illusion of objectivity, and metacognitive scaffolding against the illusion of exploratory breadth", "correct": true },
+        { "text": "The principles address tool design only and have no relationship to the illusions of understanding", "correct": false },
+        { "text": "Material engagement guards against the illusion of exploratory breadth, while productive resistance guards against explanatory depth", "correct": false }
+      ],
+      "explanation": "The notes close the loop: careful engagement with sources prevents false depth, pushing back on a tool reveals its standpoint, and stating goals and documenting judgments exposes the hypotheses you did not test."
+    }
+  ]
+}

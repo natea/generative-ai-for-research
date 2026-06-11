@@ -1,0 +1,131 @@
+{
+  "id": "class-04",
+  "summary": "Explore how AI has transformed literature review, from semantic discovery platforms like Elicit, ResearchRabbit, Consensus, and Paperguide to general-purpose deep research agents from OpenAI, Google, Anthropic, and Perplexity. You'll learn a practical discovery-to-engagement pipeline that combines both approaches, use NotebookLM and Claude Projects for prioritization, and get a conceptual preview of what makes an AI system an agent, including the ReAct pattern and tool use.",
+  "objectives": [
+    "Compare the main AI-enhanced literature review platforms (Elicit, ResearchRabbit, Consensus, Paperguide, Semantic Scholar) by their features, strengths, and limitations",
+    "Decide when to use a specialized literature tool versus a general-purpose deep research agent based on the stage and type of research question",
+    "Apply a hybrid discovery workflow that moves from agentic orientation through systematic expansion to gap identification",
+    "Use NotebookLM and persistent-context tools like Claude Projects to categorize and prioritize papers after discovery",
+    "Explain what makes an AI system an agent, including the ReAct (Reasoning + Acting) pattern and how tool calls work mechanically"
+  ],
+  "keyTakeaways": [
+    "AI has shifted from a peripheral drafting aid to a core component of research, with regular AI use among researchers jumping from 37% in 2024 to 58% in 2025 according to Elsevier's survey.",
+    "Semantic discovery platforms use high-dimensional vector embeddings to match the conceptual intent of a query, retrieving relevant literature even when terminology varies across disciplines.",
+    "Most specialized literature tools share a key coverage limitation: they draw heavily on Semantic Scholar, which cannot search licensed or paywalled full text.",
+    "Deep research agents are best for orientation and exploratory landscape mapping, not systematic reviews, because they do not guarantee comprehensive coverage and cannot access your institution's paywalled subscriptions.",
+    "NotebookLM works best as a screening and organization tool after discovery, since it grounds all answers exclusively in the sources you upload and knows nothing about papers you haven't added.",
+    "An agent differs from a tool because it autonomously perceives, reasons, acts, and iterates toward a goal, typically by alternating Thought, Action, and Observation steps in the ReAct pattern."
+  ],
+  "quiz": [
+    {
+      "question": "You're starting research in a completely new area and need to understand the landscape, key terms, and major research groups before you even know what to search for. According to the notes, what should be your first move?",
+      "options": [
+        {
+          "text": "Run a systematic search in Elicit and extract structured variables from the top papers",
+          "correct": false
+        },
+        {
+          "text": "Use a deep research agent for orientation, then verify and expand its findings with specialized tools",
+          "correct": true
+        },
+        {
+          "text": "Upload everything you can find to NotebookLM and ask it to discover the field for you",
+          "correct": false
+        },
+        {
+          "text": "Build a citation map in ResearchRabbit starting from a randomly chosen seed paper",
+          "correct": false
+        }
+      ],
+      "explanation": "The recommended workflow starts with a deep research agent for orientation—mapping the landscape, surfacing key terms and groups—followed by systematic expansion via specialized tools like ResearchRabbit, Elicit, and Consensus."
+    },
+    {
+      "question": "Why do the notes describe the Consensus Meter as 'methodologically weak' despite its visual appeal?",
+      "options": [
+        {
+          "text": "It reduces heterogeneous evidence to a simple yes/no/possibly tally, encouraging vote-counting instead of weighing study quality, effect sizes, and bias",
+          "correct": true
+        },
+        {
+          "text": "It only works on papers published before 2020, missing recent evidence",
+          "correct": false
+        },
+        {
+          "text": "It relies on citation counts alone, ignoring the actual content of studies",
+          "correct": false
+        },
+        {
+          "text": "It requires users to manually classify each study as yes or no before aggregating",
+          "correct": false
+        }
+      ],
+      "explanation": "The notes warn that the Consensus Meter reduces complex, heterogeneous evidence into a tally of yes/no/mixed/possibly studies, which encourages problematic vote-counting rather than rigorous evidence synthesis that considers study quality, effect sizes, and bias."
+    },
+    {
+      "question": "A classmate plans to use OpenAI Deep Research to produce the definitive literature review chapter for their dissertation. Based on the notes' 'critical caveat,' what's the problem with this plan?",
+      "options": [
+        {
+          "text": "Deep research agents can only process one paper at a time, making reviews too slow",
+          "correct": false
+        },
+        {
+          "text": "Deep research agents refuse to cite academic sources and only use blog posts",
+          "correct": false
+        },
+        {
+          "text": "Deep research agents are not systematic: they don't guarantee comprehensive coverage, can't search behind institutional paywalls, and prioritize sources in ways that may not match your needs",
+          "correct": true
+        },
+        {
+          "text": "Deep research agents are only licensed for commercial, not academic, use",
+          "correct": false
+        }
+      ],
+      "explanation": "The notes explicitly caution that deep research agents should be used for discovery and orientation, not for a definitive literature review, because they are not systematic, miss paywalled content, and make prioritization choices that may not align with the researcher's needs."
+    },
+    {
+      "question": "In the ReAct pattern, an agent's first search for 'transformer neural network computational fluid dynamics' returns mostly weather-focused papers, so it tries different terms targeting industrial applications. Which capability of agents does this illustrate?",
+      "options": [
+        {
+          "text": "The agent's ability to execute a fixed script of pre-defined steps faster than a human",
+          "correct": false
+        },
+        {
+          "text": "The agent's direct access to the underlying database, letting it bypass search entirely",
+          "correct": false
+        },
+        {
+          "text": "The agent's use of a larger context window to read every paper in the corpus at once",
+          "correct": false
+        },
+        {
+          "text": "The observation-reflection loop, where the agent evaluates intermediate results and adjusts its approach",
+          "correct": true
+        }
+      ],
+      "explanation": "The notes highlight that after each action, the agent examines the result and reflects on whether it moves closer to the goal—this adaptive observation-reflection loop is what distinguishes an agent from a fixed script."
+    },
+    {
+      "question": "How does an agent actually execute an action like searching a database, according to the notes?",
+      "options": [
+        {
+          "text": "The LLM connects directly to the database and runs the query itself",
+          "correct": false
+        },
+        {
+          "text": "The LLM generates structured output (typically JSON) specifying the tool and parameters, which the hosting application code parses and executes, returning results as an observation",
+          "correct": true
+        },
+        {
+          "text": "The user manually approves and runs each search the agent suggests, then pastes results back in",
+          "correct": false
+        },
+        {
+          "text": "The agent retrieves answers from its training data, so no external execution is needed",
+          "correct": false
+        }
+      ],
+      "explanation": "The notes explain that the LLM never 'sees' the database directly: it emits a structured JSON tool call that the agent framework intercepts and executes, and the results come back as text the LLM can reason about in its next step."
+    }
+  ]
+}

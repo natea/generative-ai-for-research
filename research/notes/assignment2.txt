@@ -1,0 +1,182 @@
+﻿Assignment 2
+From Discovery to Prioritized Reading Lists
+Due: Before Class 5
+Estimated time: 4–5 hours
+________________
+
+
+Overview
+In this assignment, you will apply the concepts from Classes 2 to 4—AI-powered literature discovery, semantic search tools, deep research agents, and knowledge management—by conducting a literature review workflow in your own research area. By the end, you'll have a prioritized reading list, experience with multiple discovery tools, and insight into how AI can accelerate (and sometimes limit) the literature review process.
+This assignment builds directly on Assignment 1. You will use the research project you created previously as a foundation for organizing and synthesizing the literature you discover.
+________________
+
+
+Part 1: Deep Research Discovery
+Begin with a deep research agent to map the landscape of your chosen topic. This provides orientation before systematic searching.
+Choose a focused research question related to your research or dissertation work. The question should be specific enough to yield targeted results but broad enough to surface multiple relevant papers. Good examples:
+* "What physics-informed neural network architectures have been applied to turbulent flow modeling?"
+* "How have reinforcement learning methods been used for robotic manipulation in unstructured environments?"
+* "What computational approaches exist for predicting material fatigue in additively manufactured parts?"
+Run a deep research query using one of the major providers (OpenAI Deep Research, Gemini Deep Research, Claude's research mode, or Perplexity Deep Research). Your prompt should request:
+1. An overview of the main approaches or methodologies in the area
+2. Key research groups or authors working on the problem
+3. Current limitations and open challenges
+4. Seminal or highly-cited papers to follow up on
+Outcome:  (No need to submit this.) Save the complete deep research report and extract a list of at least 10 papers cited in the report that appear most relevant to your question. Note the DOIs or titles for use in subsequent steps.
+
+
+Part 2: Systematic Expansion with Specialized Tools
+Now expand your initial corpus using at least two of the specialized literature tools covered in Class 4. This step ensures you're not relying solely on deep research, which is not systematic.
+Tool A: Citation Mapping (ResearchRabbit)
+1. Create a ResearchRabbit account if you don't have one (free tier is sufficient)
+2. Add 3-5 of the most promising papers from your deep research results as "seed" papers
+3. Explore the "Similar Work," "References," and "Citations" views
+4. Use the visualization features to understand the citation network
+5. Identify 10-15 additional papers that appear in multiple networks or seem highly connected
+Tool B: Structured Extraction (Elicit or Consensus)
+6. Use your research question (or a refined version) as a query
+7. Examine how the tool presents and organizes results
+8. For Elicit: explore the structured extraction features (methods, findings, limitations)
+9. For Consensus: examine the Consensus Meter if your question can be framed as yes/no
+10. Add any new relevant papers to your growing list
+Deliverable: Document your experience with each tool. For each tool, note: (a) what you searched, (b) how many results you reviewed, (c) how many papers you added to your list, and (d) one strength and one limitation you observed.
+Part 3: Compile and Organize
+Consolidate your findings into a manageable corpus for analysis.
+1. Gather your papers: Compile a list of approximately 20-30 unique papers from Parts 1 and 2. Remove duplicates.
+2. Collect abstracts: Gather the abstracts for all papers. You can export these from your tools or copy them from the paper sources. Create a single document containing all abstracts with clear labels (author, year, title).
+3. Obtain full texts where possible: Download PDFs for papers that are freely available or accessible through your institution. Note which papers you could not access.
+4. Add to reference manager: Import your papers into Zotero[1] or another reference manager. Create a collection specifically for this assignment.
+Outcome: A list of your ~20-30 papers with full citations, organized in your reference manager. Note how many full-text PDFs you were able to obtain.
+Optional: Set Up Zotero with GW Unlimited Storage
+If you haven't already, take advantage of GW's unlimited Zotero cloud storage for your literature management:
+1. Go to zotero.org and create an account (or log into your existing account)
+2. Add your GW email address to your account under Settings → Account
+3. Once your GW email is verified, you'll automatically receive unlimited personal and group cloud storage—no additional registration required
+4. Install the Zotero Connector browser extension to easily save papers as you discover them
+5. Create a collection called "MAE6291-Assignment2" (or similar) for this assignment's papers
+This setup will allow you to:
+* Sync your library across devices
+* Share collections with collaborators or your research group
+* Store PDFs directly in the cloud without worrying about storage limits
+* Access your papers from anywhere
+Pro Tip: As you work through Parts 1 and 2, use the Zotero Connector to save papers directly from Semantic Scholar, Google Scholar, or publisher pages. This is faster than manually entering citations later.
+Part 4: AI-Assisted Prioritization
+Use NotebookLM or your Claude/ChatGPT/Gemini project from Assignment 1 to help categorize and prioritize your papers.
+Option A: Using NotebookLM
+1. Create a new notebook
+2. Upload your abstracts document and any full-text PDFs you obtained
+3. Ask categorization questions such as:
+   * "Group these papers by methodology"
+   * "Which papers focus on [specific aspect of your question]?"
+   * "Identify papers that address both [concept A] and [concept B]"
+4. Ask prioritization questions such as:
+   * "Based on these abstracts, which 5 papers seem most foundational to understanding this field?"
+   * "Which papers appear to present novel methodologies versus applications of existing methods?"
+   * "Which papers most directly address [your specific research question]?"
+Option B: Using Your Research Project (Claude/ChatGPT/Gemini)
+5. Open the project you created in Assignment 1
+6. Upload your abstracts document and key PDFs
+7. Ask similar categorization and prioritization questions
+8. Ask comparative questions that leverage your existing project context:
+   * "How do these new papers relate to the papers already in my project?"
+   * "Which of these papers would fill gaps in my current knowledge base?"
+Deliverable: Document the questions you asked and the AI's responses. Include at least one categorization and one prioritization question with their results.
+
+
+Part 5: Create Your Reading Plan
+Based on your AI-assisted prioritization, create a structured reading plan.
+Tier 1 - To Read Thoroughly (3–5 papers): These are papers to read completely, taking detailed notes. They should be foundational works, methodologically important, or directly relevant to your research question.
+Tier 2 - To Read for Methods and Key Findings (5–10 papers): These papers warrant focused reading of the methods section, results, and conclusions, but you may skim background sections.
+Tier 3 - To Skim or Set Aside (remaining papers): These papers may be useful for context or as references but don't require immediate deep engagement. Note why each is deprioritized.
+Deliverable: A reading plan table (use Google sheets) with columns for: Paper (author, year), Tier (1/2/3), Rationale (why this tier?), and Status (to be updated as you read).
+Sample Reading Plan Format:
+Paper
+	Tier
+	Rationale
+	Status
+	Smith et al., 2024
+	1
+	Seminal methodology paper; cited by 80% of others
+	Not started
+	Jones & Lee, 2023
+	2
+	Applies method to related domain; useful comparison
+	Not started
+	──────────────────────────────────────────────────────────────────────
+Part 6: Reflection
+Write a reflection (400-600 words) addressing the following questions:
+1. On discovery tools: How did the results from deep research compare to the specialized tools (ResearchRabbit, Elicit/Consensus)? Did they surface different papers? Which approach felt more comprehensive, and which felt more targeted?
+2. On coverage and gaps: Were there papers you expected to find but didn't? Conversely, did any tool surface surprisingly relevant papers you wouldn't have found through traditional searching? What might explain these gaps or discoveries?
+3. On AI-assisted prioritization: How useful was the AI's categorization and prioritization? Did you agree with its assessments? Where did you override its suggestions, and why?
+4. On the "illusion of understanding": Recall the Messeri & Crockett paper from Class 1, which warns about scientists believing they understand more than they do when using AI. Did this workflow give you a genuine understanding of the literature landscape, or did it create an illusion of completeness? What steps would you take to verify that your literature search is actually comprehensive?
+5. On workflow integration: How would you incorporate this workflow (or a modified version) into your actual dissertation research? What would you do differently next time?
+
+
+Submission
+Submit a single document (Google Doc preferred) containing:
+1. Your research question (1-2 sentences)
+2. Extracted paper list from deep research (from Part 1)
+3. Tool comparison notes (from Part 2)
+4. Final paper list with access notes (from Part 3)
+5. AI prioritization questions and responses (from Part 4)
+6. Reading plan table (from Part 5)
+7. Reflection (400-600 words, from Part 6)
+We have a shared Box folder for this course: please create a Google Doc in there!
+
+
+Grading: Pass/Fail
+This assignment is graded pass/fail based on completion and genuine engagement. You pass if you submit all required components and demonstrate that you actually worked through the discovery-to-prioritization pipeline (as opposed to going through the motions).
+
+
+Pass Criteria
+To receive a Pass, your submission must include:
+* A focused, substantive research question related to your actual research area (not a generic topic)
+* Evidence of using a deep research agent with a complete or summarized report
+* Documentation of using at least two specialized literature tools with specific observations about each
+* A compiled list of 20+ papers (duplicates removed) with evidence of organization in a reference manager
+* AI-assisted prioritization with specific questions asked and responses received
+* A reading plan that demonstrates genuine thinking about why papers are prioritized differently
+* Reflection that engages meaningfully with at least three of the five prompts (evidence: you reference your specific experience, not just abstract concepts)
+
+
+Automatic Fail
+You will receive a Fail if:
+* Any required component is missing
+* The research question is clearly unrelated to your actual research (e.g., a generic topic you have no stake in)
+* The paper list contains obvious duplicates or fewer than 15 unique papers
+* The reading plan shows no evidence of critical thinking about prioritization (e.g., all papers in Tier 1 with generic rationales)
+* The reflection contains no reference to your actual experience with the assignment
+
+
+Resubmission
+If you receive a Fail, you may resubmit once within one week for full credit.
+
+
+Tips for Success
+* Start early. Deep research can take 10-30 minutes to complete, and you'll want time to iterate on your question if initial results aren't useful.
+* Be specific. A vague research question yields vague results. "Machine learning for engineering" is too broad; "Graph neural networks for predicting composite material failure modes" is appropriately focused.
+* Don't trust any single tool. The point of using multiple tools is to surface papers that any individual tool might miss. Look for convergence and divergence.
+* Think critically about AI suggestions. The AI doesn't know your specific research goals, your advisor's preferences, or the history of your field. Its prioritization is a starting point, not a final answer.
+* Document as you go. It's much easier to write up your experience if you take notes during each step rather than reconstructing afterward.
+* This is real work. The reading list you create can become the foundation for an actual literature review section of your dissertation or a survey paper. Invest effort accordingly.
+
+
+Challenge (Optional)
+Throughout this course, we emphasize understanding how AI tools work, not just that they work. Here's an open question for you to investigate:
+Does running a deep research query from inside a project (Claude Project, Custom GPT, Gemini Gem) produce different results than running the same query in a fresh conversation?
+To explore this:
+1. Take the research question you used in Part 1
+2. Run the same query (or a very similar one) from inside your Assignment 1 research project
+3. Compare the results: Do you get different sources? Different emphasis? Different synthesis?
+4. Try this with a second platform if you have access
+In your reflection, add a paragraph discussing what you found. Consider:
+* Did the project context influence which papers were surfaced, or only how they were presented?
+* Does the platform's documentation say anything about how project context affects search?
+* What are the implications for how you should structure your research workflows—fresh context for discovery vs. project context for synthesis?
+There's no "right answer" here. The goal is to develop your own intuition about when project context helps and when it might introduce bias or narrowing.
+
+
+
+
+________________
+[1] GW users can get unlimited personal and group cloud storage in Zotero. You must have your GW email address on your Zotero account. See: https://libguides.gwu.edu/c.php?g=258781&p=1728369

@@ -1,0 +1,73 @@
+﻿MAE 6291 – Class 5
+February 10, 2026
+
+
+Hands-on: Building Custom Automations
+Last class we learned about specialized AI-enabled products to help with literature review. Many of these require payment of a subscription to be useful. What about using AI to help us make our own tools to automate research tasks?
+This will be a hands-on session to show that you can start building custom automations to accelerate your research workflows, without being an experienced software developer. You will need to already have a GitHub account, and have applied for the GitHub Student Developer Pack, and be approved.
+The GitHub Student Developer Pack gives verified students free access to many professional‑grade developer tools, cloud services, and learning resources, which would normally cost hundreds of dollars. It upgrades your GitHub account to GitHub Pro with unlimited private repositories and enhanced collaboration features, so you can manage class projects and portfolios the same way professional teams do. 
+You will also get access to GitHub Copilot: an AI‑powered coding assistant that acts like an AI pair‑programmer inside your editor. It analyzes the code and comments around your cursor and then suggests whole lines, functions, or even larger blocks of code, plus explanations and refactors, in real time as you type. You can also chat with Copilot in supported IDEs and on GitHub.com to ask for help debugging, learning an API, writing tests, or understanding an unfamiliar codebase in natural language. Overall, it is designed to speed up routine coding, reduce context‑switching, and help you focus on problem‑solving rather than boilerplate implementation.
+Turn on GitHub Copilot
+Watch: Getting started with GitHub Copilot | Tutorial
+1. Make sure your GitHub account is verified for the Student Developer Pack (purple “Approved”/education status in settings).
+2. Go to GitHub → Settings → “Code, planning, and automation” → Copilot.
+3. Use the “Enable Copilot” or “Claim Copilot Pro for students/teachers” button and complete the short activation flow; your Copilot plan should then show as active on your account.
+Case Study: the ‘tocify’ repository
+The tocify repository, located at https://github.com/voytek/tocify,  is an automated weekly journal digest system that uses RSS feeds, OpenAI's API, and GitHub Actions to curate personalized academic literature recommendations. It was vibe-coded by Prof. Bradley Voytek (UC San Diego), who shared it on February 6, 2026, via a post on LinkedIn. 
+This tool automatically:
+1. Fetches new academic papers from RSS feeds of scientific journals
+2. Uses OpenAI to evaluate which papers match your research interests
+3. Generates a ranked, annotated digest in Markdown format
+4. Commits the result back to the repository weekly
+It's designed to be forked and customized by researchers to track literature relevant to their specific field.
+Go to the repository URL (above), and click on the “Fork” button:     ⬇️
+  
+
+Next, if you click on the Copilot icon at the top, you will get a new browser tab with the “chat with Copilot” interface. Here, you can ask: “Can you give me a thorough explanation of what is in this repository, and what each component does?”                    ⬇️
+  
+
+Copilot will analyze the results of the repository, and give you a thorough briefing. Read it carefully and you will learn that to use this automation, you will need to:
+1. Edit the file feedst.txt
+2. Edit the file interests.md
+3. Edit the file prompts.txt
+4. Add OPENAI_API_KEY as a GitHub Secret
+5. Tweak any environment-configurable parameters as needed
+6. Go to Actions and enable workflows
+(As supplementary material for this class, find the file tocify.pdf in our shared folders. It contains results from an example multi-turn chat with GitHub Copilot.)
+⚠️ Important: At this time, it is a good idea to learn about GitHub Secrets and how they work. 
+GitHub Secrets are a secure way to store sensitive values (like API keys, tokens, or passwords) so they are not hard‑coded in your repository or workflow files. They are encrypted environment variables that GitHub only makes available at runtime to things like GitHub Actions workflows or Codespaces, and their actual values are hidden in the UI and redacted from logs.
+Practically, you define a secret at the repository, environment, or organization level (for example MY_API_KEY), and then reference it in a workflow or development environment using a syntax like secrets.MY_API_KEY; GitHub decrypts and injects it into the job or codespace when the run starts. This pattern lets you rotate or change credentials centrally without touching code, reduces the risk of accidental exposure in commits, and supports different secrets per environment (dev, staging, prod) while keeping access tightly scoped.
+To proceed with customizing tocify you will need to:
+* Create an OpenAI API key at platform.openai.com 
+* Set a spending limit on your OpenAI account
+* Add OPENAI_API_KEY as a GitHub Secret in your fork
+* Verify .gitignore includes .env and other sensitive files
+* Test the workflow with a manual run
+* Store a backup of your key in a password manager
+* Never commit secrets to code
+After forking the repository, adding the OPENAI_API_KEY secret, and editing the files for the feeds, interests, and prompts, you will have to enable workflows for the repository. Forked repositories do not have workflows enabled by default. (This is for security reasons.) You can manually trigger the workflow by going to the Actions tab, then look on the left for “Weekly ToC Digest,” click on it, and find the “Run workflow” button for the manual trigger. After a first run of tocify, look for the updated digest.md file on the root of the repository and explore the papers it found for you. You may need to iterate on the feeds, interests, and prompt, modifying your subjects of interest and/or adding more RSS feeds to get more (and more relevant) results added to your digest.
+Jupyter Interactive Digest Alternative
+Now you might want to get creative. What would it take to translate this whole workflow into something that runs in a Jupyter notebook, instead of using a GitHub workflow? So far, you might not even have looked at the code in digest.py, the orchestration script that runs the entire workflow. (But do take the time to explore it at some point.) But we can also use AI to help us achieve that idea. 
+Suppose you cloned your fork of the tocify repository, so you have all the files on your local machine. Using the Claude Code extension in the VS Code editor with that folder open, you might ask exactly the question above, and Claude would first look at your current GitHub Actions workflow to understand what needs to be translated, read weekly-digest.yml, and explain what it would take to convert this to a Jupyter notebook. It then will ask you: “Would you like me to create a Jupyter notebook version of your digest system?” Say yes! The result will astound you: it will create a new Jupyter notebook file and fill it with all the modified code to run the workflow interactively. 
+➡️Look for the file digest_interactive.ipynb in our shared Google Drive folder for this class, make a copy in your own Drive and open it in Google Colab: http://colab.research.google.com/ 
+The notebook has 15 organized sections:
+1. Setup & Imports - All dependencies with easy pip install
+2. Configuration - All parameters in one place for easy tweaking
+3. API Key Setup - Secure handling with environment variable or prompt
+4. Helper Functions - All the core parsing logic from digest.py
+5. RSS Fetching - With progress bars using tqdm
+6. Prefiltering - Keyword-based filtering to reduce API costs
+7. OpenAI Triage - Batch processing with retry logic
+8. Display Functions - Both markdown export and rich HTML display
+9. Load Interests/Feeds - Parse your files
+10. Fetch RSS Items - With progress indicators
+11. Apply Prefilter - Shows before/after counts
+12. Run AI Triage - The main scoring step
+13. Display Results - Rich inline display with color-coded scores
+14. Export to Markdown - Save to digest.md file
+15. Score Distribution - Text-based histogram to help calibrate thresholds
+Run cells sequentially from top to bottom. The notebook will:
+* Prompt for your OpenAI API key if not in environment
+* Show progress as it fetches from RSS feeds
+* Display beautiful results with color-coded scores
+* Optionally save to digest.md file

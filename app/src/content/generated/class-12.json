@@ -1,0 +1,131 @@
+{
+  "id": "class-12",
+  "summary": "A hands-on session exploring how AI tools help you organize and present research knowledge: generating editable diagrams with Excalidraw via MCP, building versionable Markdown slide decks with Marp, and maintaining a personal knowledge base with Obsidian and Karpathy's LLM Wiki pattern. Rather than a tool tour, each workflow is examined through the lens of context engineering, showing how MCP, SKILL.md, and progressive disclosure patterns from earlier classes appear in everyday research knowledge work, ultimately connecting to Vannevar Bush's 1945 Memex vision.",
+  "objectives": [
+    "Generate and refine editable diagrams using AI assistants connected to tools like Excalidraw via MCP, instead of relying on one-shot image generation",
+    "Select among diagramming tools (Excalidraw, Mermaid, draw.io, tldraw, Napkin AI) by matching input modality, output formality, and ecosystem integration to the communication task",
+    "Build version-controlled, equation-capable slide decks from plain-text Markdown using Marp and an AI-generated CSS theme",
+    "Explain the three-layer architecture (raw sources, wiki, schema) and three operations (ingest, query, lint) of Karpathy's LLM Wiki pattern for personal knowledge bases",
+    "Evaluate AI knowledge tools critically by identifying where context engineering patterns like pre-processing, indexing, and caching appear in their design"
+  ],
+  "keyTakeaways": [
+    "Diagrams generated through the Excalidraw MCP are structured, editable element definitions rather than static images, so variations and refinements do not require a full regeneration the way image-model outputs do.",
+    "Marp's plain-text Markdown format makes slide decks versionable in Git and renders LaTeX equations natively, two properties that rule out most commercial AI slide builders for technical presentations.",
+    "Obsidian stores every note as a local Markdown file with wiki-style links, making your knowledge base a context surface any AI agent can operate on without format conversion or vendor lock-in.",
+    "Karpathy's LLM Wiki pattern has the model compile knowledge once at ingest time, integrating each new source into a persistent, interlinked wiki, instead of rediscovering knowledge from scratch on every query as RAG does.",
+    "The LLM Wiki instantiates concepts from across the course: the schema is a CLAUDE.md, index.md implements indexing, ingest is pre-processing, the wiki is cached context, and log.md provides episodic memory and instrumentation.",
+    "The pattern carries honest caveats: scale beyond a few hundred pages is unproven, hallucination feedback loops can propagate distortions through the model's own outputs, and human curation and review remain essential."
+  ],
+  "quiz": [
+    {
+      "question": "In the lecture's tocify pipeline example, what key advantage did generating the diagram through the Excalidraw MCP have over generating it with an image model like Gemini?",
+      "options": [
+        {
+          "text": "The Excalidraw output had higher visual resolution suitable for print publications",
+          "correct": false
+        },
+        {
+          "text": "The model wrote structured, JSON-based element definitions rendered as an editable canvas, so the diagram could be refined manually or in follow-up prompts without a full regeneration",
+          "correct": true
+        },
+        {
+          "text": "The Excalidraw MCP required no prompt at all, inferring the diagram from the conversation automatically",
+          "correct": false
+        },
+        {
+          "text": "Image models cannot produce diagrams with more than three boxes in a row",
+          "correct": false
+        }
+      ],
+      "explanation": "With image generation, any modification requires a brand new generation, while the Excalidraw MCP has the model write Excalidraw-compatible element definitions that render as a live, editable canvas you can adjust by hand or revise through conversation."
+    },
+    {
+      "question": "A researcher needs a diagram that uses standard engineering symbols like UML, BPMN, or AWS architecture icons. According to the notes, which tool is the best fit and why?",
+      "options": [
+        {
+          "text": "Napkin AI, because it generates more than thirty diagram types from pasted text",
+          "correct": false
+        },
+        {
+          "text": "tldraw, because its Make Real feature converts sketches into working code",
+          "correct": false
+        },
+        {
+          "text": "draw.io, because its Generate feature produces native diagrams with full access to extensive domain-specific shape libraries",
+          "correct": true
+        },
+        {
+          "text": "Mermaid, because its text syntax gives precise control over spatial layout",
+          "correct": false
+        }
+      ],
+      "explanation": "The notes single out draw.io as the right tool when you need domain-specific shapes that Excalidraw and Mermaid do not provide, since its libraries include UML, BPMN, AWS/Azure icons, electrical schematics, and network topologies. Mermaid actually offers less layout control, since the renderer decides node placement."
+    },
+    {
+      "question": "Why does the lecture argue that Marp 'rules in' for technical presentations in a way that rules out most commercial AI slide builders like Gamma?",
+      "options": [
+        {
+          "text": "Marp renders LaTeX math natively via MathJax or KaTeX, while builders like Gamma mangle equations, render them as images, or decline to handle them",
+          "correct": true
+        },
+        {
+          "text": "Marp is the only slide tool that can export to the .pptx format",
+          "correct": false
+        },
+        {
+          "text": "Commercial builders cannot apply institutional branding such as a university color palette",
+          "correct": false
+        },
+        {
+          "text": "Marp generates an unlimited number of slides per turn, while Gemini Canvas is capped at a dozen",
+          "correct": false
+        }
+      ],
+      "explanation": "Native LaTeX equation rendering is named as Marp's first winning feature: equations render exactly as in a journal PDF, whereas Gamma lacks a serious equation renderer despite its visual polish. Marp can export to .pptx, but that is not unique to it, and branding can be handled by theme CSS."
+    },
+    {
+      "question": "In the three-layer architecture of Karpathy's LLM Wiki, what is the division of responsibility between the human and the LLM for the raw sources layer and the wiki layer?",
+      "options": [
+        {
+          "text": "The LLM modifies the raw sources to keep them current, while the human writes the wiki pages",
+          "correct": false
+        },
+        {
+          "text": "Both layers are jointly edited by the human and the LLM through pull requests",
+          "correct": false
+        },
+        {
+          "text": "The raw sources are deleted after ingestion since the wiki replaces them as the source of truth",
+          "correct": false
+        },
+        {
+          "text": "The raw sources are immutable and read-only for the LLM, while the LLM entirely owns and writes the wiki layer, which the human reads",
+          "correct": true
+        }
+      ],
+      "explanation": "The notes describe raw sources as the immutable source of truth that the LLM reads but never modifies, while the wiki is a directory of LLM-generated Markdown files the model owns entirely: 'You read it; the LLM writes it.'"
+    },
+    {
+      "question": "The lecture warns that the LLM Wiki carries a risk that RAG does not. What is it?",
+      "options": [
+        {
+          "text": "The wiki cannot answer questions without an internet connection, unlike RAG",
+          "correct": false
+        },
+        {
+          "text": "Hallucination feedback loops: the model reasons over its own prior outputs, so a subtle distortion in a summary can propagate through subsequent updates",
+          "correct": true
+        },
+        {
+          "text": "The wiki requires embedding-based search infrastructure that RAG avoids",
+          "correct": false
+        },
+        {
+          "text": "RAG preserves chat history while the wiki discards all past explorations",
+          "correct": false
+        }
+      ],
+      "explanation": "Unlike RAG, which always retrieves from original source text, the LLM Wiki lets the model build on its own summaries and syntheses, so distortions can compound; the mitigation is disciplined provenance and periodic re-ingestion from raw sources. At moderate scale the index.md actually avoids the need for embedding infrastructure, and good query answers are filed back into the wiki rather than discarded."
+    }
+  ]
+}

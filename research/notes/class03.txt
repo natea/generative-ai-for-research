@@ -1,0 +1,273 @@
+﻿MAE 6291 – Class 3
+Lorena A. Barba – January 27, 2026
+
+
+The Current LLM Landscape
+New models seem to be dropping every few weeks, so it is almost impossible to keep up. Here’s a list updated for January 2026—the first three can be considered the frontier triad: the three top models from the major US providers. But they are followed very closely by other main players, of which most notable are the open models (a.k.a., open-weights models).
+
+
+* GPT-5.2 (OpenAI) [1]
+GPT-5.2 features a System 2 architecture that dynamically routes queries between a fast conversational mode and a "Thinking" mode for complex problem-solving. It is widely cited as the industry leader for reasoning benchmarks and coding tasks, powered by the specialized GPT-5.2-Codex. While accessible via a standard $20/month subscription (with strict rate limits), unrestricted access to its reasoning capabilities and "Deep Research" agents requires the new $200/month Pro tier. August 2025 knowledge cutoff.
+Modalities: Text, Voice (Real-time), Image (GPT-Image 1.5).
+
+* Gemini 3 Pro (Google) [2]
+Google’s most advanced model, distinguished by its massive 1-million-token context window and native multimodal understanding (video, audio, and text processed simultaneously). It features a "Deep Think" verification layer that fact-checks responses against Google Search in real-time, making it the preferred model for analyzing vast datasets or hours of video footage. It is available through the Google One AI Premium plan, with higher enterprise tiers for full context utilization.
+Modalities: Text, Image, Audio, Video, Code.
+
+* Claude Opus 4.5 (Anthropic) [3]
+Regarded as the most reliable and steerable model for developers, Claude Opus 4.5 introduces Computer Use capabilities, allowing it to autonomously view screens, move cursors, and execute complex workflows. It is the top choice for mission-critical coding and agentic tasks where logical precision outweighs raw speed. Access is available via the Claude Pro ($20/month) and the new Claude Max ($100/month) tiers for heavy agentic workloads.
+Modalities: Text, Vision (Image input), Computer Control.
+
+* Mistral Large 3 (Mistral AI) [4]
+Mistral's flagship Sparse Mixture-of-Experts (MoE) model that has unified the proprietary and open-weight worlds by being released under the Apache 2.0 license. It matches proprietary US models in reasoning while offering best-in-class multilingual fluency (40+ languages) and a "Canvas" interface for collaborative editing. It allows for strict data sovereignty, running efficiently on NVIDIA Blackwell hardware for privacy-conscious enterprises.
+Modalities: Text, Code, Document Analysis.
+
+* Grok 4.1 (xAI) [5]
+A real-time intelligence model integrated directly into the X platform, capable of analyzing social media data streams the moment news breaks. It features a "rebellious" system prompt designed to be less preachy than competitors and includes "SuperGrok Heavy," a mode that uses multi-hypothesis testing to debate answers internally before responding. It is bundled exclusively with the X Premium+ subscription.
+Modalities: Text, Image (Aurora), Real-time Social Data.
+
+* Llama 4 (Meta) [6]
+The reigning open-weights champion, released in "Scout" (109B) and "Maverick" (400B) variants. It introduced a 10 million token context window to the open-source community and uses an "early fusion" architecture to process text and images in a single neural pathway. It serves as the backbone for most independent AI applications and is available for free download or via cloud providers.
+Modalities: Text, Image Input/Output.
+
+* DeepSeek V3.1 (DeepSeek AI) [7]
+A market-disrupting open model that popularized "Hybrid Inference," allowing users to toggle between cheap "Non-Thinking" modes and capability-heavy "Thinking" modes. It provides GPT-4 class performance at roughly 5-10% of the cost ($0.28 per million tokens), forcing a global pricing correction in the AI API market. It excels in mathematics and coding efficiency.
+Modalities: Text, Code, Math.
+
+* Qwen 3 (Alibaba Cloud) [8]
+A massive MoE model series (up to 235B parameters) that dominates in multilingual tasks, supporting 119 languages with native fluency. It features a hybrid reasoning architecture similar to DeepSeek and is the primary open-source choice for Asian, Middle Eastern, and African markets due to its superior cultural and linguistic representation compared to Western models.
+Modalities: Text, Code, Multilingual (119 languages).
+
+* Gemma 3 (Google) [9]
+A family of lightweight open models (1B to 27B) derived from Gemini research, now featuring a native SigLIP vision encoder. This allows even small edge devices (like laptops or phones) to process images and text locally without needing an internet connection. It is designed for developers building privacy-preserving local apps.
+Modalities: Text, Image Input.
+
+
+  
+
+A visual "landscape map" of current LLMs. (Created with Gemini.)
+
+
+Open Models: What Are They?
+"Open models" usually refers to AI systems where the model weights and parameters are publicly downloadable, allowing developers and enterprises to run the software on their own private hardware rather than renting access through a centralized API (or web application).
+This category includes two distinct licensing approaches:
+   * Permissive Open Source: Models like Mistral Large 3, Qwen 3, and DeepSeek V3.1 are released under standard open licenses (such as Apache 2.0 or MIT), which grant broad rights to modify, distribute, and commercialize the technology without restriction.
+
+   * Open Weights: Models like Meta's Llama 4 are free to download and use but operate under a custom "Community License." These licenses often include specific restrictions, such as caps on commercial scale (e.g., requiring a license if the user has >700 million monthly active users) or acceptable use policies.
+The primary strategic value of these models in 2026 is data sovereignty: they allow organizations to utilize frontier-class intelligence (rivaling GPT-5 or Gemini) without sending sensitive data to OpenAI or Google.
+  
+
+Open models: Licensing spectrum. (Created with Gemini.)
+Sidetrack: Controversy around Open Source AI
+For nearly three decades, the binary distinction between proprietary and open source software was clear. Proprietary software was a black box, its internal logic hidden behind compiled binaries and restrictive licenses. Open source software (OSS) was transparent, its source code available for inspection, modification, and redistribution by anyone, for any purpose. This definition, codified by the Open Source Initiative (OSI) in 1998, served as the constitution of the internet, enabling the collaborative creation of the Linux operating system, the Apache web server, and the vast majority of modern cloud infrastructure.
+Generative AI, and specifically Large Language Models, precipitated a crisis of definition in this context. The technology industry is currently in a heated controversy regarding the application of the term "open source" to AI systems. The core of the conflict lies in the ontological difference between traditional software and modern AI. Traditional software is constructed via deterministic logic written by humans (source code). AI models, conversely, are probabilistic systems derived from the statistical compression of massive datasets (training). In this new paradigm, possessing the "code" is insufficient to understand, modify, or reproduce the system.
+The controversy stems from a divergence between the marketing of AI models and the technical and legal reality of their distribution. Major technology companies, realizing the immense reputational and strategic value of the "open source" label, have adopted the terminology to describe model releases that do not meet the traditional standards of software freedom. This phenomenon, widely termed "open washing," has created a confused marketplace where "open source" can mean anything from "fully transparent and reproducible" to "free to download but illegal to modify."
+
+
+The  Open Source AI Definition (OSAID) v1.0
+The Open Source Initiative (OSI)[10] is the historical guardian of the definition of open source software. The Open Source Definition (OSD) established ten criteria for open source software, the most critical being:
+      * Free Redistribution: The software can be given away or sold.
+      * Source Code: The program must include source code, and allow distribution in source code as well as compiled form. Crucially, the OSD defined source code as "the preferred form of the work for making modifications."
+      * Derived Works: The license must allow modifications and derived works.
+      * No Discrimination: The license cannot discriminate against persons, groups, or fields of endeavor (e.g., prohibiting military or commercial use).
+
+
+The Open Source AI Definition (OSAID) v1.0
+For two years after the release of ChatGPT in late 2022, the AI industry operated in a definitional vacuum.
+      * OpenAI: Despite its name, closed its models completely (GPT-4), offering only API access.
+      * Meta: Released Llama 1 and 2, calling them "Open Source" but using restrictive licenses that forbade commercial use (Llama 1) or discriminated against large platforms (Llama 2's 700M user cap).
+      * Hugging Face & EleutherAI: Attempted to uphold traditional standards, releasing models like Pythia and Bloom with full data transparency, often struggling with performance compared to the proprietary giants due to data constraints.
+This period was characterized by "open washing," where companies conflated "downloadable weights" with "open source." This confusion threatened to erode the legal and social trust associated with the term, prompting the OSI to intervene.
+The OSI spent two years convening global workshops, consulting with legal experts, and engaging with the tech industry to craft a definition that would bridge the gap between open source ideals and AI reality. The result, OSAID v1.0, was released on October 28, 2024.[11]
+In simple terms, an Open Source AI model must provide three things:
+      1. Code: The complete source code used to train and run the system (e.g., the training scripts and the model's architecture).
+      2. Parameters: The trained model weights (the "binary" that actually makes the model work), so users can run it locally and modify it.
+      3. Data Information: Instead of the actual training data (which is often legally impossible to share due to copyright), developers must provide a complete and detailed description of the data's source, processing, and how to find it. This compromise ensures transparency so a "skilled person" could understand or potentially recreate the model.
+  
+
+Critics argue that requiring "data information" (a description of the data) instead of the actual data is a loophole. They claim it lets companies train models on proprietary or illegal data, then release the weights and call it "open source" without giving users the true source (the data) needed to legally and fully reproduce the model. For them, if a model cannot be legally reproduced, it is not open source.  The OSI counters that their definition is "humble" and reflects the current legal reality, aiming to maximize transparency where full freedom is legally blocked.
+
+
+"Open Weights" vs. "Open Source"
+As the controversy deepened, the technical community began to adopt more precise terminology to distinguish between OSI-compliant systems and corporate releases. The term "Open Weights" emerged as the standard descriptor for models like Llama and Mistral.
+"Open Weights" refers to a distribution model where the trained parameters of the neural network are publicly available for download and local execution, but the accompanying legal rights or technical components fall short of the Open Source Definition.
+
+
+Meta (Facebook): The King of Open Washing
+Meta is arguably the central character in the open source AI drama. Since the release of Llama 1 in February 2023 (initially a leak, then a sanctioned release strategy), Meta has aggressively branded itself as the champion of open source AI, positioning itself against "closed" rivals like OpenAI and Google.[12]
+Meta's claim to "Open Source" is fiercely contested because its licenses persistently violate the OSD.
+      * Llama 1: Released under a non-commercial research license. Clearly not open source.
+      * Llama 2 & 3: Released under the "Llama Community License." This license introduced the infamous "700 Million User" clause. If a user's monthly active users exceed 700 million (a threshold targeting Snap, TikTok, Google, etc.), they lose the right to use the model and must negotiate a private license.[13] This violates OSD Point 5 ("No Discrimination Against Persons or Groups") and Point 6 ("No Discrimination Against Fields of Endeavor").
+      * Llama 4 (2025/2026): The latest iterations continue this trend. Reports indicate that Llama 4's multimodal features come with additional geographical restrictions, excluding European users from certain rights due to regulatory conflicts.
+Why does Meta do this? Meta's business is not selling AI models; it is selling ads on social networks. By releasing Llama as "Open Weights," Meta commoditizes the AI layer. If high-quality LLMs are free, OpenAI cannot charge a premium for them. This destroys the margins of Meta's competitors. However, Meta uses the restrictive license to prevent its own destruction—the 700M user cap ensures that a competitor cannot use Llama to build a direct replacement for Facebook. The OSI accuses Meta of open washing, as it attempts to harvest the goodwill of the community while retaining the control of a proprietor.
+
+
+The AI Landscape in 2026: The Agentic Era
+As of January 2026, we have moved beyond the "Chatbot Era" (2023–2024), characterized by novel conversational interfaces and basic generative capabilities, into the "Agentic Era." The industry is no longer defined merely by next-token prediction metrics or superficial fluency; it is now stratified by reasoning capability, contextual depth, and autonomous execution. 
+The release of GPT-5.2 by OpenAI, Gemini 3 by Google, and Claude 4.5 by Anthropic has established a new Frontier Triad, where models are differentiated not just by benchmarks, but by their ability to execute complex, multi-step workflows with minimal human oversight.
+Simultaneously, the open-weights sector has achieved functional parity with proprietary models in specific domains. Driven by Meta’s Llama 4 series and Mistral AI’s Large 3, open models now run efficiently on commodity hardware while challenging the economic moats of closed-source providers. The rise of DeepSeek has further disrupted the API economy, forcing a "race to the bottom" in pricing for standard inference, even as the cost of "smart" inference skyrockets.
+
+
+Understanding Reasoning Models
+We already introduced reasoning models, with a brief history of how the release of OpenAI’s o1 model launched the agentic era we’re now in. Before going into more of the technical details of reasoning—its architecture—let’s establish what it means for a model to reason and why this represents such a significant shift in AI capabilities.
+
+
+Read
+      * Huang, Sonya, Pat Grady, and o1. “Generative AI’s Act o1: The Reasoning Era Begins.” Sequoia Capital, October 9, 2024. https://sequoiacap.com/article/generative-ais-act-o1/ 
+
+
+The Breakthrough: From Reflexive to Reflective
+Consider how you solve a difficult problem. When someone asks "What's 2 + 2?", you answer immediately—no deliberation required. But when faced with "Prove that there are infinitely many prime numbers," you don't blurt out an answer. You pause. You consider approaches. You might try one path, recognize it's leading nowhere, and backtrack. You check your work. This distinction— between fast, automatic responses and slow, deliberate reasoning—is what psychologists call System 1 versus System 2 thinking.  
+Traditional LLMs (GPT-4, Claude 3, early Gemini) operated almost entirely in System 1 mode. They generated responses token by token, each token predicted based on what came before, with no mechanism for pausing to think, checking intermediate steps, or reconsidering an approach. This is why these models could write fluent prose about quantum mechanics while making elementary arithmetic errors—fluent text generation and careful reasoning are fundamentally different cognitive operations.
+Reasoning models, introduced in late 2024 and maturing through 2025, changed this. They can engage in extended deliberation before producing their final answer. The model might spend 30 seconds, a minute, or even several minutes "thinking": generating internal chains of reasoning that explore the problem space, evaluate candidate solutions, and verify conclusions.
+
+
+System 1 (Traditional LLM)
+	System 2 (Reasoning Model)
+	Token → Token → Token → Answer
+	Query → [Extended Thinking] → Answer
+	Fast, automatic
+	Slow, deliberate
+	Pattern matching
+	Problem decomposition
+	No backtracking
+	Can revise approach
+	
+
+What Happens During "Thinking"?
+When you submit a complex query to a reasoning model like GPT-5.2 in Thinking mode or DeepSeek R1, something different happens compared to a standard chat interaction:
+      1. The model generates a reasoning trace—a sequence of intermediate thoughts that break down the problem, explore solution approaches, and evaluate progress. This trace can be hundreds or thousands of tokens long.
+      2. This trace is typically hidden from you (or shown only as a summary). You see the final answer, not the full deliberation process. Some providers show a condensed "thought summary"; others hide it entirely.
+      3. The model can backtrack and self-correct. Unlike standard generation, where each token commits the model further down a single path, reasoning models can recognize when an approach isn't working and try something different.
+      4. Verification happens internally. For mathematical proofs or code, the model can check its own work before presenting the final answer.
+  
+
+A flowchart showing the process of model reasoning. (Created with Gemini.)
+
+
+Here's a simplified illustration. Suppose you ask: "A farmer has 17 sheep. All but 9 run away. How many sheep does the farmer have left?"
+A standard LLM might process this as a straightforward subtraction problem and answer "8"—the pattern of "X sheep, Y run away" triggers a subtraction template.
+A reasoning model generates internal deliberation:
+Let me read this carefully. "All but 9 run away." This means 9 did NOT run away. So the farmer has 9 sheep left. Let me verify: if 9 remain, then 17 - 9 = 8 ran away. "All but 9" means all except 9, which is 8. Yes, 9 sheep remain.
+The model catches the linguistic trap through deliberate reasoning rather than pattern matching.
+
+
+Chain-of-Thought at Training Time
+You may recall from our previous discussion that "chain of thought" was originally a prompting technique. Users would write prompts like "Let's think step by step" to encourage models to show their reasoning. This often improved accuracy, but it was a hack: we were coaxing the model into a behavior it wasn't specifically trained for.
+Reasoning models are different. They are trained from the ground up to produce chains of thought. The key innovation, pioneered by OpenAI's o1 and refined by DeepSeek R1, is using reinforcement learning to teach the model how to think productively.
+Here's the basic idea:
+      * The model is given challenging problems (math olympiad questions, complex coding tasks, multi-step logical puzzles)
+      * It generates candidate reasoning traces and solutions
+      * Correct solutions receive positive reinforcement; incorrect ones receive negative reinforcement
+      * Crucially, the quality of the reasoning process itself gets reinforced, not just the final answer
+Over millions of training examples, the model learns patterns of productive thinking: when to break problems into sub-problems, when to verify intermediate results, when to abandon a failing approach, how to systematically explore a solution space.
+In sum, the model’s internal monologue allows it to:
+      * Plan: Break down complex prompts into sub-tasks.
+      * Critique: Evaluate its own draft responses for factual accuracy or logical consistency.
+      * Iterate: Rewrite code or re-calculate math problems if the initial attempt fails verification checks.
+
+
+Inference-Time Compute: A New Dimension of Scaling
+This brings us to a shift in how AI capabilities scale. For years, the mantra of AI progress was "scale up training." Bigger models, more data, more compute during training. GPT-3 was bigger than GPT-2; GPT-4 was bigger than GPT-3. This is training-time compute—the computational resources spent creating the model.
+Reasoning models introduce a new axis: inference-time compute. A trained model can now spend variable amounts of computation when answering your query, depending on the difficulty of the problem.
+Think of it this way:
+      * Training-time compute is like education—the investment that makes someone capable
+      * Inference-time compute is like time spent on a specific task—how long an already-capable person spends solving a particular problem
+A doctor spends years in medical school (training-time). But diagnosing a rare condition might require hours of research and consultation (inference-time), while treating a common cold takes minutes. Reasoning models can now make this same trade-off: quick responses for simple queries, extended deliberation for hard ones.
+This has important practical implications:
+For users: You now have meaningful choices. Need a quick summary? Use the fast mode. Working on a difficult proof? Engage the reasoning mode and wait longer for a better answer.
+For economics: "Thinking" tokens cost more. When GPT-5.2 spends 60 seconds deliberating on your problem, OpenAI is burning significant GPU time. This is why "Pro" tiers ($200/month) exist—they're buying you access to extended reasoning on demand.
+For capabilities: Problems that were previously impossible—complex multi-step derivations, sophisticated debugging, research-level mathematics—become tractable not by training bigger models, but by letting existing models think longer.
+
+
+Dynamic Routing: The Two-Speed Architecture
+Many modern frontier models don't force you into one mode or the other. They use dynamic routing to automatically classify queries by complexity and direct them to the appropriate processing path.
+When you submit a message to GPT-5.2 or Claude Opus 4.5:
+      * A lightweight classifier evaluates the query's complexity
+      * Simple queries ("What's the capital of France?") route to a fast path—essentially standard LLM inference
+      * Complex queries ("Debug this race condition in my concurrent code") route to the reasoning path—engaging the full deliberation machinery
+This happens transparently. You might notice the response takes longer for hard questions, but you don't need to explicitly request "thinking mode" for every interaction.
+Some platforms give you explicit control. DeepSeek popularized "Hybrid Inference," where you can toggle between "Non-Thinking" mode (cheap, fast) and "Thinking" mode (expensive, thorough). OpenAI's API lets developers set reasoning intensity parameters. This flexibility matters for cost-conscious applications: why pay for deep reasoning when you're just generating a meeting summary?
+
+
+Expanding Context: From Documents to Libraries
+The second major architectural advancement of 2025 is the expansion of context windows to what we might call "library scale."
+Recall from our previous discussions that context windows measure how much text a model can "see" at once: your prompt, conversation history, any documents you've shared, and the model's own responses. In 2024, 128K tokens (roughly 96,000 words, or a short novel) was considered generous. In 2026, we'll be working with 10 million tokens.
+Model
+	Context Window
+	Approximate Scale
+	GPT-4o (2024)
+	128K tokens
+	One novel
+	Claude 4.5 Sonnet
+	200K tokens
+	2-3 novels
+	Gemini 3 Pro
+	1M tokens
+	A small library
+	Llama 4 Scout
+	10M tokens
+	A small library
+	Ten million tokens is approximately 7.5 million words—equivalent to uploading your entire research group's publication history, every paper you've ever read for your literature review, plus your complete codebase.
+Implications for Research Workflows
+This expansion doesn't just mean "more"—it qualitatively changes what's possible.
+Before (small context): You needed Retrieval-Augmented Generation (RAG) for anything beyond a few documents. Upload your papers to a vector database, let the system retrieve relevant chunks for each query, hope the retrieval worked correctly.
+Now (massive context): For mid-sized collections (say, 500 papers' abstracts, or your entire thesis draft with all supporting documents), you can simply include everything in the context. No chunking, no embedding, no retrieval errors.
+This doesn't eliminate RAG. truly massive collections (the entire arXiv repository, for instance) still exceed any context window. But the threshold has shifted dramatically. Many research tasks that required sophisticated retrieval infrastructure in 2024 can now be handled by simple "stuff everything in the prompt" approaches.
+
+
+The "Lost in the Middle" Problem, Revisited
+Recall our previous discussion of "lost in the middle"—the phenomenon where models attend more reliably to content at the beginning and end of long contexts. This problem hasn't disappeared; it's been addressed through architectural improvements.
+Claude 4.5, despite having a nominally smaller window than Gemini 3 or Llama 4, excels at "needle-in-a-haystack" tasks: finding a specific piece of information buried deep in a massive context. Anthropic optimized for attention precision over raw context volume.
+Gemini 3 took a different approach: Deep Think includes a verification layer that fact-checks responses against the provided context (and against Google Search in real-time), catching cases where the model missed or misremembered key details.
+The practical lesson is that context size is only one dimension. How effectively a model uses that context matters just as much. When working with very long documents, test your specific use case rather than assuming bigger windows automatically mean better performance.
+
+
+Sparse Mixture-of-Experts: Scaling Intelligence Efficiently
+The third architectural innovation enables the other two. Both massive context windows and extended reasoning require significant computation. How do you make this tractable without exorbitant costs? The answer, now dominant in frontier models, is Mixture-of-Experts (MoE) architecture.
+A traditional "dense" model (like the original GPT-4) activates all of its parameters for every token it processes. If the model has 175 billion parameters, all 175 billion participate in generating every word.
+An MoE model has many more parameters in total, but only activates a fraction—the relevant "experts"—for any given token.
+Think of it like a hospital:
+      * A dense model is a single doctor who has memorized all of medicine. Every patient interaction engages that doctor's complete knowledge.
+      * An MoE model is a hospital full of specialists. When a patient arrives with a heart problem, they're routed to a cardiologist. Most of the hospital's expertise (dermatology, pediatrics, oncology) stays dormant for that interaction.
+Mistral Large 3, for example, has 675 billion total parameters, but only 41 billion are active for any given token. It has the knowledge capacity of a massive model but the inference cost of a much smaller one.
+
+
+Why This Matters for Research Applications
+      1. Cost efficiency: You get frontier-level intelligence at substantially lower API costs than if you were paying to activate all parameters.
+      2. Local deployment becomes feasible: Open MoE models can run on high-end consumer hardware. A dense 675B model would require a data center; a sparse MoE version can run on a workstation with multiple GPUs.
+      3. Specialized performance: The routing mechanism means different types of queries engage different experts. Models can develop deep expertise in specific domains (mathematics, code, multilingual text) without compromising general capabilities.
+This is why DeepSeek V3.1 can offer GPT-4-class performance at roughly 5-10% of the API cost. The sparse architecture makes efficiency gains possible that would be physically impossible with dense models.
+
+
+Putting It Together: What This Means for Your Research
+These three innovations—reasoning capabilities, massive context windows, and efficient MoE architectures—combine to create fundamentally new possibilities for research workflows:
+      * Complex analysis is now tractable: Tasks that would have required breaking into many small prompts, or would have exceeded model capabilities entirely, can now be handled in single interactions with reasoning-enabled models.
+      * Knowledge management simplified: For collections up to a few hundred documents, you may not need sophisticated RAG infrastructure. Load your literature into context and query directly.
+      * Cost-capability trade-offs are explicit: You can choose when to pay for deep reasoning and when standard inference suffices. This makes AI integration economically sustainable for academic researchers.
+      * Open models reach parity: The combination of MoE efficiency and open licensing means you can run frontier-class models locally, keeping sensitive research data on your own hardware.
+In the coming weeks, we'll explore how to leverage these capabilities in practice—building research agents that use reasoning for complex tasks, designing context strategies for your specific research needs, and evaluating when open versus commercial models best serve your workflow.
+
+
+
+
+
+
+
+
+
+
+________________
+[1] https://openai.com/index/introducing-gpt-5-2/  – see also https://academy.openai.com/public/clubs/work-users-ynjqu/resources/latest-model 
+[2] https://blog.google/products-and-platforms/products/gemini/gemini-3/ 
+[3] https://www.anthropic.com/news/claude-opus-4-5 
+[4] https://mistral.ai/news/mistral-3 
+[5] https://x.ai/news/grok-4-1 
+[6] https://ai.meta.com/blog/llama-4-multimodal-intelligence/ 
+[7] https://arxiv.org/abs/2412.19437 
+[8] https://www.cloudinnovatehub.com/alibaba-cloud-qwen-3-redefining-open-source-ai-with-hybrid-reasoning 
+[9] https://arxiv.org/abs/2503.19786v1 
+[10] http://opensource.org 
+[11] https://opensource.org/ai 
+[12] Tarkowski, Alek. “The Mirage of Open-Source AI: Analyzing Meta’s Llama 2 Release Strategy.” Open Future (blog), August 11, 2023. https://openfuture.eu/blog/the-mirage-of-open-source-ai-analyzing-metas-llama-2-release-strategy/ 
+[13] Sado, Shuji. “Why Is the Llama License Not Open Source?” Open Source Guy (blog), January 27, 2025. https://shujisado.org/2025/01/27/why-is-the-llama-license-not-open-source/

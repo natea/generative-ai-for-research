@@ -1,0 +1,122 @@
+﻿MAE 6291 – Class 13
+Lorena A. Barba, April 28, 2026
+
+
+Organizing Knowledge with AI
+From the start of this course, we’ve emphasized that when working with LLMs, context is everything. It is key to getting good-quality results from AI. We can even go further and say that any time the work produced by an LLM seems poor, the first thing to investigate is the context. Building and curating good context is your job. Perhaps most of your time and effort while working with AI will be spent in context engineering, with the next priority being verifying LLM outputs, then iterating to improve the context and get better results, and moving forward in a constant loop with agents. The only way to get good at this is to practice, while documenting your experience and judgements along the way. If you are thoughtful in this, you can become a power user of AI, without losing your agency, outsourcing your thinking, or falling for the illusion of understanding.
+Last class we previewed the LLM-wiki pattern but did not go deep into how it works in practice. Today we will, by walking through my own exploration of it from start to finish. The pattern is easy to state: collect raw sources into a folder, write a schema that tells an AI agent how to synthesize them, and let the agent build a persistent, interlinked knowledge base of Markdown pages that you can read, navigate, and argue with. What is harder, and the reason a case study is worth your time, is what comes after the wiki is built—what you actually do with it, and how you keep the pattern from collapsing into yet another way to outsource your thinking. The subject I chose for the case study was deliberate: I used the LLM-wiki to study a recent talk on how AI is reshaping the way we think, and on what it would take to redesign these tools so they support thinking rather than replace it. By the time we close the loop, you will see why that recursion is the point.
+RAG vs. the LLM-wiki pattern
+Karpathy’s viral LLM-wiki idea begins by noticing the limitations of the standard way that most AI tools handle context held in documents via RAG:
+* No memory: When you upload documents and ask questions, the AI searches for relevant chunks to generate an answer, but it does not save, build upon, or accumulate this knowledge for future queries.
+* Inefficient: Every time you ask a question, the AI starts the entire process from scratch, which prevents compounding knowledge over time.
+* Unconnected: While RAG works for simple inquiries, it struggles when tasks require connecting ideas across multiple documents, as it lacks a persistent, interlinked structure
+  
+
+Diagram of RAG-based work, where the system retrieves chunks from your knowledge base with every query. There’s no persistence between queries. (Diagram made with Excalidraw in Claude.)
+One workaround is to manually save outputs into files, and add them to your project knowledge. This works, but can become burdensome and easily neglected. Thus, the LLM-wiki idea promises to automate the process of compounding your knowledge, while helping you to make connections. But this method has its own limitations: it doesn’t scale beyond a hundred or so sources, and it can start degrading due to subtle distortions that propagate over time. More importantly, if the LLM is autonomously maintaining the wiki and synthesizing from the raw sources, how do you materially engage with the knowledge you dutifully collect and avoid the illusion of understanding? 
+The LLM-wiki works by directing the model to read source documents once to build a persistent, interlinked knowledge base of markdown files that grows more sophisticated over time. The system functions through three distinct layers: the raw sources, which act as unchangeable truths, the structured wiki maintained by the AI, and a schema that serves as a rulebook for how information is organized and synthesized.
+Recall from last class the three layers that make this work. The raw sources are an immutable folder of source documents that the agent reads but never modifies; this is your ground truth. The wiki is a directory of Markdown files that the agent owns entirely: it creates the pages, updates them as new sources arrive, and maintains the cross-references between them. The schema is a CLAUDE.md (or equivalent) file that tells the agent how to do all of that: what kinds of pages to create, what front matter to include, how to handle conflicts between sources, when to update an existing page versus when to start a new one. A typical wiki contains a handful of page types: source summaries (one per raw document), concept pages (synthesizing what several sources say about an idea), entity pages (people, projects, tools that recur across sources), and a top-level overview that links the rest together. The case study below makes all of this concrete, so let me walk you through what I actually did.
+Case study: using the LLM-wiki to learn about using AI as a tool for thought
+To illustrate how you might use this method to help you organize new knowledge, let’s go over a case study that is rather “meta.” You’ll see how it all connects in the end!
+It starts with the YouTube video of a very interesting talk by Dr. Advait Sarkar, a Microsoft human-computer-interaction researcher in Cambridge, England:
+How to Stop AI from Killing Your Critical Thinking | Advait Sarkar | TED
+I started watching the video of his talk and when he gets to an interesting point, in particular talking about how working with AI may affect creativity, I paused the video and I prompted in Perplexity with the video URL, and asked about studies supporting the claim. Perplexity found several references and reviewed them for me in detail, pointing to the concept of AI-induced convergence. It identified a study in Nature Human Behavior by Meincke et al. (2025) and summarized key findings using a research brief it found on another web page.[1] The study discusses how teams brainstorming with ChatGPT produced narrower sets of ideas. Perplexity also found related work on the concept of “idea diversity,” suggesting that with carefully designed interaction patterns AI tools can, in fact, increase collective diversity of outcomes.
+The Perplexity output can be downloaded in a Markdown file directly from the UI using the download button.[2] I then dragged and dropped the downloaded MD file to my Obsidian folder (what people call the “vault”), opened it and manually added front matter like date and tags and the prompt I had used as an info callout (for my own documentation of the process). 
+  
+
+Screenshot from Perplexity showing the feature to download an output in Markdown.
+After restarting the video and watching a bit more, I entered a follow-up prompt about the point made regarding critical thinking; the presentation slide had a breadcrumb to a citation in parentheses so I mentioned that and asked for the study that was cited and related work that may support Sarkar's claim or suggest solutions. Again I downloaded the output as Markdown and added it to Obsidian via drag-and-drop to the right folder, and made small manual tweaks.
+Repeating the process with the subsequent ideas in the talk that I found interesting, I collected five notes in my folder of sources (called raw). I read over the notes, but not in great depth. My plan is to do more selective reading after populating a Karpathy-style wiki, using Claude Code. 
+For the next step—generating the wiki pages—I needed the LLM-wiki schema: the instructions for Claude. To get started quickly, I lightly edited a CLAUDE.md file shared by YouTube content creator James Keet (Teacher's Tech channel) and put it in my Obsidian vault.[3] I used Claude Code on the desktop app, and opened the vault folder, then prompted it to ingest the notes. 
+  
+
+Screenshot of Claude Code in the desktop app, in the right folder, with my initial prompt.
+
+
+Using Sonnet 4.6 with medium effort, Claude worked for a couple of minutes, and then it said “I've read all six files. Before writing anything, let me share the key takeaways as the workflow requires.” Here is the rest:
+
+
+Key takeaways from the six sources
+The Sarkar cluster (5 notes — drawn from his TEDAI Vienna 2025 talk)
+These five notes form a linked chain exploring how AI as assistant harms cognition, and how redesigning it as a tool for thought reverses that harm.
+1. Creativity (sarkar on creativity.md) The central concept is mechanised convergence: individually, AI may boost creativity, but collectively groups using AI produce a narrower range of ideas than groups working unaided. The strongest empirical evidence is Meincke et al. 2025 (Nature Human Behaviour) — 37 of 45 statistical comparisons showed significant idea-diversity reduction from ChatGPT-assisted brainstorming. Nine separate participants independently named a toy "Build-a-Breeze Castle." Sarkar's own 2023/2024 papers coined the term; Dell'Acqua et al. 2023 (BCG consultants) provides field evidence.
+2. Critical thinking (sarkar on critical thinking.md) Lee et al. 2025 (CHI) — a survey of 319 knowledge workers with 936 real examples — found that people self-report less critical thinking effort with AI, and the effect is strongest when AI confidence is high and self-confidence is low. Critical thinking is reconfigured (from solving to verifying) rather than simply eliminated, but the reduction in deep reasoning is real.
+3. Memory (sarkar on memory.md) Three studies:
+* Kosmyna et al. 2025 ("Your Brain on ChatGPT"): LLM-assisted writers remembered less of their own essays, reported lower ownership, and showed reduced neural engagement — and the effect reversed when they returned to unassisted writing.
+* Kreijkes et al. 2025: Among 405 secondary students, LLM-only use yielded worse retention after 3 days than traditional note-taking; combining both was best.
+* Oakley et al. 2025 ("The Memory Paradox"): Theoretical review arguing AI offloading bypasses the "desirable difficulties" that consolidate memory.
+4. Metacognition (sarkar on metacognition.md) Tankelevitch et al. 2024 (CHI) argues that using GenAI well requires substantial metacognitive work — clarifying goals, decomposing tasks, judging AI applicability, calibrating confidence in output evaluation — and current tools do not support this. The burden falls on users who often lack training for it.
+5. AI as tool for thought (sarkar on AI as tool for thought.md) Sarkar's "pivot": the problems above aren't inevitable, they follow from the assistant interaction pattern. Design principles for reversal: preserve material engagement (user still reads, annotates, structures), offer productive resistance (provocations that challenge rather than obey), scaffold metacognition (task stages, goal-clarification, no chat box). Early experiments with provocation-based interfaces show improved critical thinking effort and recall.
+Organizing knowledge with AI (deep research, 2026)
+A survey of mature AI-augmented research workflows: Excalidraw/draw.io via MCP for diagramming; NotebookLM, Obsidian+AI, Zotero+AI (ZotAI, ARIA) for knowledge bases; Overleaf AI, Bibby, Typst for LaTeX/typesetting; NextDocs, Copilot for PowerPoint, Gemini for slides. Cross-cutting design pattern: modular stacks of 3–4 complementary tools, with AI handling structure/boilerplate while humans retain judgment. Ties directly to the context-hygiene and agent-design themes in the same course as the Sarkar material.
+Proposed wiki structure
+I see roughly 9 pages:
+Page
+	Type
+	sarkar-tedai-talk.md
+	Source summary (the talk as a whole)
+	organizing-knowledge-with-ai.md
+	Source summary
+	mechanised-convergence.md
+	Concept
+	critical-thinking-and-ai.md
+	Concept
+	memory-and-ai.md
+	Concept
+	metacognitive-demands-of-ai.md
+	Concept
+	ai-as-tool-for-thought.md
+	Concept (+ design principles)
+	cognitive-offloading.md
+	Concept (spans multiple sources)
+	ai-research-workflows.md
+	Concept (practical tools)
+	Does this look right to you, or would you like to adjust the scope, grouping, or naming before I start writing?
+
+
+(I had an additional note in Obsidian that collected rough notes for Class 11, AI-supported workflows for organizing and presenting research knowledge, and that was ingested also.)
+Upon giving my go-ahead, Claude got to work, and finished in under 5 minutes (using 21% of my session usage limits on the Pro plan). Looking at the graph view in Obsidian shows a highly connected cluster of nodes for the wiki pages: these are now my entry point for engaging meaningfully with the material I collected. 
+  
+
+Screenshot of Obsidian on the graph view, showing the cluster of connected wiki pages.
+Opening the wiki page titled ai-as-tool-for-thought.md, I read an accessible and concise review of the core design principles that Sarkar proposes: 
+Preserve material engagement: "Material engagement" means the human still meaningfully reads, writes, selects, and structures the relevant materials. Pure assistant workflows (summarise this; write that; fix this) remove the contact points where critical thinking, creativity, and memory consolidation normally occur. 
+Offer productive resistance (AI as provocateur): AI should challenge rather than obey. Sarkar calls these interventions provocations: AI-generated commentary, critiques, counterarguments, and alternative framings intended to stimulate thinking rather than provide answers.
+Scaffold metacognition: Good tools make task goals, stages, and evaluation points explicit rather than assuming users will manage them independently. See metacognitive-demands-of-ai for the full demand framework.
+Several citations to other wiki pages are included, plus a concluding paragraph about the “benefits to memory” and a nice table titled Design Playbook Summary:
+Principle
+	Interaction patterns
+	Preserve material engagement
+	Lenses instead of bare summaries; user-built outlines; AI drafts from human-created scaffolds
+	Offer productive resistance
+	Provocations at reading, outlining, and drafting stages; AI as provocateur not assistant
+	Scaffold metacognition
+	Phase-structured interfaces; goal-clarification before AI use; no anthropomorphic chat box
+	Lessons for the working researcher
+Sarkar's three principles are addressed to the people who design AI products: chat interfaces, copilots, agents, and integrated development environments. He is asking those designers to preserve material engagement, offer productive resistance, and scaffold metacognition in the tools themselves. That is the right level at which to make the argument for him, but it is not the level at which any of us can act this semester. You cannot wait for Microsoft, OpenAI, or Anthropic to ship better defaults before you finish your dissertation; you have to do research now, with the tools as they are. The interesting question, then, is whether the same three principles can be translated from a designer's checklist into a researcher's practice. I think they can, and I think the case study we just walked through is already the demonstration.
+Preserve material engagement becomes a discipline about where you let AI enter your workflow. The risk is letting AI synthesis substitute for your own contact with the sources. The discipline is to keep the sources in the loop: watch the video, read the paper, look at the figure yourself, and then let the AI help you organize, compare, or outline what you have already engaged with. In the wiki workflow, this is why the raw folder is immutable and why I read the wiki pages against my notes rather than instead of them. The wiki is a navigation layer over your sources; it is not a replacement for reading them. If you find yourself answering questions about a paper you have never opened, the layer has collapsed and you are back in the assistant pattern that Sarkar warns about.
+Offer productive resistance becomes a discipline about how you prompt, and how you follow up in a multi-turn thread. The chatbot will not push back on you by default; it is trained to be helpful, which often means agreeable. So you have to supply the resistance yourself. Ask the model to find the weakest claim in its own synthesis. Ask it to argue the opposing position, or to list what a skeptical reviewer would demand that the wiki does not yet contain. Ask it to identify which of its statements rest on a single source and would collapse if that source were wrong. Treat every output as a draft you intend to argue with, not an answer you intend to accept. This is a habit, and like all habits it has to be practiced before it becomes automatic; the easiest place to practice is on outputs that look most polished, because polish is the surface that hides the weakest claims.
+Scaffold metacognition becomes a discipline about making your own thinking explicit. The tools will not do this for you, so you do it yourself, on paper or in Markdown. State your goal before you prompt. Decompose the task into stages, and notice which stage you are in. Calibrate your confidence in each output by asking how you would know if it were wrong. Document the judgments you made along the way: which prompt produced which note, which sources you trusted, which claims you verified, which you set aside. The CLAUDE.md schema, the front matter on each note, the prompt callouts I added by hand: these are not bureaucratic overhead, they are the metacognitive scaffolding that the chat interface refuses to provide. They are also, not incidentally, the artifacts that make your work reproducible by your future self and inspectable by your advisor.
+Notice that what I did in the case study already enacts these three habits, even though I did not name them as I went. I preserved material engagement by watching Sarkar's talk, pausing it at the points I wanted to investigate, making some hand-written notes, doing additional research to find original sources and expand my notes, and reading the wiki pages against the raw notes. I offered productive resistance by treating each Perplexity output as a draft to edit before adding it to the vault, and by reading the synthesized concept pages with my notes open beside them. I scaffolded my own metacognition by writing the schema, by documenting prompts in front matter, and by inspecting the graph view to see which concepts were hubs and which were orphans. The demo today is the method. The method is not in the tool; it is in the protocol you bring to the tool.
+This is also where the course closes a loop. In Class 1, we discussed and assigned for reading the paper by Messeri and Crockett on the three illusions of understanding that AI introduces into science: the illusion of explanatory depth, the illusion of exploratory breadth, and the illusion of objectivity. Sarkar's three principles, translated into a researcher's practice, are precisely the guards against those three illusions. Material engagement is the guard against the illusion of explanatory depth, because you cannot be fooled into thinking you understand what you have read carefully and argued with. Productive resistance is the guard against the illusion of objectivity, because a tool you are trained to push back on is a tool whose standpoint you have learned to see. Metacognitive scaffolding is the guard against the illusion of exploratory breadth, because the act of stating your goals and documenting your judgments forces you to notice the hypotheses you did not test. Every technique we have covered this semester—context engineering, agent skills, deep research, the LLM-wiki—is in service of the same problem we opened with: doing better research without falling for the illusion that we already understood it. You now have the conceptual infrastructure to do that. The rest is deliberate practice.
+Practices for this summer
+The course ends here, but your practice of working well with AI begins now. Here are four exercises you can take with you, in roughly increasing order of commitment. None of them require a new tool; all of them require you to do the thing.
+Build a small LLM-wiki on something you actually care about. Pick a question from your own research that you have been meaning to read into and have not yet had time for: a methodology you keep encountering in papers, a debate in your subfield, a piece of your dissertation literature that is not yet under control. Collect five to ten sources into a raw folder. Write a short schema. Generate the wiki. Then, and this is the part that matters, read the wiki against the sources. The point is not to have a wiki; the point is to spend the hours with the material that the wiki was supposed to organize.
+Keep a prompt journal for two weeks. Every time you use AI for something nontrivial in your research, take thirty seconds to record three things in a Markdown file: what you were trying to accomplish, what you actually prompted, and what judgment you made about the output. Two weeks is enough to start seeing patterns. You will find prompts you reuse, failure modes that recur, and places where you accepted output you should have pushed back on. The journal is the cheapest possible instrument for the metacognitive scaffolding we just discussed, and it produces, as a byproduct, a set of templates and a CLAUDE.md you can grow from.
+Pick one paper this summer and read it without any AI assistance. A real paper, in your field, that you would normally feed to NotebookLM or ask Claude to summarize. Read it the old way: print it out or open the PDF, take notes by hand or in a plain text file, look up references you do not recognize, and write your own summary at the end. The point is calibration. You cannot judge what AI does to your reading until you remember what your reading is like without it. Do this once a month if you can.
+Teach someone what you learned. This is the most demanding exercise and the one that consolidates the most. Pick one idea from this course—context engineering, agent skills, the LLM-wiki, the illusions of understanding—and explain it to a labmate, a cohort-mate, or your advisor in a fifteen-minute conversation. You will discover what you actually understood and what you only thought you understood, which is the point. The course was about avoiding the illusion of understanding; teaching is the test.
+You do not need permission, a syllabus, or a project to do any of this. You have the tools, you have the conceptual vocabulary, and you have the rest of your career to practice. Have a good summer!
+
+
+Fin
+❖❖❖
+
+
+
+
+
+
+________________
+[1] Mack Institute for Innovation Management (University of Pennsylavania), press release: https://mackinstitute.wharton.upenn.edu/2025/new-in-nature-chatgpt-decreases-idea-diversity-in-brainstorming/ 
+[2] See my Perplexity thread at https://www.perplexity.ai/search/7b681539-ebc6-488e-ac87-510e3c51f0b0 
+[3] Video linked at the end of the Class 12 notes: Karpathy's LLM Wiki - Full Beginner Setup Guide – find the shared file in the description.

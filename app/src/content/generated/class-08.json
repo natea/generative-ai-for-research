@@ -1,0 +1,131 @@
+{
+  "id": "class-08",
+  "summary": "A hands-on practicum that walks through building a Claude Code skill from scratch: distilling Kristin Sainani's 30-video 'Writing in the Sciences' course into a manuscript-review SKILL.md using three AI tools, each doing what it does best. You'll learn the SKILL.md conventions (frontmatter, body, progressive disclosure), how skills differ from CLAUDE.md, and then practice the agentic coding loop through four exercises ranging from figure reproduction to building your own custom skill.",
+  "objectives": [
+    "Trace the three-tool workflow that turns raw video lectures into a machine-actionable SKILL.md (browser agent extraction, NotebookLM synthesis, Claude formatting)",
+    "Describe the anatomy of a SKILL.md file, including the YAML frontmatter fields and the elements of an effective Markdown body",
+    "Explain how progressive disclosure lets Claude Code keep many skills installed without paying a token cost for unused ones",
+    "Distinguish the complementary roles of CLAUDE.md (project context) and skills (task expertise)",
+    "Practice the agentic coding interaction loop—describe, review, refine, iterate—through exercises grounded in real research tasks"
+  ],
+  "keyTakeaways": [
+    "No single AI tool could build the manuscript-review skill alone: a browser agent (Comet) handled mechanical URL extraction, NotebookLM synthesized 30 video transcripts into a coherent standard, and Claude converted that narrative guideline into a properly formatted SKILL.md.",
+    "A SKILL.md has two parts—YAML frontmatter with at least a name and description, and a Markdown body—where the description acts as a trigger specification that Claude Code matches against user requests, so it should list both positive and negative triggers.",
+    "Progressive disclosure means Claude Code loads only skill names and descriptions at startup and pulls in a skill's full Markdown body only when the request matches, so body length is not a token concern.",
+    "Skills and CLAUDE.md compose: CLAUDE.md is read unconditionally at session start and describes the project, while a skill is loaded only when relevant and encodes a workflow or domain expertise.",
+    "The same simple SKILL.md contract scales from a 170-line writing review skill to multi-agent research pipelines like the academic-research-skills repository, but for researchers the sweet spot is concrete 50-150 line skills (figure formatting, postprocessing, data cleaning).",
+    "The core human skill in agentic coding is the interaction loop—describing a goal, reviewing output, refining instructions, and verifying results against ground truth you understand, like known physics or a known-good manual result."
+  ],
+  "quiz": [
+    {
+      "question": "In the worked example, why did Professor Barba need Claude to process NotebookLM's output before it could be used as a skill?",
+      "options": [
+        {
+          "text": "NotebookLM's report was too long to fit in Claude Code's context window",
+          "correct": false
+        },
+        {
+          "text": "NotebookLM produced a human-readable narrative guideline, but it doesn't know the SKILL.md format Claude Code needs to operationally follow",
+          "correct": true
+        },
+        {
+          "text": "NotebookLM could only ingest 10 of the 30 video transcripts, so Claude had to fill in the gaps",
+          "correct": false
+        },
+        {
+          "text": "The NotebookLM output was missing citations to the original lectures",
+          "correct": false
+        }
+      ],
+      "explanation": "NotebookLM did its synthesis job well—producing a comprehensive Writing Standards Manual—but the output was a narrative document, not an operational skill with the YAML frontmatter and structured body that Claude Code expects. Claude handled that architectural conversion."
+    },
+    {
+      "question": "You have a dozen skills installed but Claude Code isn't burning tokens on all of them every session. Which mechanism explains this?",
+      "options": [
+        {
+          "text": "Skills are compressed into embeddings, so their full text never enters the context window",
+          "correct": false
+        },
+        {
+          "text": "Claude Code deletes skills that haven't been used recently",
+          "correct": false
+        },
+        {
+          "text": "Progressive disclosure: only frontmatter (names and descriptions) is read at startup, and a skill's full body is loaded only when a request matches its description",
+          "correct": true
+        },
+        {
+          "text": "Only project-level skills are ever loaded; global skills stay on disk",
+          "correct": false
+        }
+      ],
+      "explanation": "Claude Code uses a two-stage process: at startup it reads only the lightweight YAML frontmatter of all skills, then loads a skill's full Markdown body into context only if your request matches its description. This is why body length is not a token concern."
+    },
+    {
+      "question": "What is the primary functional role of the description field in a SKILL.md's frontmatter?",
+      "options": [
+        {
+          "text": "It serves as a trigger specification that Claude Code matches against user requests to decide whether to load the skill",
+          "correct": true
+        },
+        {
+          "text": "It is documentation for human readers browsing the skills folder",
+          "correct": false
+        },
+        {
+          "text": "It defines the output format the agent must follow when the skill runs",
+          "correct": false
+        },
+        {
+          "text": "It sets the skill's internal identifier used in file paths",
+          "correct": false
+        }
+      ],
+      "explanation": "The description is what Claude Code reads to decide whether to load a skill for a given task, which is why it should include the phrases a user would actually say—and also negative triggers stating what the skill does not cover. The name field, not the description, is the internal label."
+    },
+    {
+      "question": "A CLAUDE.md says 'This project is a manuscript for the Journal of Fluid Mechanics; the draft is LaTeX in paper/.' A manuscript-review skill says 'When asked to review writing quality, apply these five audit passes.' How do these two files relate?",
+      "options": [
+        {
+          "text": "They are redundant—the skill should be merged into CLAUDE.md to save tokens",
+          "correct": false
+        },
+        {
+          "text": "The skill overrides CLAUDE.md whenever both are present",
+          "correct": false
+        },
+        {
+          "text": "CLAUDE.md is loaded only when relevant, while skills are read at the start of every session",
+          "correct": false
+        },
+        {
+          "text": "They compose: CLAUDE.md provides always-on project context, while the skill adds task expertise loaded only when relevant",
+          "correct": true
+        }
+      ],
+      "explanation": "CLAUDE.md is read unconditionally at session start, like an onboarding document for the project, while a skill is loaded only when relevant, like specialized consultant knowledge. Together they produce a review that knows the project's conventions and applies rigorous task-specific standards."
+    },
+    {
+      "question": "In Exercise 2 (pseudocode to numerical solver), the notes recommend deliberately telling the agent something wrong, like claiming a boundary condition should be Neumann when Dirichlet is correct. What is the purpose of this?",
+      "options": [
+        {
+          "text": "To test whether the agent's code runs faster with different boundary conditions",
+          "correct": false
+        },
+        {
+          "text": "To learn what the agent does and does not verify on its own, calibrating your trust in its output",
+          "correct": true
+        },
+        {
+          "text": "To force the agent to write more thorough docstrings explaining the mathematics",
+          "correct": false
+        },
+        {
+          "text": "To demonstrate that agents always reject incorrect instructions from users",
+          "correct": false
+        }
+      ],
+      "explanation": "The notes call this the most instructive moment of the exercise: seeing whether the agent catches the inconsistency or silently propagates it reveals what it verifies on its own. Calibrating trust in agent output is described as the single most important judgment skill for agentic coding."
+    }
+  ]
+}

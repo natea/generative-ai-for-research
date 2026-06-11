@@ -1,0 +1,153 @@
+{
+  "id": "class-07",
+  "summary": "Trace the five-year arc of AI-assisted coding, from GitHub Copilot's 2021 autocomplete to terminal agents like Claude Code that plan, execute, test, and iterate on your codebase. This class maps the tool landscape into three tiers, weighs what 'vibe coding' versus 'agentic engineering' means for research code, and introduces the Claude Code ecosystem of MCP servers, skills, and instruction files. You'll also get practical installation guides for Claude Code and GitHub Copilot CLI.",
+  "objectives": [
+    "Trace the evolution of AI coding assistants from GitHub Copilot's autocomplete to agentic terminal tools like Claude Code, Codex CLI, and Gemini CLI",
+    "Classify AI coding tools into three tiers and choose the right tier for a given research task based on power versus learning curve",
+    "Distinguish MCP (connecting Claude Code to external tools and data) from skills (encoding workflow expertise in SKILL.md files)",
+    "Explain how the shift from suggestion to agency changes the researcher's role toward reviewing changes, setting guardrails, and verifying correctness",
+    "Install and configure a terminal agent, including instruction files like CLAUDE.md and AGENTS.md that give it persistent project context"
+  ],
+  "keyTakeaways": [
+    "In roughly five years, AI coding assistance progressed from Copilot's single-file autocomplete in 2021 to terminal agents like Claude Code that read files, run commands, execute tests, and iterate on errors autonomously.",
+    "The tools fall into three tiers — autocomplete (Copilot, Colab AI), AI-native editors (Cursor, Lovable), and terminal agents (Claude Code, Codex CLI, Gemini CLI) — and each tier gives you more leverage but demands more judgment.",
+    "MCP solves the N-by-M integration problem like USB did for hardware: an MCP server built once works with every MCP-compatible client, letting Claude Code reach databases, GitHub, web search, and even custom lab tools.",
+    "Skills are folders with a SKILL.md file that encode domain expertise; Claude loads only their names and descriptions at startup and pulls in full instructions via progressive disclosure when a task matches.",
+    "Karpathy's viral 'vibe coding' is fine for throwaway prototypes, but code underlying published results demands the oversight and verification he later called 'agentic engineering' — agents can introduce subtle numerical errors or cargo cult code.",
+    "A short instruction file (CLAUDE.md, or the cross-tool AGENTS.md) read at the start of every session takes minutes to write and makes agent output follow your project's conventions, structure, and unit system without repeated reminders."
+  ],
+  "quiz": [
+    {
+      "question": "What made Claude Code's February 2025 release a qualitative 'phase change' compared with the original GitHub Copilot?",
+      "options": [
+        {
+          "text": "It was the first assistant trained on billions of lines of public GitHub code",
+          "correct": false
+        },
+        {
+          "text": "It introduced inline grey-text suggestions that you accept by pressing Tab",
+          "correct": false
+        },
+        {
+          "text": "It acts directly on your codebase from the terminal — reading files, running commands and tests, and iterating on errors — instead of waiting for you to accept suggestions",
+          "correct": true
+        },
+        {
+          "text": "It was the first AI coding tool embedded inside Visual Studio Code",
+          "correct": false
+        }
+      ],
+      "explanation": "The notes describe Claude Code as one of the first convincing agentic coding tools: it plans multi-step strategies and executes them, rather than passively suggesting code. Training on public GitHub code and Tab-accepted inline suggestions describe the 2021 Copilot, which lived inside VS Code."
+    },
+    {
+      "question": "The notes compare MCP to USB. What problem does this analogy capture?",
+      "options": [
+        {
+          "text": "Without a standard, every AI application needed a custom connector for every external service — up to N times M unique integrations",
+          "correct": true
+        },
+        {
+          "text": "AI models needed a faster physical connection to external hardware devices",
+          "correct": false
+        },
+        {
+          "text": "Each AI tool used a different programming language, so code could not be shared",
+          "correct": false
+        },
+        {
+          "text": "LLM context windows were too small to hold tool documentation",
+          "correct": false
+        }
+      ],
+      "explanation": "The notes call this the N×M integration problem: ten AI tools and twenty services could mean two hundred custom integrations. Like USB standardized device-to-computer connections, an MCP server built by anyone works with every MCP-compatible client."
+    },
+    {
+      "question": "Your lab wants Claude Code to query its PostgreSQL experimental database AND follow the lab's specific conventions for structuring those queries and formatting weekly-meeting results. According to the notes, what is the right division of labor?",
+      "options": [
+        {
+          "text": "Both belong in skills, since skills can also execute database connections",
+          "correct": false
+        },
+        {
+          "text": "Both belong in MCP servers, since MCP handles all customization of Claude Code",
+          "correct": false
+        },
+        {
+          "text": "A skill provides the database access, and an MCP server encodes the lab conventions",
+          "correct": false
+        },
+        {
+          "text": "An MCP server gives Claude the ability to query the database, and a skill teaches it how the lab structures queries and formats results",
+          "correct": true
+        }
+      ],
+      "explanation": "The notes draw exactly this distinction: MCP gives Claude Code the ability to perform actions it otherwise couldn't (connecting to external systems), while skills encode knowledge about how to do something well. The notes use this database-plus-lab-conventions scenario to show how they complement each other."
+    },
+    {
+      "question": "How does Claude Code avoid wasting context tokens when many skills are installed?",
+      "options": [
+        {
+          "text": "It loads all skills at startup but compresses them into a single summary",
+          "correct": false
+        },
+        {
+          "text": "It uses progressive disclosure: only skill names and descriptions are read at startup, and full instructions load only when a skill matches the current task",
+          "correct": true
+        },
+        {
+          "text": "It limits each project to one active skill at a time",
+          "correct": false
+        },
+        {
+          "text": "It stores skills on an MCP server so they never enter the context window",
+          "correct": false
+        }
+      ],
+      "explanation": "The notes describe this as progressive disclosure: Claude reads only the lightweight YAML metadata (name and description) at startup, then loads a skill's full instructions only when it determines the skill is relevant — the description acts as the trigger."
+    },
+    {
+      "question": "One year after coining 'vibe coding,' how did Karpathy reframe the real transformation in professional development?",
+      "options": [
+        {
+          "text": "He argued that vibe coding should fully replace traditional programming for all projects",
+          "correct": false
+        },
+        {
+          "text": "He retracted the idea entirely, saying AI coding agents were unsuitable for any serious work",
+          "correct": false
+        },
+        {
+          "text": "He called it 'agentic engineering' — programming via LLM agents as a default professional workflow, with more oversight and scrutiny",
+          "correct": true
+        },
+        {
+          "text": "He concluded that autocomplete tools like the original Copilot were the right level of AI assistance",
+          "correct": false
+        }
+      ],
+      "explanation": "The notes report that Karpathy later reflected that vibe coding was 'fun for throwaway projects,' but the real transformation was 'agentic engineering' — an art and science with its own depth that you can learn and improve at. He neither retracted the idea nor advocated full replacement of oversight."
+    },
+    {
+      "question": "You're deep in a long Claude Code debugging session and worried that automatic context management will discard the error message you're chasing. What do the notes recommend?",
+      "options": [
+        {
+          "text": "Run /compact at a natural task boundary, optionally guiding what to preserve, instead of letting auto-compaction fire mid-task on token count",
+          "correct": true
+        },
+        {
+          "text": "Run /batch so the debugging continues in an isolated Git worktree",
+          "correct": false
+        },
+        {
+          "text": "Run /simplify to remove redundant content from the conversation history",
+          "correct": false
+        },
+        {
+          "text": "Restart the session, since Claude Code has no manual control over context compaction",
+          "correct": false
+        }
+      ],
+      "explanation": "Auto-compaction triggers on token count, not task boundaries, so it can lose details like a specific error message mid-task; /compact lets you summarize on your terms and even specify what to keep. /batch orchestrates large-scale codebase changes and /simplify reviews changed files for code quality — neither manages conversation context."
+    }
+  ]
+}

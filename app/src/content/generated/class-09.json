@@ -1,0 +1,71 @@
+{
+  "id": "class-09",
+  "summary": "Skills have evolved in six months from a personal Claude Code feature into an open, cross-industry infrastructure standard adopted by Microsoft, Cursor, OpenAI, and others. This class examines four shifts that changed what skills are, then distills community-discovered design principles — trigger-focused descriptions, reasoning-based methodology bodies, explicit output contracts, and deterministic scripts — before applying them in a hands-on evaluation of real open-source skills.",
+  "objectives": [
+    "Explain the four shifts that transformed skills from personal configuration tools into cross-platform, agent-called infrastructure",
+    "Write skill descriptions that act as reliable routing signals, including trigger phrases, output statements, and negative triggers",
+    "Apply the five requirements for an effective methodology body: reasoning, specified output, explicit edge cases, examples, and leanness",
+    "Decide when to delegate computations to deterministic scripts versus relying on the skill's probabilistic natural-language instructions",
+    "Evaluate real-world SKILL.md files for description quality, domain correctness, agent readiness, and composability"
+  ],
+  "keyTakeaways": [
+    "If a skill does not trigger, the cause is almost never the instructions — it is the description, which acts as the gatekeeper in progressive disclosure.",
+    "Because agents increasingly call skills without a human in the loop, descriptions must work as routing signals and outputs must be framed as contracts that downstream consumers can parse.",
+    "Skills compound in value over time, unlike ephemeral prompts: every edge case you discover and encode persists for all future invocations and for everyone who inherits the skill.",
+    "Effective methodology bodies provide reasoning and mental models rather than linear steps, so the agent can handle inputs the author never anticipated.",
+    "Keep the core SKILL.md lean (roughly 50-150 lines) and push examples, lookup tables, and reference material into Level 3 files that load on demand.",
+    "Operations that must be exact — unit conversions, CFL calculations, mesh metrics — belong in deterministic scripts, with the skill body providing the reasoning layer around them."
+  ],
+  "quiz": [
+    {
+      "question": "Your well-written, detailed skill never seems to activate when you ask the agent to do the task it covers. According to the notes, what is the most likely cause?",
+      "options": [
+        {"text": "The methodology body is too long for the agent to hold in working memory", "correct": false},
+        {"text": "The description doesn't match the phrases users actually say, so the body is never loaded", "correct": true},
+        {"text": "The agent's context window is full, so it skips optional skills", "correct": false},
+        {"text": "The skill is missing an allowed-tools field in its frontmatter", "correct": false}
+      ],
+      "explanation": "As Poudel puts it, 'If your skill does not trigger, it is almost never the instructions. It is the description.' Under progressive disclosure, the agent only reads the frontmatter at startup — if the description doesn't match the request, the body might as well not exist."
+    },
+    {
+      "question": "Why does the shift from human-called to agent-called skills raise the stakes of skill design?",
+      "options": [
+        {"text": "Agents invoke skills more slowly, so inefficient skills increase costs", "correct": false},
+        {"text": "Agents require skills to be rewritten in a structured format instead of Markdown", "correct": false},
+        {"text": "When an agent consumes subtly wrong output, the error propagates downstream with no human present to notice and correct it", "correct": true},
+        {"text": "Agents can only invoke one skill per session, so each invocation must succeed", "correct": false}
+      ],
+      "explanation": "When a human calls a skill, they can notice and adjust an imperfect result. In a multi-step agent pipeline, a subtly wrong output flows into the next skill or sub-agent's input with no recovery loop."
+    },
+    {
+      "question": "A skill instructs: 'Step 1: Check if Reynolds number exceeds 4000. If yes, use k-omega SST.' What design weakness does this illustrate?",
+      "options": [
+        {"text": "A linear procedure with no reasoning — it breaks on inputs between categories, like Re = 3000 in the transitional regime", "correct": true},
+        {"text": "An output format that is too rigid for the agent to follow", "correct": false},
+        {"text": "Overuse of deterministic scripts where natural language would generalize better", "correct": false},
+        {"text": "A description that fails to include negative triggers", "correct": false}
+      ],
+      "explanation": "The notes contrast this brittle procedure with a reasoning-based version that explains the transition regime (2300 < Re < 4000) and why k-omega SST is recommended. Providing the mental model lets the agent make sensible judgments on cases the checklist doesn't cover."
+    },
+    {
+      "question": "Your skill needs to convert pressures from psi to Pascals and compute CFL numbers as part of its workflow. What approach do the notes recommend?",
+      "options": [
+        {"text": "Write the conversion factors and formulas as explicit instructions in the SKILL.md body", "correct": false},
+        {"text": "Include several worked examples so the agent can pattern-match the arithmetic", "correct": false},
+        {"text": "Restrict the skill with allowed-tools so it cannot perform calculations at all", "correct": false},
+        {"text": "Put the calculations in deterministic scripts the skill calls, keeping the reasoning about when and how to use results in the SKILL.md", "correct": true}
+      ],
+      "explanation": "The notes state that behaviors that must be guaranteed — not probabilistically likely — belong in deterministic scripts in the scripts/ subdirectory, as in the materials-simulation-skills repository's cfl_checker.py. The skill body provides the reasoning layer; the script provides exact computation."
+    },
+    {
+      "question": "In the three-tier model for thinking about a skill's audience, what distinguishes a Tier 2 (methodology) skill from a Tier 1 (standard) skill?",
+      "options": [
+        {"text": "Tier 2 skills are personal productivity tools that should stay on your own laptop", "correct": false},
+        {"text": "Tier 2 skills encode how experts perform high-value work — knowledge that would take a new student months to learn — while Tier 1 encodes 'we always do it this way' standards", "correct": true},
+        {"text": "Tier 2 skills are provisioned organization-wide by IT admins, while Tier 1 skills are project-specific", "correct": false},
+        {"text": "Tier 2 skills must be shorter than 150 lines, while Tier 1 skills have no length limit", "correct": false}
+      ],
+      "explanation": "Tier 1 covers shared standards like formatting rules and citation conventions; Tier 2 captures the intellectual methodology in practitioners' heads — the litmus test is what you'd want to communicate to a new graduate student that would otherwise take months to learn. (Personal workflows are Tier 3.)"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+﻿Assignment 5
+
+
+AI-Assisted Diagrams and Slides
+Due: Class 13, April 28
+Estimated time: about 2 hours
+
+
+Overview
+Class 12 introduced a set of AI-augmented tools for organizing and communicating research: diagramming environments, Markdown-based slide systems, and AI presentation generators. This assignment asks you to use two of them—Excalidraw and Marp—on material drawn from your own research, and to write a brief reflection on what the experience revealed. There is also an optional third part for those who want to explore further.
+Instructions
+Part 1: AI-Assisted Excalidraw Diagram (Required)
+Use an AI assistant to generate an Excalidraw diagram that represents something meaningful in your research: a system architecture, a method pipeline, a conceptual map, or a workflow. The goal is to practice the conversational diagramming workflow—describing structure in natural language and refining the result—rather than to produce a finished publication figure.
+1. Choose a structure from your research that has clear components and relationships (e.g., the stages of your simulation pipeline, the components of your experimental setup, the conceptual model underlying your study).
+2. Describe it to an AI in natural language. You may use Claude with the Excalidraw MCP server configured in Claude Code, the Excalidraw integration available directly in this Claude.ai project, or any other LLM-to-Excalidraw workflow discussed in class.
+3. Iterate at least once: ask the assistant to revise the diagram (add a component, reorder steps, clarify a label, or adjust the layout).
+4. Export the final diagram as a PNG or SVG, or download the Excalidraw file.
+Deliverable: The exported or downloaded diagram, plus a few sentences describing what you asked the assistant to change in your revision step and whether the result matched your intent.
+Part 2: Marp Slide Deck (Required)
+Create a short Marp slide deck—five to seven slides—that presents a single focused concept from your research. This could be a method you use, a result you want to explain visually, or the framing of your research problem. The point of the exercise is to work in Marp's Markdown-based format and to use an AI assistant to help draft slide content from existing prose you have written.
+1. Take a paragraph or two from something you have already written—a proposal section, a paper draft, a qualifying exam answer—and paste it into a conversation with an AI assistant. Ask it to convert the content into Marp-formatted slides.
+2. Edit the output by hand: adjust the number of slides, rewrite bullet points that are too dense or too vague, and add or remove a slide to improve the narrative flow.
+3. Render the deck using VS Code with the Marp extension, the Marp CLI, or any other Marp-compatible tool, and export it as a PDF or HTML file.
+Deliverable: The rendered PDF or HTML export of your slide deck, plus your source .md file.
+Part 3: One Additional Tool (Optional)
+Try one other tool from Class 12 and document your experience in a paragraph. Options include:
+* Napkin AI: use a section of text from your research and explore the visual options it generates
+* draw.io Generate: describe a diagram in natural language and examine the output using draw.io's LLM backend
+* tldraw Make Real: sketch a rough diagram or interface by hand and convert it to HTML
+* Gamma or Plus AI: upload a short document and generate a first-pass slide deck, then compare it to your Marp deck
+Your paragraph should say what you tried, what surprised you (positively or negatively), and whether you would incorporate the tool into your regular workflow.
+Part 4: Reflection (Required)
+Write a short reflection—200 to 300 words—addressing the following:
+* Where did AI assistance genuinely accelerate the work, and where did you find yourself doing more manual correction than you expected?
+* Class 12 framed the core principle of these tools as: let AI handle structure and boilerplate; keep humans in control of scientific content and judgment. Did your experience support that framing, or complicate it?
+Submission
+Save the following in a folder named with your name (e.g., Jane_Smith) and deposit it into the shared "Assignment 5 submissions" folder in Box by the start of Class 13:
+* Your Excalidraw diagram (PNG, SVG, or .excalidraw) and the two or three sentences about your revision step
+* Your Marp source file (.md) and the rendered PDF or HTML export
+* Your reflection (in your Google Doc or as a separate document)
+* (Optional) Your one-paragraph account of the additional tool
+Grading: Pass/Fail
+This assignment is graded pass/fail based on completion and genuine engagement.
+Pass Criteria
+To receive a Pass, your submission must include:
+* An Excalidraw diagram that is connected to your own research (not a generic example)
+* Evidence of at least one AI-driven revision step, documented in your own words
+* A Marp deck of 5–7 slides derived from prose you actually wrote, not a generic topic
+* Both the .md source file and a rendered export of the Marp deck
+* A reflection that references specific moments from your experience with these tools, not abstract statements about AI in general
+Automatic Fail
+You will receive a Fail if:
+* Any required component is missing
+* The Excalidraw diagram or Marp deck is clearly unrelated to your research area
+* The reflection could have been written without doing the assignment (i.e., it contains no reference to your specific experience)

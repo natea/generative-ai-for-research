@@ -1,0 +1,45 @@
+﻿Assignment 3
+AI Agents for Coding: Jupyter AI
+Due: Before Class 7
+Estimated time: 4 hours
+
+
+Overview
+This assignment will give you hands-on practice with Jupyter AI, reinforcing the three interaction modes covered in Class 6: the chat interface, the %%ai magic command, and programmatic looping. You will apply these tools to a topic relevant to your own research area.
+Instructions
+Complete all three parts below in a single Jupyter notebook. You can use the GW JupyterHub at https://go.gwu.edu/jupyter. Save your notebook with all outputs visible and submit it to Box (name the file with your own name).
+Part 1: Chat Interface Exploration
+Use the Jupyternaut chat interface to get help with a piece of code related to your research. This could be code you are currently working on, or a simple example you create for this assignment.
+1. Create a code cell with at least 5 lines of Python code relevant to your research (data processing, numerical computation, visualization, etc.).
+2. Drag the cell into the Jupyternaut chat and ask it to explain what the code does.
+3. Ask a follow-up question requesting a modification or improvement to your code (e.g., add error handling, optimize performance, add a plot).
+4. Insert the suggested code into your notebook and verify it runs correctly. (Ask follow-up questions if needed.)
+Deliverable: In a markdown cell, briefly describe: (a) the original purpose of your code, (b) what modification you requested, and (c) whether the AI suggestion worked on the first try or required iteration.
+Part 2: Magic Commands for Documented Queries
+Use the %%ai magic command to ask questions about a concept, equation, or method relevant to your research field.
+5. Load the magic commands extension and configure a default model.
+6. Write a prompt asking the AI to explain a key equation or concept from your research area. Request that the explanation include LaTeX formatting for any mathematical expressions.
+7. Run the same prompt with a different OpenAI model, e.g., if you used gpt-5-mini, try gpt-5.1, or optionally claude-sonnet or gemini-pro (this will require that you obtain an API key with the provider).
+8. Use a Python variable in a templated prompt (using curly braces) to ask about a specific parameter or term.
+Deliverable: In a markdown cell, note your experience. Optionally, compare the responses from different models. Note any differences in clarity, accuracy, or depth of explanation.
+Part 3: Programmatic Looping
+Use the get_ipython().run_cell_magic() technique to run AI prompts in a loop and collect the responses.
+9. Create a list of at least three related items from your research area (e.g., three equations, three techniques, three materials, three parameters).
+10. Write a loop that asks the AI to provide a brief explanation or definition of each item, collecting all responses in a list.
+11. Display at least one of the collected responses using IPython.display.Markdown() so it renders with proper formatting.
+Deliverable: Your code cells showing the loop implementation and the rendered outputs.
+Grading Checklist
+This assignment is graded pass/fail. To pass, your notebook must demonstrate:
+* Successful use of the chat interface with a code cell dragged into Jupyternaut
+* Working %%ai magic cells with at least two different models
+* Use of variable templating in a prompt
+* A working loop that collects AI responses programmatically
+* Markdown cells with your reflections on each part
+* All code cells executed with visible outputs
+Submission
+Submit your completed Jupyter notebook (.ipynb file) to Box by the due date. Make sure all cells are executed and outputs are visible before submission.
+Tips
+• Save your chat conversations as .chat files for reference.
+• Use %ai reset to clear conversation history between experiments.
+• Run %ai list to see all available models.
+• If a model response is long, use %%capture to suppress output and collect it in a variable.
