@@ -323,10 +323,21 @@ h2 {
 }
 
 .lesson-main {
-  max-width: 860px;
-  padding: 3rem 2.5rem 5rem;
+  padding: 3rem 3rem 5rem;
   width: 100%;
-  margin: 0 auto;
+  min-width: 0;
+}
+/* Prose stays at a readable measure; viewers below span the full width. */
+.lesson-main > .eyebrow,
+.lesson-main > h1,
+.lesson-summary,
+.objectives,
+.takeaways,
+.assignment,
+.quiz,
+.lesson-actions,
+.pager {
+  max-width: 960px;
 }
 .lesson-main h1 {
   font-size: clamp(1.5rem, 3vw, 2.2rem);
@@ -402,7 +413,9 @@ h2 {
 
 .frame-16x9 {
   position: relative;
-  padding-top: 56.25%;
+  aspect-ratio: 16 / 9;
+  /* Full width, but never taller than the viewport (caps width on big screens). */
+  max-width: calc(84vh * 16 / 9);
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
@@ -422,11 +435,16 @@ h2 {
   border: 1px solid var(--border);
   background: #fff;
 }
+/* Google Docs preview renders pages at a fixed ~850px width; a full-bleed
+   frame would just be dead white space. PDFs and slides stay full width. */
+.viewer-doc .frame-doc {
+  max-width: 1100px;
+}
 .frame-doc iframe,
 .frame-doc object {
   display: block;
   width: 100%;
-  height: 640px;
+  height: max(560px, 82vh);
   border: 0;
 }
 
@@ -493,7 +511,7 @@ h2 {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem 2rem;
-  max-height: 720px;
+  max-height: 80vh;
   overflow-y: auto;
 }
 .nb-md :is(h1, h2, h3) {
