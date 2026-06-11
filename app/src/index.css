@@ -223,9 +223,12 @@ h3 {
   border: 1px solid var(--accent);
   color: var(--accent-ink);
 }
+/* Pin text colors on hover: the global a:hover rule would otherwise paint
+   link-styled buttons accent-on-accent (invisible text). */
 .btn-primary:hover:not(:disabled) {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
+  color: var(--accent-ink);
 }
 .btn-primary:disabled {
   opacity: 0.45;
@@ -238,6 +241,7 @@ h3 {
 }
 .btn-secondary:hover {
   border-color: var(--ink-dim);
+  color: var(--ink);
 }
 .btn-ghost {
   background: transparent;
@@ -439,6 +443,9 @@ h3 {
 }
 .cc-badge:hover img {
   opacity: 1;
+}
+.cc-badge:hover {
+  color: var(--ink);
 }
 /* The official CC marks are black; lift them to parchment in dark theme. */
 [data-theme='dark'] .cc-badge img {
