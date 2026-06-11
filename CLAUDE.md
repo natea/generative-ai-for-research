@@ -32,7 +32,7 @@ Branches: `main` = deployed; `design-overhaul` = "university press" redesign (PR
 - To ship the redesign: merge `design-overhaul` into `main`; the workflow does the rest.
 
 ### Design system (design-overhaul branch)
-- `PRODUCT.md` (register, users, anti-references, principles) and `DESIGN.md` (palette, type, iconography spec) at repo root govern all design work — read them before visual changes.
+- `docs/PRODUCT.md` (register, users, anti-references, principles) and `docs/DESIGN.md` (palette, type, iconography spec) govern all design work — read them before visual changes. (The impeccable skill finds them in `docs/` automatically.)
 - Identity: "university press book". OKLCH tokens in `app/src/index.css` — light "paper" theme and dark "reading lamp" theme via `data-theme` on `<html>` (OS-preference default, localStorage `mae6291-theme`, pre-paint bootstrap script in `index.html` to avoid flash).
 - Type: STIX Two Text (display/prose), Atkinson Hyperlegible (body/UI), JetBrains Mono (code) — loaded from Google Fonts in `index.html`.
 - Icons: hand-drawn 1.5px-stroke SVG set in `Icons.tsx` (currentColor). No emoji in UI.
