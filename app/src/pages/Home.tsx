@@ -9,6 +9,7 @@ export function Home() {
   const progress = useProgress();
   const completedCount = lessons.filter((l) => progress[l.id]?.completed).length;
   const pct = Math.round((completedCount / lessons.length) * 100);
+  const nextLesson = lessons.find((l) => !progress[l.id]?.completed);
 
   return (
     <div className="home">
@@ -33,6 +34,18 @@ export function Home() {
             {completedCount} / {lessons.length} lessons completed
           </span>
         </div>
+        {nextLesson ? (
+          <Link className="btn btn-primary hero-cta" to={`/lesson/${nextLesson.id}`}>
+            {completedCount === 0
+              ? 'Start the course'
+              : `Continue with ${nextLesson.number === null ? 'the supplement' : `Class ${nextLesson.number}`}`}{' '}
+            <IconArrowRight />
+          </Link>
+        ) : (
+          <p className="hero-complete" role="status">
+            <IconCheck /> You’ve completed every lesson. Well done.
+          </p>
+        )}
       </header>
 
       <section className="about-card">
@@ -112,6 +125,7 @@ export function Home() {
           </a>
           .
         </p>
+        <p>Your progress and quiz scores are saved in this browser only — they don’t follow you to other devices.</p>
       </footer>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { lessons } from '../content/course';
 import { generatedById } from '../content/generated';
@@ -19,24 +19,29 @@ export function LessonPage() {
   const { lessonId } = useParams();
   const navigate = useNavigate();
   const progress = useProgress();
+  const [navOpen, setNavOpen] = useState(false);
 
   const index = lessons.findIndex((l) => l.id === lessonId);
   const lesson = lessons[index];
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setNavOpen(false);
   }, [lessonId]);
 
   if (!lesson) {
     return (
-      <div className="lesson-layout">
-        <main className="lesson-main">
-          <p>Lesson not found.</p>
-          <Link to="/">
-            <IconArrowLeft /> Back to course
-          </Link>
-        </main>
-      </div>
+      <main className="not-found">
+        <p className="eyebrow">Not in the catalog</p>
+        <h1>This lesson doesn’t exist.</h1>
+        <p className="muted">
+          The address may be mistyped, or the lesson may have moved. The course has {lessons.length} lessons — all of
+          them are on the home page.
+        </p>
+        <Link className="btn btn-primary" to="/">
+          <IconArrowLeft /> Back to the course
+        </Link>
+      </main>
     );
   }
 
@@ -48,6 +53,9 @@ export function LessonPage() {
 
   return (
     <div className="lesson-layout">
+      <a className="skip-link" href="#lesson-content">
+        Skip to lesson content
+      </a>
       <aside className="sidebar">
         <ThemeToggle />
         <Link className="sidebar-home" to="/">
@@ -61,7 +69,15 @@ export function LessonPage() {
             {completedCount}/{lessons.length} complete
           </span>
         </div>
-        <nav aria-label="Lessons">
+        <button
+          className="sidebar-nav-toggle"
+          aria-expanded={navOpen}
+          aria-controls="lesson-nav"
+          onClick={() => setNavOpen((v) => !v)}
+        >
+          {navOpen ? 'Hide lessons' : `All lessons (${lessons.length})`}
+        </button>
+        <nav aria-label="Lessons" id="lesson-nav" className={navOpen ? 'nav-open' : ''}>
           <ol>
             {lessons.map((l) => (
               <li key={l.id}>
@@ -84,7 +100,7 @@ export function LessonPage() {
         </nav>
       </aside>
 
-      <main className="lesson-main">
+      <main className="lesson-main" id="lesson-content" tabIndex={-1}>
         <p className="eyebrow">
           {lesson.number === null ? 'Supplement' : `Class ${lesson.number}`} · {lesson.date}
         </p>
@@ -196,7 +212,10 @@ export function LessonPage() {
           ) : (
             <Link className="pager-link pager-next" to="/">
               <span className="pager-dir">
-                Course complete — back to overview <IconArrowRight />
+                {completedCount === lessons.length
+                  ? 'Course complete — back to overview'
+                  : 'Back to course overview'}{' '}
+                <IconArrowRight />
               </span>
             </Link>
           )}
