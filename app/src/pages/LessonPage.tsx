@@ -1,31 +1,47 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { lessons } from '../content/course';
 import { generatedById } from '../content/generated';
 import { Block } from '../components/Viewers';
 import { Quiz } from '../components/Quiz';
+import { ThemeToggle } from '../components/ThemeToggle';
+import {
+  IconArrowLeft,
+  IconArrowRight,
+  IconCheck,
+  IconCircleCheck,
+  IconExternal,
+  IconPencil,
+} from '../components/Icons';
 import { setLessonCompleted, useProgress } from '../store/progress';
 
 export function LessonPage() {
   const { lessonId } = useParams();
   const navigate = useNavigate();
   const progress = useProgress();
+  const [navOpen, setNavOpen] = useState(false);
 
   const index = lessons.findIndex((l) => l.id === lessonId);
   const lesson = lessons[index];
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setNavOpen(false);
   }, [lessonId]);
 
   if (!lesson) {
     return (
-      <div className="lesson-layout">
-        <main className="lesson-main">
-          <p>Lesson not found.</p>
-          <Link to="/">← Back to course</Link>
-        </main>
-      </div>
+      <main className="not-found">
+        <p className="eyebrow">Not in the catalog</p>
+        <h1>This lesson doesn’t exist.</h1>
+        <p className="muted">
+          The address may be mistyped, or the lesson may have moved. The course has {lessons.length} lessons — all of
+          them are on the home page.
+        </p>
+        <Link className="btn btn-primary" to="/">
+          <IconArrowLeft /> Back to the course
+        </Link>
+      </main>
     );
   }
 
@@ -37,9 +53,13 @@ export function LessonPage() {
 
   return (
     <div className="lesson-layout">
+      <a className="skip-link" href="#lesson-content">
+        Skip to lesson content
+      </a>
       <aside className="sidebar">
+        <ThemeToggle />
         <Link className="sidebar-home" to="/">
-          ← Course home
+          <IconArrowLeft /> Course home
         </Link>
         <div className="sidebar-progress">
           <div className="progress-track">
@@ -49,16 +69,30 @@ export function LessonPage() {
             {completedCount}/{lessons.length} complete
           </span>
         </div>
-        <nav aria-label="Lessons">
+        <button
+          className="sidebar-nav-toggle"
+          aria-expanded={navOpen}
+          aria-controls="lesson-nav"
+          onClick={() => setNavOpen((v) => !v)}
+        >
+          {navOpen ? 'Hide lessons' : `All lessons (${lessons.length})`}
+        </button>
+        <nav aria-label="Lessons" id="lesson-nav" className={navOpen ? 'nav-open' : ''}>
           <ol>
             {lessons.map((l) => (
               <li key={l.id}>
                 <Link className={`sidebar-item ${l.id === lesson.id ? 'active' : ''}`} to={`/lesson/${l.id}`}>
-                  <span className={`side-badge ${progress[l.id]?.completed ? 'done' : ''}`}>
+                  <span
+                    className={`side-badge ${progress[l.id]?.completed ? 'done' : ''} ${l.number === null ? 'supplement' : ''}`}
+                  >
                     {l.number ?? '+'}
                   </span>
                   <span className="side-title">{l.title}</span>
-                  {progress[l.id]?.completed && <span className="side-check">✓</span>}
+                  {progress[l.id]?.completed && (
+                    <span className="side-check">
+                      <IconCheck />
+                    </span>
+                  )}
                 </Link>
               </li>
             ))}
@@ -66,7 +100,7 @@ export function LessonPage() {
         </nav>
       </aside>
 
-      <main className="lesson-main">
+      <main className="lesson-main" id="lesson-content" tabIndex={-1}>
         <p className="eyebrow">
           {lesson.number === null ? 'Supplement' : `Class ${lesson.number}`} · {lesson.date}
         </p>
@@ -95,7 +129,10 @@ export function LessonPage() {
         {lesson.assignment && (
           <section className="assignment">
             <h2>
-              <span className="viewer-tag tag-assignment">Assignment</span> {lesson.assignment.title}
+              <span className="viewer-tag">
+                <IconPencil /> Assignment
+              </span>
+              {lesson.assignment.title}
             </h2>
             <p>Apply this lesson to your own research — the assignments were written to be domain-specific.</p>
             <div className="frame-doc">
@@ -110,7 +147,7 @@ export function LessonPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Open in Google Docs ↗
+              Open in Google Docs <IconExternal />
             </a>
           </section>
         )}
@@ -133,7 +170,13 @@ export function LessonPage() {
             className={`btn ${completed ? 'btn-secondary' : 'btn-primary'}`}
             onClick={() => setLessonCompleted(lesson.id, !completed)}
           >
-            {completed ? '✓ Completed — click to undo' : 'Mark lesson complete'}
+            {completed ? (
+              <>
+                <IconCircleCheck /> Completed — click to undo
+              </>
+            ) : (
+              'Mark lesson complete'
+            )}
           </button>
           {next && !completed && (
             <button
@@ -143,7 +186,7 @@ export function LessonPage() {
                 navigate(`/lesson/${next.id}`);
               }}
             >
-              Complete & continue →
+              Complete & continue <IconArrowRight />
             </button>
           )}
         </div>
@@ -151,7 +194,9 @@ export function LessonPage() {
         <nav className="pager" aria-label="Lesson navigation">
           {prev ? (
             <Link className="pager-link" to={`/lesson/${prev.id}`}>
-              ← {prev.number === null ? 'Supplement' : `Class ${prev.number}`}
+              <span className="pager-dir">
+                <IconArrowLeft /> {prev.number === null ? 'Supplement' : `Class ${prev.number}`}
+              </span>
               <span>{prev.title}</span>
             </Link>
           ) : (
@@ -159,12 +204,19 @@ export function LessonPage() {
           )}
           {next ? (
             <Link className="pager-link pager-next" to={`/lesson/${next.id}`}>
-              {next.number === null ? 'Supplement' : `Class ${next.number}`} →
+              <span className="pager-dir">
+                {next.number === null ? 'Supplement' : `Class ${next.number}`} <IconArrowRight />
+              </span>
               <span>{next.title}</span>
             </Link>
           ) : (
             <Link className="pager-link pager-next" to="/">
-              Course complete — back to overview →
+              <span className="pager-dir">
+                {completedCount === lessons.length
+                  ? 'Course complete — back to overview'
+                  : 'Back to course overview'}{' '}
+                <IconArrowRight />
+              </span>
             </Link>
           )}
         </nav>
