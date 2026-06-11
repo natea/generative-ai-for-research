@@ -376,6 +376,26 @@ h3 {
   border-top: 1px solid var(--border);
   padding-top: 1.5rem;
 }
+.cc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.cc-badge img {
+  display: block;
+  opacity: 0.85;
+}
+.cc-badge:hover img {
+  opacity: 1;
+}
+/* The official CC marks are black; lift them to parchment in dark theme. */
+[data-theme='dark'] .cc-badge img {
+  filter: invert(0.92) hue-rotate(180deg);
+}
 
 /* ---------- Lesson layout ---------- */
 .lesson-layout {

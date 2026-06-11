@@ -90,12 +90,23 @@ export function Home() {
       </section>
 
       <footer className="site-footer">
+        <a
+          className="cc-badge"
+          href="https://creativecommons.org/licenses/by/4.0/"
+          target="_blank"
+          rel="license noopener noreferrer"
+          aria-label="Licensed under Creative Commons Attribution 4.0 International"
+        >
+          <img src={`${import.meta.env.BASE_URL}cc.svg`} alt="Creative Commons" width="28" height="28" />
+          <img src={`${import.meta.env.BASE_URL}cc-by.svg`} alt="Attribution" width="28" height="28" />
+          <span>CC BY 4.0</span>
+        </a>
         <p>
           Course content © Lorena A. Barba, licensed under{' '}
-          <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
-            CC BY 4.0
+          <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="license noopener noreferrer">
+            Creative Commons Attribution 4.0 International
           </a>
-          . Interactive presentation built from the{' '}
+          — free to share and adapt with attribution. Interactive presentation built from the{' '}
           <a href={courseMeta.sourceSite} target="_blank" rel="noopener noreferrer">
             open course materials
           </a>
